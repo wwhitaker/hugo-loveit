@@ -33,7 +33,7 @@
 }
 
 .project-card {
-  --project-card-footer-bg: #eceff3;
+  --project-card-footer-bg: #f8f8f8;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -46,7 +46,7 @@
 }
 
 [theme=dark] .project-card {
-  --project-card-footer-bg: #1f2125;
+  --project-card-footer-bg: #252627;
 }
 
 .project-card:hover {
