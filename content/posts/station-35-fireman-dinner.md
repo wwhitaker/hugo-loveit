@@ -4,11 +4,11 @@ date = 2026-01-03T14:07:04-05:00
 draft = false
 categories = ['personal']
 tags = ['family', 'firehouse', 'memories']
-images = ['/images/posts/station-35-fireman-dinner.png']
 
 [params]
   description = 'Reflections on the volunteer fire station, family dedication, and a memorable brush fire call'
   author = 'William E. Whitaker, Jr'
+  featuredimage = '/images/posts/station-35-fireman-dinner.png'
 +++
 
 ---
