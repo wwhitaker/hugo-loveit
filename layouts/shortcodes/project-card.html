@@ -1,0 +1,31 @@
+<article class="project-card">
+  <div class="project-card-content">
+    <h3 class="project-card-title">{{ .Get "title" }}</h3>
+    {{- with .Get "image" -}}
+      <img class="project-card-image" src="{{ . }}" alt="{{ $.Get "alt" | default ($.Get "title") }}" loading="lazy" decoding="async">
+    {{- end -}}
+    {{- with .Get "description" -}}
+      <p class="project-card-description">{{ . }}</p>
+    {{- end -}}
+    {{- with .Get "tech" -}}
+      <p class="project-card-tech"><strong>Technologies:</strong> {{ . }}</p>
+    {{- end -}}
+  </div>
+  <div class="project-card-links" aria-label="Project links">
+    {{- with .Get "link1_url" -}}
+      <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $.Get "link1_label" | default "Project link" }}" title="{{ $.Get "link1_label" | default "Project link" }}">
+        <i class="{{ $.Get "link1_icon" | default "fas fa-link" }}" aria-hidden="true"></i>
+      </a>
+    {{- end -}}
+    {{- with .Get "link2_url" -}}
+      <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $.Get "link2_label" | default "Project link" }}" title="{{ $.Get "link2_label" | default "Project link" }}">
+        <i class="{{ $.Get "link2_icon" | default "fas fa-link" }}" aria-hidden="true"></i>
+      </a>
+    {{- end -}}
+    {{- with .Get "link3_url" -}}
+      <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $.Get "link3_label" | default "Project link" }}" title="{{ $.Get "link3_label" | default "Project link" }}">
+        <i class="{{ $.Get "link3_icon" | default "fas fa-link" }}" aria-hidden="true"></i>
+      </a>
+    {{- end -}}
+  </div>
+</article>

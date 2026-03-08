@@ -8,37 +8,40 @@ draft = false
 
 Here are some of the projects I've worked on:
 
-### OCNES Dashboard
+{{< project-grid >}}
+{{< project-card
+title="OCNES Dashboard"
+image="/images/projects/dashboard.png"
+alt="OCNES Dashboard"
+description="Adding a dashboard layer to the AKiPS monitoring tool."
+tech="Django, AKiPS"
+link1_url="https://github.com/unc-network/dashboard"
+link1_icon="fab fa-github"
+link1_label="View OCNES Dashboard on GitHub"
+>}}
 
-![OCNES Dashboard](/images/projects/dashboard.png)
+{{< project-card
+title="AKiPS Python Module"
+image="/images/projects/akips-logo.jpg"
+alt="AKiPS Logo"
+description="PyPI module providing a Python wrapper for the native AKiPS API."
+tech="Python, AKiPS"
+link1_url="https://github.com/unc-network/akips"
+link1_icon="fab fa-github"
+link1_label="View AKiPS Python Module on GitHub"
+link2_url="https://pypi.org/project/akips/"
+link2_icon="fas fa-box-open"
+link2_label="View AKiPS package on PyPI"
+>}}
 
-Adding a dashboard layer to the AKiPS monitoring tool.
-
-**Technologies:** Django, AKiPS
-
-[View on GitHub](https://github.com/unc-network/dashboard)
-
----
-
-### AKiPS Python Module
-
-![AKiPS Logo](/images/projects/akips-logo.jpg)
-
-PyPi module providing a python wrapper for the native AKiPS API.
-
-**Technologies:** Python, AKiPS
-
-- [GitHub Repository](https://github.com/unc-network/akips)
-- [PyPI Package](https://pypi.org/project/akips/)
-
----
-
-### Speedtest to InfluxDB v2
-
-![Speedtest to InfluxDB](/images/projects/speedtest.png)
-
-Run and save Speedtest CLI data to InfluxDB2.
-
-**Technologies:** Speedtest, InfluxDB
-
-[View on GitHub](https://github.com/wwhitaker/speedtests)
+{{< project-card
+title="Speedtest to InfluxDB v2"
+image="/images/projects/speedtest.png"
+alt="Speedtest to InfluxDB"
+description="Run and save Speedtest CLI data to InfluxDB2."
+tech="Speedtest, InfluxDB"
+link1_url="https://github.com/wwhitaker/speedtests"
+link1_icon="fab fa-github"
+link1_label="View Speedtest to InfluxDB on GitHub"
+>}}
+{{< /project-grid >}}
