@@ -1,0 +1,20 @@
+<!-- Manual Instagram Feed using Hugo's built-in instagram shortcode -->
+<div class="instagram-feed" style="margin: 2rem 0;">
+  <h3 style="text-align: center; margin-bottom: 1.5rem;">Favorites from Instagram</h3>
+  
+  {{- $posts := .Get "posts" | default "" -}}
+  {{- if $posts -}}
+    {{- $postList := split $posts "," -}}
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; max-width: 1200px; margin: 0 auto;">
+      {{- range $postList -}}
+        <div style="display: flex; justify-content: center;">
+          {{ $.Page.RenderString (printf "{{< instagram %s >}}" (trim . " ")) }}
+        </div>
+      {{- end -}}
+    </div>
+  {{- else -}}
+    <div style="text-align: center; padding: 2rem;">
+      <p>No Instagram posts specified.</p>
+    </div>
+  {{- end -}}
+</div>

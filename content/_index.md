@@ -16,3 +16,5 @@ Since the early 90s I have been exploring computer networks and software.  I hav
 My public work repositories are available at [UNC ITS Networking](https://github.com/unc-network "github").
 
 ---
+
+{{< instagram-feed posts="DGJH9YWvQiq,DGG7hAeSPpn,C0gzrDZMlgz,CzuMxHRRv3j,CzRQmu5OZzj,Cy9ldIPsBfQ" >}}
