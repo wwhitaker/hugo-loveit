@@ -5,7 +5,9 @@ date = '2022-10-10'
 draft = false
 tags = ['family', 'hunt club']
 categories = ['Personal']
-image = 'https://defingo.net/images/blogs/clubhouse.jpg'
+image = '/images/blogs/clubhouse.jpg'
+featuredImage = '/images/blogs/clubhouse.jpg'
+featuredImagePreview = '/images/blogs/clubhouse.jpg'
 +++
 
 This picture here is hard to appreciate with 2010 camera quality but it reminds me of quality time spent with two great men. For some odd reason I felt the need to pause and snap it a little after 4am that November morning. It was cold and dark, but I was warm, happy, and wanting to remember it later.

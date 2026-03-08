@@ -5,7 +5,9 @@ date = '2025-04-07'
 draft = false
 tags = ['dns', 'firewall', 'security']
 categories = ['Technical']
-image = 'https://defingo.net/images/blogs/michael-geiger-JJPqavJBy_k-unsplash.jpg'
+image = '/images/blogs/michael-geiger-JJPqavJBy_k-unsplash.jpg'
+featuredImage = '/images/blogs/michael-geiger-JJPqavJBy_k-unsplash.jpg'
+featuredImagePreview = '/images/blogs/michael-geiger-JJPqavJBy_k-unsplash.jpg'
 +++
 
 Recently I discovered this article about testing the effectiveness of public DNS malware filters. The details are appreciated as this type of comparison is not given due attention.

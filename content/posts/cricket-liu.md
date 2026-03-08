@@ -5,7 +5,9 @@ date = '2018-02-21'
 draft = false
 tags = ['dns', 'bind']
 categories = ['Personal']
-image = 'https://defingo.net/images/blogs/DNS_and_BIND.png'
+image = '/images/blogs/DNS_and_BIND.png'
+featuredImage = '/images/blogs/DNS_and_BIND.png'
+featuredImagePreview = '/images/blogs/DNS_and_BIND.png'
 +++
 
 In January 2000 I reported to a new job straight out of college. There was the normal corporate trainings but soon I was assigned to a specific IP Services team. DNS and BIND by O'Reilly was the earliest training material provided. If a feature or configuration was unfamiliar, the book was there to cover it. We had lab time to put things into practice but every customer environment was different.

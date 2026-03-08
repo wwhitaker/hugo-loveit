@@ -5,7 +5,9 @@ date = '2025-07-19'
 draft = false
 tags = ['dns', 'security', 'network']
 categories = ['Technical']
-image = 'https://defingo.net/images/post.jpg'
+image = '/images/blogs/post.jpg'
+featuredImage = '/images/blogs/post.jpg'
+featuredImagePreview = '/images/blogs/post.jpg'
 +++
 
 Multiple options exist to enable and enforce safe searching at both application and account levels. If you want to enforce it over an entire network you will need to look at DNS records.

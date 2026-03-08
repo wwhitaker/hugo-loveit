@@ -5,7 +5,9 @@ date = '2024-10-28'
 draft = false
 tags = ['email', 'pobox', 'fastmail']
 categories = ['Personal']
-image = 'https://defingo.net/images/blogs/mailbox.jpg'
+image = '/images/blogs/mailbox.jpg'
+featuredImage = '/images/blogs/mailbox.jpg'
+featuredImagePreview = '/images/blogs/mailbox.jpg'
 +++
 
 Going off to college is a hallmark time of new discoveries. In the 90s technology was booming and email was one of those discoveries. Through my undergrad time my campus email address was used for everything. Talking to classmates and professors, using online services, or just keeping in touch with high school friends off at different schools was a daily routine. Eventually, approaching graduation, I came to realize my campus email was not going to last forever. Oh no, everyone and everything was going to need updating.

@@ -5,7 +5,9 @@ date = '2024-10-24'
 draft = false
 tags = ['backup-wan', 'netgear', 'verizon', 'unifi']
 categories = ['Homelab']
-image = 'https://defingo.net/images/blogs/no-content-available.jpg'
+image = '/images/blogs/no-content-available.jpg'
+featuredImage = '/images/blogs/no-content-available.jpg'
+featuredImagePreview = '/images/blogs/no-content-available.jpg'
 +++
 
 A recent power outage at home led me to look into secondary ISP options. All the battery backup work didn't quell family complaints about spotify not working. Luckily my Unifi gateway natively supports a secondary WAN port, so the question is what modem and ISP will work without breaking the bank. As an existing Verizon customer, I focused on those options in hope of discounts.

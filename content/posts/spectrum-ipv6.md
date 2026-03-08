@@ -5,7 +5,9 @@ date = '2017-07-31'
 draft = false
 tags = ['ipv6', 'edgerouter']
 categories = ['Homelab']
-image = 'https://defingo.net/images/blogs/modem.jpg'
+image = '/images/blogs/modem.jpg'
+featuredImage = '/images/blogs/modem.jpg'
+featuredImagePreview = '/images/blogs/modem.jpg'
 +++
 
 For a while now, Spectrum has made IPv6 available at my home but I have had mixed results with a few different routers and firewalls. Some commercial models lacked needed features like prefix delegation client while consumer grade models lacked other features of interest. Recently I purchased an Edgerouter Lite to find a happy middle of the road. So far, the performance is great and the configuration is not complicated if you are comfortable with the CLI.
