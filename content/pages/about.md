@@ -4,8 +4,6 @@ draft = false
 title = 'About Me'
 +++
 
-![Profile Picture](/images/headshot.jpg "Profile")
-
 I manage networks and services.  
 
 ## Background

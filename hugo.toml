@@ -1,6 +1,6 @@
 baseURL = 'https://defingo.net/'
 languageCode = 'en-us'
-title = 'defingo.net'
+title = 'Defingo.net - Personal website for William E. Whitaker, Jr'
 theme = 'LoveIt'
 defaultContentLanguage = 'en'
 defaultTheme = 'auto'
@@ -39,7 +39,7 @@ enableRobotsTXT = true
     weight = 5
 
 [params]
-  description = 'A personal website built with Hugo and LoveIt'
+  description = 'Personal website for William E. Whitaker Jr, network solutions architect'
   
   [params.author]
     name = 'wew'
