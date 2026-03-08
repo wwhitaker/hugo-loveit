@@ -1,0 +1,14 @@
+{{- $user := .Get "user" | default .Site.Params.social.GitHub -}}
+{{- if $user -}}
+<div class="github-contrib-calendar">
+  <h2>GitHub Contributions</h2>
+  <a class="calendar-link" href="https://github.com/{{ $user }}" target="_blank" rel="noopener noreferrer" aria-label="View {{ $user }} on GitHub">
+    <img
+      src="https://ghchart.rshah.org/{{ $user }}"
+      alt="GitHub contributions calendar for {{ $user }}"
+      loading="lazy"
+      decoding="async"
+    >
+  </a>
+</div>
+{{- end -}}

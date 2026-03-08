@@ -2,3 +2,25 @@
 .home:not([data-home=posts]) .single {
   margin-top: 18rem;
 }
+
+.github-contrib-calendar {
+  margin-top: 2rem;
+}
+
+.github-contrib-calendar h2 {
+  margin-bottom: 0.75rem;
+}
+
+.github-contrib-calendar .calendar-link {
+  display: inline-block;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.github-contrib-calendar img {
+  display: block;
+  width: 100%;
+  max-width: 760px;
+  height: auto;
+  border-radius: 6px;
+}
