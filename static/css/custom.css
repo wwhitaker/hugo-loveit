@@ -103,3 +103,17 @@
   color: var(--global-link-color);
   border-color: var(--global-link-color);
 }
+
+.featured-image {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.featured-image img {
+  max-width: 600px;
+  max-height: 500px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
