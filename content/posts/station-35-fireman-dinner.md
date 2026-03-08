@@ -4,18 +4,16 @@ date = 2026-01-03T14:07:04-05:00
 draft = false
 categories = ['personal']
 tags = ['family', 'firehouse', 'memories']
+images = ['/images/posts/station-35-fireman-dinner.png']
 
 [params]
   description = 'Reflections on the volunteer fire station, family dedication, and a memorable brush fire call'
   author = 'William E. Whitaker, Jr'
 +++
 
-**Location:** 9000 Homecamp Ct, Wake Forest, North Carolina, United States  
-**Weather:** 42°F Cloudy
-
 ---
 
-I've been thinking a lot this holiday season about the Walnut Cover's Station 35. It probably started about the time Mom invited me to join her at the fireman appreciation dinner but intensified when I saw pictures of the older members of my dad's generation. Talking to her afterwards I learned there was a call overlapping the event and the younger guys were off attending to it.
+I've been thinking a lot this holiday season about the Walnut Cove's Station 35. It probably started about the time Mom invited me to join her at the fireman appreciation dinner but intensified when I saw pictures of the older members of my dad's generation. Talking to her afterwards I learned there was a call overlapping the event and the younger guys were off attending to it.
 
 As a young man, the volunteer fire station was a big part of my life. You see I never served as a volunteer, but my dad was an active member on the fire and rescue squad while my mom contributed through the ladies' auxiliary that coordinated events and fundraisers. I was a childhood outside observer through most of my adolescence. My younger brother and I spent many hours hanging out in the station kitchen, climbing on trucks parked in the bays during weekly meetings, attending fund raiser events, and even riding on the trucks during parades.
 
