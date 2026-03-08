@@ -1,0 +1,4 @@
+/* Fix home profile overlap when posts are disabled */
+.home:not([data-home=posts]) .single {
+  margin-top: 18rem;
+}

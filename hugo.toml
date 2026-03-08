@@ -1,0 +1,67 @@
+baseURL = 'https://defingo.net/'
+languageCode = 'en-us'
+title = 'defingo.net'
+theme = 'LoveIt'
+defaultContentLanguage = 'en'
+defaultTheme = 'auto'
+enableEmoji = true
+enableRobotsTXT = true
+
+[author]
+  name = 'William E. Whitaker, Jr'
+  email = 'your.email@defingo.net'
+
+[menu]
+  [[menu.main]]
+    identifier = 'posts'
+    name = 'Posts'
+    url = '/posts/'
+    weight = 1
+  [[menu.main]]
+    identifier = 'tags'
+    name = 'Tags'
+    url = '/tags/'
+    weight = 2
+  [[menu.main]]
+    identifier = 'categories'
+    name = 'Categories'
+    url = '/categories/'
+    weight = 3
+  [[menu.main]]
+    identifier = 'resources'
+    name = 'Resources'
+    url = '/pages/resources/'
+    weight = 4
+  [[menu.main]]
+    identifier = 'projects'
+    name = 'Projects'
+    url = '/pages/projects/'
+    weight = 5
+
+[params]
+  description = 'A personal website built with Hugo and LoveIt'
+  
+  [params.author]
+    name = 'wew'
+    email = 'your.email@defingo.net'
+  
+  [params.header]
+    [params.header.title]
+      name = 'defingo.net'
+  
+  [params.home]
+    rss = 3 
+    
+    [params.home.profile]
+      enable = true
+      avatarURL = "/images/avatar.png"
+      subtitle = "I manage networks and services"
+    
+    [params.home.posts]
+      enable = false
+  
+  [params.social]
+    Instagram = 'wewhitaker'
+    GitHub = 'wwhitaker'
+    X = 'wewhitaker'
+    LinkedIn = 'wewhitaker'
