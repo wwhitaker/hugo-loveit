@@ -2,7 +2,7 @@
 title = 'UCG Fiber - LAN to Internet Speed'
 date = 2025-10-25T14:07:04-05:00
 draft = false
-categories = ['personal']
+categories = ['technical']
 tags = ['unifi']
 
 [params]
