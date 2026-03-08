@@ -13,6 +13,4 @@ I am an information systems professional with broad background in network suppor
 
 Since the early 90s I have been exploring computer networks and software.  I have worn many hats and had a number of titles but the technology has been consistent, consistently changing that is.
 
-My public work repositories are available at [UNC ITS Networking](https://github.com/unc-network "github").
-
 ---
