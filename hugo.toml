@@ -89,7 +89,18 @@ enableRobotsTXT = true
       Diaspora = false
       Mix = false
       Telegram = false
-  
+
+    [params.page.comment]
+      enable = true
+
+      [params.page.comment.utterances]
+      enable = true
+      repo = "wewhitak/hugo-loveit"
+      issueTerm = "pathname"
+      label = ""
+      lightTheme = "github-light"
+      darkTheme = "github-dark"
+
   [params.social]
     Instagram = 'wewhitaker'
     GitHub = 'wwhitaker'
