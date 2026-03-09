@@ -5,9 +5,7 @@ date = '2017-07-30'
 draft = false
 tags = ['dns', 'opendns', 'edgerouter', 'network', 'security']
 categories = ['Technical']
-
-[params]
-    featuredimage = '/images/posts/opendns-with-nat-policy-featured.png'
+featuredimage = '/images/posts/opendns-with-nat-policy-featured.png'
 +++
 
 [OpenDNS](https://www.opendns.com/) is a powerful tool to control Internet access on both enterprise and home networks. The ability to manipulate DNS responses based on categories and analytics, along with policy customizations, can protect users from known threats and provide a layer of content filtering.

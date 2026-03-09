@@ -1,14 +1,11 @@
 +++
 title = 'Station 35 Fireman Dinner'
+description = 'Reflections on the volunteer fire station, family dedication, and a memorable brush fire call'
 date = 2026-01-03T14:07:04-05:00
 draft = false
 categories = ['Personal']
 tags = ['family', 'firehouse', 'memories']
-
-[params]
-  description = 'Reflections on the volunteer fire station, family dedication, and a memorable brush fire call'
-  author = 'William E. Whitaker, Jr'
-  featuredimage = '/images/posts/station-35-fireman-dinner.png'
+featuredimage = '/images/posts/station-35-fireman-dinner.png'
 +++
 
 ---
