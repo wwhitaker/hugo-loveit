@@ -2,7 +2,7 @@
 title = 'Station 35 Fireman Dinner'
 date = 2026-01-03T14:07:04-05:00
 draft = false
-categories = ['personal']
+categories = ['Personal']
 tags = ['family', 'firehouse', 'memories']
 
 [params]
