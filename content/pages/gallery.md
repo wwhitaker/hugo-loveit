@@ -2,6 +2,7 @@
 title = 'Gallery'
 date = '2026-03-08'
 draft = false
+comment = false
 +++
 
 ## Instagram Gallery
