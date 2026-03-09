@@ -1,7 +1,7 @@
 +++
 title = 'AKiPS PyPi module'
 description = 'Publishing a new pypi module for AKiPS API'
-date = '2024-11-09'
+date = '2025-11-09'
 draft = false
 tags = ['python', 'api']
 categories = ['Technical']
