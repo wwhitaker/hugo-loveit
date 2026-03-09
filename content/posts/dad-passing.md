@@ -5,6 +5,9 @@ date = '2020-11-08'
 draft = false
 tags = ['family']
 categories = ['Personal']
+
+[params]
+	featuredimage = '/images/posts/dad-passing-featured.jpg'
 +++
 
 Dad passed today at 2:12 PM.
