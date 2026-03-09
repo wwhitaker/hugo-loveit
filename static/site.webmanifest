@@ -1,7 +1,7 @@
 {
   "name": "defingo.net",
-  "short_name": "defingo.net",
-  "description": "defingo.net - Progressive Web App",
+  "short_name": "defingo",
+  "description": "Personal website for William E. Whitaker Jr, network solutions architect",
   "icons": [
     {
       "src": "android-chrome-192x192.png",
