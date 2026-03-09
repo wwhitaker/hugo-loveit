@@ -1,5 +1,6 @@
 +++
 title = 'Defingo.net - Personal website for William E. Whitaker, Jr'
+description = 'Personal website for William E. Whitaker Jr, network solutions architect'
 +++
 
 ## Welcome to defingo.net
