@@ -108,4 +108,4 @@ enableRobotsTXT = true
     LinkedIn = 'wewhitaker'
 
   [params.seo]
-    image = '/images/avatar.png'
+    image = '/images/homepage-banner.png'
