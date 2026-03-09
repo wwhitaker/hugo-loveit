@@ -25,6 +25,18 @@
   border-radius: 6px;
 }
 
+.github-contrib-calendar .calendar-image-dark {
+  display: none;
+}
+
+[theme=dark] .github-contrib-calendar .calendar-image-light {
+  display: none;
+}
+
+[theme=dark] .github-contrib-calendar .calendar-image-dark {
+  display: block;
+}
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
