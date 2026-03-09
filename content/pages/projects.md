@@ -1,5 +1,6 @@
 +++
 title = 'Projects'
+description = 'I am an information systems professional with broad background in network support, system administration and software development focused on security topics.'
 date = '2026-03-08'
 draft = false
 comment = false
