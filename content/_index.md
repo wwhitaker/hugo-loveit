@@ -1,5 +1,5 @@
 +++
-title = 'defingo.net'
+title = 'Defingo.net - Personal website for William E. Whitaker, Jr'
 +++
 
 ## Welcome to defingo.net

@@ -1,0 +1,98 @@
+{{- $title := .Title | default .Site.Title -}}
+{{- $description := .Description | default .Summary | default .Site.Params.description | plainify | htmlUnescape | chomp -}}
+{{- $type := cond .IsPage "article" "website" -}}
+{{- $locale := replace (.Site.LanguageCode | default "en-us" | lower) "-" "_" -}}
+{{- $imageAlt := .Params.imagesAlt | default .Params.imageAlt | default $title -}}
+
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ .Site.Title }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:locale" content="{{ $locale }}">
+<meta property="og:type" content="{{ $type }}">
+
+{{- range .AllTranslations -}}
+  {{- if ne .Lang $.Lang -}}
+<meta property="og:locale:alternate" content="{{ replace (.Language.LanguageCode | default .Lang | lower) "-" "_" }}">
+  {{- end -}}
+{{- end -}}
+
+{{- if .IsPage -}}
+  {{- with .Section -}}
+<meta property="article:section" content="{{ . }}">
+  {{- end -}}
+  {{- if not .PublishDate.IsZero -}}
+<meta property="article:published_time" content="{{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" }}">
+  {{- else if not .Date.IsZero -}}
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+  {{- end -}}
+  {{- with .Lastmod -}}
+<meta property="article:modified_time" content="{{ .Format "2006-01-02T15:04:05Z07:00" }}">
+  {{- end -}}
+  {{- with .Params.tags -}}
+    {{- range . -}}
+<meta property="article:tag" content="{{ . | title }}">
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $images := slice -}}
+{{- with .Params.images -}}
+  {{- if reflect.IsSlice . -}}
+    {{- $images = $images | append . -}}
+  {{- else -}}
+    {{- $images = $images | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- with .Params.featuredImage -}}{{- $images = $images | append . -}}{{- end -}}
+{{- with .Params.featuredimage -}}{{- $images = $images | append . -}}{{- end -}}
+{{- with .Params.image -}}{{- $images = $images | append . -}}{{- end -}}
+{{- with .Params.featuredImagePreview -}}{{- $images = $images | append . -}}{{- end -}}
+{{- with .Site.Params.images -}}
+  {{- if reflect.IsSlice . -}}
+    {{- $images = $images | append . -}}
+  {{- else -}}
+    {{- $images = $images | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- with .Site.Params.seo.image -}}{{- $images = $images | append . -}}{{- end -}}
+
+{{- $seen := dict -}}
+{{- range $images -}}
+  {{- $imagePath := . -}}
+  {{- with $imagePath -}}
+    {{- if not (index $seen .) -}}
+      {{- $seen = merge $seen (dict . true) -}}
+      {{- with dict "Path" . "Resources" $.Resources | partial "function/resource.html" -}}
+<meta property="og:image" content="{{ .Permalink }}">
+<meta property="og:image:url" content="{{ .Permalink }}">
+<meta property="og:image:width" content="{{ .Width }}">
+<meta property="og:image:height" content="{{ .Height }}">
+        {{- with .MediaType.Type -}}
+<meta property="og:image:type" content="{{ . }}">
+        {{- end -}}
+<meta property="og:image:alt" content="{{ $imageAlt }}">
+      {{- else -}}
+        {{- $isAbsolute := or (hasPrefix . "http://") (hasPrefix . "https://") -}}
+        {{- $imageURL := cond $isAbsolute . (absURL .) -}}
+<meta property="og:image" content="{{ $imageURL }}">
+<meta property="og:image:url" content="{{ $imageURL }}">
+<meta property="og:image:alt" content="{{ $imageAlt }}">
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $social := .Site.Params.social | default dict -}}
+{{- with or (index $social "facebookAppID") (index $social "facebookappid") (index $social "facebook_app_id") -}}
+<meta property="fb:app_id" content="{{ . }}">
+{{- end -}}
+{{- with or (index $social "facebookAdmins") (index $social "facebookadmins") (index $social "facebook_admins") -}}
+  {{- if reflect.IsSlice . -}}
+    {{- range . -}}
+<meta property="fb:admins" content="{{ . }}">
+    {{- end -}}
+  {{- else -}}
+<meta property="fb:admins" content="{{ . }}">
+  {{- end -}}
+{{- end -}}
