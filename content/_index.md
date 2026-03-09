@@ -1,6 +1,6 @@
 +++
 title = 'Defingo.net - Personal website for William E. Whitaker, Jr'
-description = 'Personal website for William E. Whitaker Jr, network solutions architect'
+description = 'I am an information systems professional with broad background in network support, system administration and software development focused on security topics.'
 +++
 
 ## Welcome to defingo.net
