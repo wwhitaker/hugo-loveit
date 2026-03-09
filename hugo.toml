@@ -95,7 +95,7 @@ enableRobotsTXT = true
 
       [params.page.comment.utterances]
       enable = true
-      repo = "wewhitak/hugo-loveit"
+      repo = "wwhitaker/hugo-loveit"
       issueTerm = "pathname"
       label = ""
       lightTheme = "github-light"
