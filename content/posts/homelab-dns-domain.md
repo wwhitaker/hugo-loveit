@@ -5,9 +5,9 @@ date = '2025-02-01'
 draft = false
 tags = ['dns', 'homelab', 'networking']
 categories = ['Technical']
-image = '/images/blogs/your_name_here.jpg'
-featuredImage = '/images/blogs/your_name_here.jpg'
-featuredImagePreview = '/images/blogs/your_name_here.jpg'
+image = '/images/posts/your_name_here.jpg'
+featuredImage = '/images/posts/your_name_here.jpg'
+featuredImagePreview = '/images/posts/your_name_here.jpg'
 +++
 
 A coworker asked me recently what DNS domain I use at home. It was a simple question but may deserve a long answer. I have tried several iterations over the years.

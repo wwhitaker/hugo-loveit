@@ -5,9 +5,9 @@ date = '2025-01-21'
 draft = false
 tags = ['dns', 'cloudflare', 'web']
 categories = ['Technical']
-image = '/images/blogs/spiderweb.jpg'
-featuredImage = '/images/blogs/spiderweb.jpg'
-featuredImagePreview = '/images/blogs/spiderweb.jpg'
+image = '/images/posts/spiderweb.jpg'
+featuredImage = '/images/posts/spiderweb.jpg'
+featuredImagePreview = '/images/posts/spiderweb.jpg'
 +++
 
 Have you surfed the web lately? That would be the world wide web and origin of the "www" you often see in the URL of your web browser. A few decades ago it was the norm but slowly new conventions arise and people's expectations change.

@@ -5,9 +5,9 @@ date = '2022-10-10'
 draft = false
 tags = ['family', 'hunt club']
 categories = ['Personal']
-image = '/images/blogs/clubhouse.jpg'
-featuredImage = '/images/blogs/clubhouse.jpg'
-featuredImagePreview = '/images/blogs/clubhouse.jpg'
+image = '/images/posts/clubhouse.jpg'
+featuredImage = '/images/posts/clubhouse.jpg'
+featuredImagePreview = '/images/posts/clubhouse.jpg'
 +++
 
 This picture here is hard to appreciate with 2010 camera quality but it reminds me of quality time spent with two great men. For some odd reason I felt the need to pause and snap it a little after 4am that November morning. It was cold and dark, but I was warm, happy, and wanting to remember it later.
@@ -24,4 +24,4 @@ Before the dawn started to peak over the horizon, everyone made final preparatio
 
 Later that day, I got a nice buck. It hangs on the wall over my desk in my home office and every day reminds me of an old dark house and like-minded men taking care of business all the while loving it.
 
-![Hunt Club Deer](/images/blogs/huntclub-men.jpeg)
+![Hunt Club Deer](/images/posts/huntclub-men.jpeg)

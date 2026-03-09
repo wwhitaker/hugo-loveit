@@ -5,9 +5,9 @@ date = '2024-10-28'
 draft = false
 tags = ['email', 'pobox', 'fastmail']
 categories = ['Technical']
-image = '/images/blogs/mailbox.jpg'
-featuredImage = '/images/blogs/mailbox.jpg'
-featuredImagePreview = '/images/blogs/mailbox.jpg'
+image = '/images/posts/mailbox.jpg'
+featuredImage = '/images/posts/mailbox.jpg'
+featuredImagePreview = '/images/posts/mailbox.jpg'
 +++
 
 Going off to college is a hallmark time of new discoveries. In the 90s technology was booming and email was one of those discoveries. Through my undergrad time my campus email address was used for everything. Talking to classmates and professors, using online services, or just keeping in touch with high school friends off at different schools was a daily routine. Eventually, approaching graduation, I came to realize my campus email was not going to last forever. Oh no, everyone and everything was going to need updating.
@@ -16,11 +16,11 @@ Around November 1998 friends let me know about this very interesting email servi
 
 Eventually I managed to make it overcomplicated and documented it. I had Gmail as my longtime "primary" email location, adding ProtonMail as "secondary" when it came on scene. Services I didn't monitor such as Yahoo could use native forwarding to Pobox but could easily become my new "primary" location with a couple quick changes. Any local application that needed outbound SMTP could connect directly through Pobox.
 
-![pobox forwarding diagram](/images/blogs/email.png)
+![pobox forwarding diagram](/images/posts/email.png)
 
 Fast forward to November 2015 and [Fastmail acquires Pobox](https://www.fastmail.com/blog/fastmail-acquires-pobox-and-listbox/). The promise was to continue operating Pobox with no significant changes. Things are still great. I come to accept my @pobox.com email address has been leaked on numerous lists, making me a bigger spam target. Even with that the spam filters and advanced options to hold or bounce bad messages were effective in preventing overload.
 
-![email stats](/images/blogs/pobox_stats_2019-01.jpg)
+![email stats](/images/posts/pobox_stats_2019-01.jpg)
 
 SPAM prevention continue to evolve while SPF, DKIM, and DMARC came on the scene. These methods added complexities to email forwarding services but things continue to work with Pobox.
 

@@ -5,9 +5,9 @@ date = '2024-10-24'
 draft = false
 tags = ['backup-wan', 'netgear', 'verizon', 'unifi']
 categories = ['Homelab']
-image = '/images/blogs/no-content-available.jpg'
-featuredImage = '/images/blogs/no-content-available.jpg'
-featuredImagePreview = '/images/blogs/no-content-available.jpg'
+image = '/images/posts/no-content-available.jpg'
+featuredImage = '/images/posts/no-content-available.jpg'
+featuredImagePreview = '/images/posts/no-content-available.jpg'
 +++
 
 A recent power outage at home led me to look into secondary ISP options. All the battery backup work didn't quell family complaints about spotify not working. Luckily my Unifi gateway natively supports a secondary WAN port, so the question is what modem and ISP will work without breaking the bank. As an existing Verizon customer, I focused on those options in hope of discounts.
@@ -62,7 +62,7 @@ round-trip min/avg/max/stddev = 18.682/33.587/54.178/11.381 ms
 
 In general, speedtests from the gateway see around 100 Mbps down and 10 Mbps up on the secondary WAN. The primary WAN sees 1.16 Gbps down and 40 Mbps. Latency is 30 to 40 ms slower than the primary.
 
-![wan2](/images/blogs/unifi_wan2_verizon.png)
+![wan2](/images/posts/unifi_wan2_verizon.png)
 
 The oddest problem related to IPv6. While I could enable it on the secondary WAN, clients didn't handle failing over well. They end up with two IPv6 prefixes leaving it up to the clients to figure out which public addressing to use. It made more sense to just disable IPv6 on the secondary WAN.
 

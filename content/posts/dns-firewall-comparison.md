@@ -5,9 +5,9 @@ date = '2025-04-07'
 draft = false
 tags = ['dns', 'firewall', 'security']
 categories = ['Technical']
-image = '/images/blogs/michael-geiger-JJPqavJBy_k-unsplash.jpg'
-featuredImage = '/images/blogs/michael-geiger-JJPqavJBy_k-unsplash.jpg'
-featuredImagePreview = '/images/blogs/michael-geiger-JJPqavJBy_k-unsplash.jpg'
+image = '/images/posts/michael-geiger-JJPqavJBy_k-unsplash.jpg'
+featuredImage = '/images/posts/michael-geiger-JJPqavJBy_k-unsplash.jpg'
+featuredImagePreview = '/images/posts/michael-geiger-JJPqavJBy_k-unsplash.jpg'
 +++
 
 Recently I discovered this article about testing the effectiveness of public DNS malware filters. The details are appreciated as this type of comparison is not given due attention.
@@ -53,7 +53,7 @@ The fourth step required cross referencing each of the result sets looking for p
 
 After five days, 5 million DNS queries were tested against three vendor products. The deduplicated block counts are below and show a surprising low level of consensus.
 
-![DNS Firewall Unique Blocks](/images/blogs/dns-firewall-blocks.png)
+![DNS Firewall Unique Blocks](/images/posts/dns-firewall-blocks.png)
 
 The first observation was the very low total block counts for each product. The most blocks seen in an individual run of 1 million input queries was 545 without deduplication. However the daily numbers were fairly consistent over the five day span within each product.
 

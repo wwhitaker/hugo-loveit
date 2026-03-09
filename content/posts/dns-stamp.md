@@ -5,9 +5,9 @@ date = '2024-10-12'
 draft = false
 tags = ['dns', 'unifi']
 categories = ['Technical']
-image = '/images/blogs/stamp.jpg'
-featuredImage = '/images/blogs/stamp.jpg'
-featuredImagePreview = '/images/blogs/stamp.jpg'
+image = '/images/posts/stamp.jpg'
+featuredImage = '/images/posts/stamp.jpg'
+featuredImagePreview = '/images/posts/stamp.jpg'
 +++
 
 My home network has been protected by NextDNS for a number of years so I was excited to see recent Unifi code updates added a DNS Shield feature. It was a new feature to support DNS-over-HTTPS (DoH) tunneling of Internet DNS queries. Previously this was accomplished by installing a special package for your Internet router, but a native solution might have other benefits. The "Auto" option locks in to a specific backend provider but there is an option to manually pick a configuration. It did have one limitation out the box by [only offering 3 NextDNS options](https://help.nextdns.io/t/h7y3adj/2024-ubiquiti-dns-shield-configuration-issue) in the GUI.
