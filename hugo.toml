@@ -18,6 +18,18 @@ enableRobotsTXT = true
     url = '/posts/'
     weight = 1
   [[menu.main]]
+    identifier = 'post-categories'
+    parent = 'posts'
+    name = 'Categories'
+    url = '/categories/'
+    weight = 1
+  [[menu.main]]
+    identifier = 'post-tags'
+    parent = 'posts'
+    name = 'Tags'
+    url = '/tags/'
+    weight = 2
+  [[menu.main]]
     identifier = 'projects'
     name = 'Projects'
     url = '/pages/projects/'

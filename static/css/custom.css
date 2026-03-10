@@ -129,3 +129,74 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+/* Header dropdown menu support */
+#header-desktop .header-wrapper .menu,
+#header-desktop .header-wrapper .menu .menu-inner {
+  overflow: visible;
+}
+
+#header-desktop .menu-item-dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+#header-desktop .menu-item-dropdown > a {
+  display: inline-block;
+}
+
+#header-desktop .menu-item-dropdown .sub-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 12rem;
+  padding: 0.4rem 0;
+  border: 1px solid #d7d7d7;
+  border-radius: 8px;
+  background-color: #ffffff;
+  opacity: 1;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  z-index: 210;
+}
+
+#header-desktop .menu-item-dropdown::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 0.45rem;
+}
+
+[theme=dark] #header-desktop .menu-item-dropdown .sub-menu {
+  border-color: #3a3f45;
+  background-color: #1f2329;
+}
+
+#header-desktop .menu-item-dropdown:hover .sub-menu,
+#header-desktop .menu-item-dropdown:focus-within .sub-menu {
+  display: block;
+}
+
+#header-desktop .menu-item-dropdown .sub-menu-item {
+  display: block;
+  margin: 0;
+  padding: 0.35rem 0.85rem;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+
+#header-desktop .menu-item-dropdown .sub-menu-item:hover {
+  background-color: #f3f7fb;
+}
+
+[theme=dark] #header-desktop .menu-item-dropdown .sub-menu-item:hover {
+  background-color: #2b3138;
+}
+
+#header-mobile .menu .menu-item.sub-menu-item {
+  padding-left: 2rem;
+  font-size: 0.95rem;
+}
