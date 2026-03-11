@@ -52,6 +52,9 @@ enableRobotsTXT = true
 
 [params]
   description = 'I am an information systems professional with broad background in network support, system administration and software development focused on security topics.'
+
+  [params.app]
+    title = 'defingo.net'
   
   [params.author]
     name = 'wew'
@@ -74,6 +77,10 @@ enableRobotsTXT = true
       enable = false
 
   [params.page]
+    [params.page.seo.publisher]
+      name = 'Defingo.net'
+      logoUrl = '/apple-touch-icon.png'
+
     [params.page.share]
       enable = true
       X = true
@@ -122,3 +129,7 @@ enableRobotsTXT = true
 
   [params.seo]
     image = '/images/og-image.png'
+
+    [params.seo.publisher]
+      name = 'Defingo.net'
+      logoUrl = '/apple-touch-icon.png'

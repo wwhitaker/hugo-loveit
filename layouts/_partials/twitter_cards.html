@@ -1,0 +1,45 @@
+{{- $title := .Title | default .Site.Title -}}
+{{- $description := .Description | default .Summary | default .Site.Params.description | plainify | htmlUnescape | chomp -}}
+{{- $social := .Site.Params.social | default dict -}}
+
+{{- $siteHandle := or (index $social "X") (index $social "x") (index $social "Twitter") (index $social "twitter") -}}
+{{- with $siteHandle -}}
+  {{- if not (hasPrefix . "@") -}}
+    {{- $siteHandle = printf "@%s" . -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $images := slice -}}
+{{- with .Params.images -}}
+  {{- if reflect.IsSlice . -}}
+    {{- $images = $images | append . -}}
+  {{- else -}}
+    {{- $images = $images | append . -}}
+  {{- end -}}
+{{- end -}}
+{{- with .Params.featuredImage -}}{{- $images = $images | append . -}}{{- end -}}
+{{- with .Params.featuredimage -}}{{- $images = $images | append . -}}{{- end -}}
+{{- with .Params.image -}}{{- $images = $images | append . -}}{{- end -}}
+{{- with .Params.featuredImagePreview -}}{{- $images = $images | append . -}}{{- end -}}
+{{- with .Site.Params.seo.image -}}{{- $images = $images | append . -}}{{- end -}}
+
+{{- $twitterImage := "" -}}
+{{- range first 1 $images -}}
+  {{- with dict "Path" . "Resources" $.Resources | partial "function/resource.html" -}}
+    {{- $twitterImage = .Permalink -}}
+  {{- else -}}
+    {{- $isAbsolute := or (hasPrefix . "http://") (hasPrefix . "https://") -}}
+    {{- $twitterImage = cond $isAbsolute . (absURL .) -}}
+  {{- end -}}
+{{- end -}}
+
+<meta name="twitter:card" content="{{ if $twitterImage }}summary_large_image{{ else }}summary{{ end }}">
+<meta name="twitter:title" content="{{ $title }}">
+<meta name="twitter:description" content="{{ $description }}">
+{{- with $siteHandle -}}
+<meta name="twitter:site" content="{{ . }}">
+<meta name="twitter:creator" content="{{ . }}">
+{{- end -}}
+{{- with $twitterImage -}}
+<meta name="twitter:image" content="{{ . }}">
+{{- end -}}
