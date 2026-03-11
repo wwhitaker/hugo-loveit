@@ -126,6 +126,7 @@ enableRobotsTXT = true
     GitHub = 'wwhitaker'
     X = 'wewhitaker'
     LinkedIn = 'wewhitaker'
+    Reddit = 'bydern'
 
   [params.seo]
     image = '/images/og-image.png'
