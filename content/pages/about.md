@@ -6,11 +6,12 @@ draft = false
 comment = false
 +++
 
-I manage networks and services.  
+* **defingo** - To form or fashion; to mold into shape
+* **net** - A complex, interconnected group or system
 
-## Background
+## My Background
 
-With over 25 years of experience in information technology, I have built a career focused on network infrastructure, security, and cloud services.
+Since the early 1990s, I have been exploring computer networks and software. Over the years, I have held many roles and titles, but the core focus has remained the same: adapting to an industry that is constantly evolving. With more than 25 years of experience in information technology, I have built a career centered on network infrastructure, security, and cloud services.
 
 ### Professional Experience
 
@@ -31,6 +32,10 @@ With over 25 years of experience in information technology, I have built a caree
 - *Master's Degree, Computer Networking* (2011 - 2015) - Phi Kappa Phi honor society member
 - *Bachelor's Degree, Computer Engineering* (1994 - 1999) - Cooperative Education Program participant
 
+## GitHub
+
+{{< github-contrib-calendar >}}
+
 ## Get in Touch
 
-- LinkedIn: [@wewhitaker](https://linkedin.com)
+* LinkedIn: [@wewhitaker](https://linkedin.com)

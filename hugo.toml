@@ -74,7 +74,7 @@ enableRobotsTXT = true
       subtitle = "I manage networks and services"
     
     [params.home.posts]
-      enable = false
+      enable = true
 
   [params.page]
     [params.page.seo.publisher]
