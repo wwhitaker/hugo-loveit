@@ -1,0 +1,40 @@
+[build]
+  publish = "public"
+
+  [build.environment]
+    HUGO_VERSION = "0.157.0"
+    HUGO_ENV = "production"
+
+[context.production]
+  command = "hugo --gc --minify"
+
+[context.deploy-preview]
+  command = "hugo --gc --minify --buildDrafts"
+
+[context.branch-deploy]
+  command = "hugo --gc --minify"
+
+# Security headers applied to every response
+[[headers]]
+  for = "/*"
+
+  [headers.values]
+    # Prevent clickjacking — disallow this site being framed by any other site
+    X-Frame-Options = "DENY"
+
+    # Prevent MIME-type sniffing
+    X-Content-Type-Options = "nosniff"
+
+    # Force HTTPS for one year, include subdomains (remove preload if not
+    # submitted to the HSTS preload list)
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
+    # Only send the origin (no path) as Referer for cross-origin requests
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+    # Restrict browser feature access — no geolocation, camera, or microphone
+    Permissions-Policy = "geolocation=(), camera=(), microphone=()"
+
+    # Content-Security-Policy is intentionally left for a future pass once the
+    # full set of script/style origins (utterances, CDN, inline Hugo assets)
+    # has been confirmed with a report-only run.

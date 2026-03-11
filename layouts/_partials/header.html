@@ -36,7 +36,7 @@
                     {{- end -}}
                     {{- if .HasChildren -}}
                         <div class="menu-item menu-item-dropdown{{ if $.IsMenuCurrent `main` . | or ($.HasMenuCurrent `main` .) | or (eq $.RelPermalink $url) }} active{{ end }}">
-                            <a href="{{ $url }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if (urls.Parse $url).Host }} rel="noopener noreffer" target="_blank"{{ end }}>
+                            <a href="{{ $url }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if (urls.Parse $url).Host }} rel="noopener noreferrer" target="_blank"{{ end }}>
                                 {{- .Pre | safeHTML }} {{ .Name }} {{ .Post | safeHTML -}}
                             </a>
                             <div class="sub-menu">
@@ -45,14 +45,14 @@
                                     {{- with .Page -}}
                                         {{- $childURL = .RelPermalink -}}
                                     {{- end -}}
-                                    <a class="sub-menu-item{{ if $.IsMenuCurrent `main` . | or ($.HasMenuCurrent `main` .) | or (eq $.RelPermalink $childURL) }} active{{ end }}" href="{{ $childURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if (urls.Parse $childURL).Host }} rel="noopener noreffer" target="_blank"{{ end }}>
+                                    <a class="sub-menu-item{{ if $.IsMenuCurrent `main` . | or ($.HasMenuCurrent `main` .) | or (eq $.RelPermalink $childURL) }} active{{ end }}" href="{{ $childURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if (urls.Parse $childURL).Host }} rel="noopener noreferrer" target="_blank"{{ end }}>
                                         {{- .Pre | safeHTML }} {{ .Name }} {{ .Post | safeHTML -}}
                                     </a>
                                 {{- end -}}
                             </div>
                         </div>
                     {{- else -}}
-                        <a class="menu-item{{ if $.IsMenuCurrent `main` . | or ($.HasMenuCurrent `main` .) | or (eq $.RelPermalink $url) }} active{{ end }}" href="{{ $url }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if (urls.Parse $url).Host }} rel="noopener noreffer" target="_blank"{{ end }}>
+                        <a class="menu-item{{ if $.IsMenuCurrent `main` . | or ($.HasMenuCurrent `main` .) | or (eq $.RelPermalink $url) }} active{{ end }}" href="{{ $url }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if (urls.Parse $url).Host }} rel="noopener noreferrer" target="_blank"{{ end }}>
                             {{- .Pre | safeHTML }} {{ .Name }} {{ .Post | safeHTML -}}
                         </a>
                     {{- end -}}
@@ -163,7 +163,7 @@
                 {{- with .Page -}}
                     {{- $url = .RelPermalink -}}
                 {{- end -}}
-                <a class="menu-item" href="{{ $url }}" title="{{ .Title }}"{{ if (urls.Parse $url).Host }} rel="noopener noreffer" target="_blank"{{ end }}>
+                <a class="menu-item" href="{{ $url }}" title="{{ .Title }}"{{ if (urls.Parse $url).Host }} rel="noopener noreferrer" target="_blank"{{ end }}>
                     {{- .Pre | safeHTML }}{{ .Name }}{{ .Post | safeHTML -}}
                 </a>
                 {{- if .HasChildren -}}
@@ -172,7 +172,7 @@
                         {{- with .Page -}}
                             {{- $childURL = .RelPermalink -}}
                         {{- end -}}
-                        <a class="menu-item sub-menu-item" href="{{ $childURL }}" title="{{ .Title }}"{{ if (urls.Parse $childURL).Host }} rel="noopener noreffer" target="_blank"{{ end }}>
+                        <a class="menu-item sub-menu-item" href="{{ $childURL }}" title="{{ .Title }}"{{ if (urls.Parse $childURL).Host }} rel="noopener noreferrer" target="_blank"{{ end }}>
                             {{- .Pre | safeHTML }}{{ .Name }}{{ .Post | safeHTML -}}
                         </a>
                     {{- end -}}
