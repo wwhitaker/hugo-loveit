@@ -1,6 +1,6 @@
 baseURL = 'https://defingo.net/'
 languageCode = 'en-us'
-title = 'Defingo.net - Personal website for William E. Whitaker, Jr'
+title = 'DefingoNet - Personal website for William E. Whitaker, Jr'
 theme = 'LoveIt'
 defaultContentLanguage = 'en'
 defaultTheme = 'auto'
@@ -54,7 +54,7 @@ enableRobotsTXT = true
   description = 'I am an information systems professional with broad background in network support, system administration and software development focused on security topics.'
 
   [params.app]
-    title = 'defingo.net'
+    title = 'DefingoNet'
   
   [params.author]
     name = 'wew'
@@ -63,7 +63,7 @@ enableRobotsTXT = true
   [params.header]
     [params.header.title]
       logo = '/favicon-32x32.png'
-      name = 'defingo.net'
+      name = 'DefingoNet'
   
   [params.home]
     rss = 3 
@@ -74,11 +74,11 @@ enableRobotsTXT = true
       subtitle = "I manage networks and services"
     
     [params.home.posts]
-      enable = true
+      enable = false
 
   [params.page]
     [params.page.seo.publisher]
-      name = 'Defingo.net'
+      name = 'DefingoNet'
       logoUrl = '/apple-touch-icon.png'
 
     [params.page.share]
@@ -132,5 +132,5 @@ enableRobotsTXT = true
     image = '/images/og-image.png'
 
     [params.seo.publisher]
-      name = 'Defingo.net'
+      name = 'DefingoNet'
       logoUrl = '/apple-touch-icon.png'

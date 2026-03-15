@@ -6,13 +6,6 @@ draft = false
 comment = false
 +++
 
-## This Site
-
-* **defingo** - To form or fashion; to mold into shape
-* **net** - A complex, interconnected group or system
-
-It seems a fitting name, seeing how I enjoy organizing and connecting complex systems.  Since the early 1990's, I have explored connecting people, software, and networks together.
-
 ## My Background
 
 Over the years, I have held many roles and titles, but the core focus has remained the same: adapting to an industry that is constantly evolving. With more than 25 years of experience in information technology, I have built a career centered on network infrastructure, services, security, and software development to glue it together.
