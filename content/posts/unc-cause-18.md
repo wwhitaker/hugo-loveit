@@ -7,8 +7,8 @@ tags = ['conference']
 categories = ['Technical']
 +++
 
-October 1-3, 2018
-Greenville, NC
+    October 1-3, 2018
+    Greenville, NC
 
 Two talks
 
