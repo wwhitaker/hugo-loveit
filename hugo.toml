@@ -1,6 +1,6 @@
 baseURL = 'https://defingo.net/'
 languageCode = 'en-us'
-title = 'Defingo.net - Personal website for William E. Whitaker, Jr'
+title = 'Defingo - Personal website for William E. Whitaker, Jr'
 theme = 'LoveIt'
 defaultContentLanguage = 'en'
 defaultTheme = 'auto'
@@ -124,11 +124,10 @@ enableRobotsTXT = true
   [params.social]
     Instagram = 'wewhitaker'
     GitHub = 'wwhitaker'
-    X = 'wewhitaker'
     LinkedIn = 'wewhitaker'
-    Reddit = 'bydern'
 
   [params.seo]
+    site_name = 'defingo.net'
     image = '/images/og-image.png'
 
     [params.seo.publisher]
