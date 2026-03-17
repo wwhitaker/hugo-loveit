@@ -1,5 +1,5 @@
 +++
-date = '2026-01-11T11:52:57-04:00'
+date = '2025-12-31T11:52:57-04:00'
 draft = false
 title = '2025 Year in Books'
 tags = ['books']
