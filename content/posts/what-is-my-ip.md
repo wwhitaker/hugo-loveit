@@ -15,7 +15,7 @@ For a while I have had a tool idea at work.  This post is an overview of develop
 
 At the start, the concept was loosely flushed out.  I wanted a website that could detect a client's IP address and provide useful feedback.  It did not need to be complicated but there was a wealth of network data usually abstracted from end users.
 
-## Why?
+### Why?
 
 The "what" is easy, but how about "why?"  Before any work started the tool needed a reason to exist.  Why did it need to be built at all considering so many public sites exist for the same function?  That boiled down to two points.
 
