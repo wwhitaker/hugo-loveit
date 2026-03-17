@@ -9,7 +9,7 @@ featuredImage = '/images/posts/what-is-my-ip.png'
 featuredImagePreview = '/images/posts/what-is-my-ip.png'
 +++
 
-For a while, I've wanted to spin up a "What is my ip address?" kind of site at work.  This post is an overview of its development.
+For a while, I've wanted to spin up a "What is my ip address?" kind of site at work.  This post is an overview of development for [What is my IP?](https://whatismyip.unc.edu).
 
 ## First Approach
 
