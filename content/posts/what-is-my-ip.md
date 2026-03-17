@@ -9,11 +9,18 @@ featuredImage = '/images/posts/what-is-my-ip.png'
 featuredImagePreview = '/images/posts/what-is-my-ip.png'
 +++
 
-For a while, I've wanted to spin up a "What is my ip address?" kind of site at work.  Hitting a quick website to get your address is usually easier than trying to explain commands and GUI elements, especially over all the different operating system variants.  So it doesn't need to be complicated but it could tap into the wealth of network knowledge abstracted from users.
+For a while, I've wanted to spin up a "What is my ip address?" kind of site at work.  This post is an overview of its development.
 
 ## First Approach
 
 At the start, the concept was loosely flushed out already.  I needed a website that could detect the IP address a client used to connect.
+
+## What is easy, but the Why?
+
+Before any work started, the "What is my ip address?" tool needed to answer a different question.  Why did it need to be built and run from campus?  That boiled down to two points.
+
+* Hitting a quick website to get your address is usually easier than trying to explain commands and GUI elements, especially over all the different operating system variants.  So it doesn't need to be complicated but it could tap into the wealth of network knowledge abstracted from users.
+* With so many public "What is my ip address?" sites in existence, whey did we need to make another?  Besides being easier on users, it became a good method to test and verify VPN connectivity to campus.
 
 ### Client Detection
 
@@ -26,10 +33,6 @@ Simple code like the following was enough to display a source address on the web
 echo "Your IP Address is: " . $_SERVER['REMOTE_ADDR'];
 ?>
 ```
-
-### VPN Clients
-
-With so many public "What is my ip address?" sites in existence, whey did we need to make another?  Besides being easier on users, it became a good method to test and verify VPN connectivity to campus.
 
 ### Web Proxies
 
