@@ -37,4 +37,4 @@ My [personal repositories](https://github.com/wwhitaker?tab=repositories) and [p
 
 ## Get in Touch
 
-* LinkedIn: [@wewhitaker](https://linkedin.com)
+{{< social-links >}}
