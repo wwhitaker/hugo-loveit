@@ -13,7 +13,13 @@ For a while, I've wanted to spin up a "What is my ip address?" kind of site at w
 
 ## First Approach
 
-At the start, the concept was loosely flushed out already.  I needed a website that could detect the IP address a client used to connect.  There were a few examples floating around on the Internet, especially in PHP parsing data out of the HTTP headers.
+At the start, the concept was loosely flushed out already.  I needed a website that could detect the IP address a client used to connect.
+
+### Client Detection
+
+There were a few examples floating around on the Internet, especially in PHP parsing data out of the HTTP headers.
+
+Simple code like the following was enough to display a source address on the website.
 
 ```php
 <?php
@@ -21,9 +27,13 @@ echo "Your IP Address is: " . $_SERVER['REMOTE_ADDR'];
 ?>
 ```
 
-### Web Proxy Detection
+### VPN Clients
 
-An added goal was dealing with various web proxies in the environment.  A standard web proxy service was available but there were also a number of smaller cases where the client address could be obscured.  This lead to logic to parse the forwarding headers in the HTTP request.
+With so many public "What is my ip address?" sites in existence, whey did we need to make another?  Besides being easier on users, it became a good method to test and verify VPN connectivity to campus.
+
+### Web Proxies
+
+Additionally, we needed to deal with clients behind web proxies.  A standard web proxy service was available but there were also a number of smaller cases where the client address could be obscured.  This lead to logic to parse the forwarding headers in the HTTP request.
 
 ```php
 <?php
