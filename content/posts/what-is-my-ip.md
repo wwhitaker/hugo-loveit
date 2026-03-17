@@ -21,6 +21,8 @@ echo "Your IP Address is: " . $_SERVER['REMOTE_ADDR'];
 ?>
 ```
 
+### Web Proxy Detection
+
 An added goal was dealing with various web proxies in the environment.  A standard web proxy service was available but there were also a number of smaller cases where the client address could be obscured.  This lead to logic to parse the forwarding headers in the HTTP request.
 
 ```php
@@ -43,7 +45,7 @@ Pulling this logic together with a simple web template rendered a workable tool.
 
 ## Second Approach
 
-The next iteration was a complete rewrite.  I had focused to do all new development in Python and saw no reason to stick with PHP.  
+The next iteration was a complete rewrite.  I had focused to do all new development in Python and saw no reason to stick with PHP.  Using a Flask framework would keep the overhead of the site down but provide some structure.
 
 ### Security and Privacy
 
@@ -55,17 +57,25 @@ To mitigate accidental disclosures, a simple "isCampusAddress" check was added b
 
 ### IPAM Information
 
-Campus centrally manages what IP networks and vlans are provisioned on campus...
+The IPAM database is a central tool that tracks what IP networks and vlans are provisioned on campus.  A search of a client IP there would provide all details about the specific network containing the client but also any associated DNS or DHCP data.  While I played with showing "network owner" or "gateway" type of information it seemed better to simplify the website and leave those details out.
 
 ### IP Location
 
-A common useful piece of information on these types of sites is pinpointing a physical location of the source IP address.
+A common useful piece of information on these types of sites is pinpointing a physical location of the source IP address.  An external service was needed and multiple were considered but cost narrowed options to three below.
+
+The [ipapi](https://ipapi.co) was a decent first option for location data.  It provides an API with 30,000 free IP lookups per month.  No API key is required and SSL is available.  Given the uncertainty of how many queries the site would actually make, this was back-burnered as an option.
+
+The [IP Geolocation API](https://ip-api.com) was a good option.  It is free for non-commercial use and no API key is required. It provides location information down to city level, but in practice seemed to be a bit "off" with pinning the actual location.  You can report bad location information for individual IP addresses or network CIDR blocks but they didn't seem to have an affect on the data.  Their site limits to 45 requests per minute and SSL is not available on the free tier.
+
+The [iplocation.net](https://iplocation.net) site provides a number of tools with API options.  It is available for free but provides location information only at the Country level.  Lacking City data was a bummer, but it really wasn't necessary due to a focus just on campus addresses.
 
 #### Map Display
 
-First option, 
+A visual map on the page would be a nice addition, fed with the geolocation information.  Finding a "free" option was not too hard.
 
-Second option, Google Maps API
+The quick and free option was [Leaflet](https://leafletjs.com/) since we already had it up on a different tool.  It worked fine but lacked the "plot by street address" we really needed.
+
+That led to the second option, Google Maps API.
 
 ### Dual Stack Detection
 
