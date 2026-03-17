@@ -9,15 +9,15 @@ featuredImage = '/images/posts/what-is-my-ip.png'
 featuredImagePreview = '/images/posts/what-is-my-ip.png'
 +++
 
-For a while, I've wanted to spin up a "What is my ip address?" kind of site at work.  This post is an overview of development for [What is my IP?](https://whatismyip.unc.edu).
+For a while I have had a tool idea at work.  This post is an overview of development for [What is my IP?](https://whatismyip.unc.edu).
 
 ## First Approach
 
-At the start, the concept was loosely flushed out already.  I needed a website that could detect the IP address a client used to connect.  It does not need to be complicated but it could tap into the wealth of network knowledge abstracted from users.
+At the start, the concept was loosely flushed out.  I wanted a website that could detect a client's IP address and provide useful feedback.  It did not need to be complicated but there was a wealth of network data usually abstracted from end users.
 
-## What is easy, but the Why?
+## Why?
 
-Before any work started, the "What is my ip address?" tool needed to answer a different question.  Why did it need to be built and run from campus?  That boiled down to two points.
+The "what" is easy, but how about "why?"  Before any work started the tool needed a reason to exist.  Why did it need to be built at all considering so many public sites exist for the same function?  That boiled down to two points.
 
 * Make it easy for end users.
 * Test connectivity to campus not the Internet.
