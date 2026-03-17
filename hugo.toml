@@ -129,7 +129,6 @@ enableRobotsTXT = true
     Facebook = 'willwhit'
     Reddit = 'bydern'
     Email = 'witty.book0848@fastmail.com'
-    RSS = 'index.xml'
 
   [params.seo]
     site_name = 'defingo.net'
