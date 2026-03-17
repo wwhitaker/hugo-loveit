@@ -1,0 +1,49 @@
+{{- $pattern := .Get "path" | default "images/gallery/*" -}}
+{{- $images := slice -}}
+{{- $captionMap := dict -}}
+{{- with index site.Data "gallery-captions" -}}
+  {{- with .captions -}}
+    {{- $captionMap = . -}}
+  {{- end -}}
+  {{- if and (eq (len $captionMap) 0) (reflect.IsMap .) -}}
+    {{- $captionMap = . -}}
+  {{- end -}}
+{{- end -}}
+{{- range resources.Match $pattern -}}
+  {{- if eq .ResourceType "image" -}}
+    {{- $images = $images | append . -}}
+  {{- end -}}
+{{- end -}}
+
+<section class="photo-gallery-shell">
+  {{- if gt (len $images) 0 -}}
+    <div class="photo-gallery-grid">
+      {{- range sort $images "Name" -}}
+        {{- $name := .Name -}}
+        {{- $stem := $name | replaceRE "\\.[^.]+$" "" -}}
+        {{- $base := path.Base $name -}}
+        {{- $baseStem := $base | replaceRE "\\.[^.]+$" "" -}}
+        {{- $caption :=
+          index $captionMap $name |
+          default (index $captionMap $stem) |
+          default (index $captionMap $base) |
+          default (index $captionMap $baseStem) |
+          default (index $captionMap (lower $name)) |
+          default (index $captionMap (lower $stem)) |
+          default (index $captionMap (lower $base)) |
+          default (index $captionMap (lower $baseStem)) |
+          default ($baseStem | replaceRE "[-_]+" " " | title)
+        -}}
+        {{- $thumb := .Fill "720x540 Center q85" -}}
+        <a class="lightgallery photo-gallery-card" href="{{ .RelPermalink }}" data-thumbnail="{{ $thumb.RelPermalink }}" data-sub-html="{{ $caption }}" title="{{ $caption }}" aria-label="Open {{ $caption }}">
+          <img src="{{ $thumb.RelPermalink }}" alt="{{ $caption }}" loading="lazy" decoding="async">
+          <span class="photo-gallery-caption">{{ $caption }}</span>
+        </a>
+      {{- end -}}
+    </div>
+  {{- else -}}
+    <div class="photo-gallery-empty">
+      <p>Add images to <strong>assets/images/gallery/</strong> and they will appear here automatically.</p>
+    </div>
+  {{- end -}}
+</section>

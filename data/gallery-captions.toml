@@ -1,0 +1,6 @@
+[captions]
+# Use the image filename (with or without extension) as the key.
+# Example:
+# "sunrise-over-water.jpg" = "Sunrise over Jordan Lake"
+# "mountain-trail" = "Blue Ridge trail at dusk"
+"Ziva" = "Ziva"

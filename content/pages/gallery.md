@@ -1,13 +1,14 @@
 +++
 title = 'Gallery'
-description = 'I am an information systems professional with broad background in network support, system administration and software development focused on security topics.'
-date = '2026-03-08'
+description = 'Photography was a bigger hobby 15 years ago, but I still like to take a shot from time to time.'
+date = '2026-03-17'
 draft = false
-comment = false
+comment = true
+lightgallery = true
 +++
 
-## Instagram Gallery
+## Favorites
 
-A rotating view of recent and favorite Instagram posts.
+Photography was a bigger hobby 15 years ago, but I still like to take a shot from time to time.
 
-{{< instagram-feed posts="DGJH9YWvQiq,DGG7hAeSPpn,C0gzrDZMlgz,CzuMxHRRv3j,CzRQmu5OZzj,Cy9ldIPsBfQ" >}}
+{{< photo-gallery path="images/gallery/*" >}}
