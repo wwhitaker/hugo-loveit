@@ -12,9 +12,14 @@ This was the year of my first eReader. 33 books and 11.962 pages later it was ov
 
 ### Martin
 
-The year started strong with the Expanse series.  I had see the TV show so was super excited to dive in more depth with the characters.
+The audiobook was a good companion on the work commute.
 
 * A Game of Thrones by George R.R. Martin
+
+### Corey
+
+The year started strong with the Expanse series.  I had see the TV show so was super excited to dive in more depth with the characters.
+
 * Leviathan Wakes by James S.A. Corey
 * Caliban's War by James S.A. Corey
 * Drive by James S.A. Corey
