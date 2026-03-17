@@ -13,24 +13,23 @@ For a while I have had a tool idea at work.  This post is an overview of develop
 
 ## First Approach
 
-At the start, the concept was loosely flushed out.  I wanted a website that could detect a client's IP address and provide useful feedback.  It did not need to be complicated but there was a wealth of network data usually abstracted from end users.
+The concept was already loosely flushed out at the start.  I wanted a website that could detect a client's IP address and provide useful feedback.  It did not need to be complicated but there was a wealth of campus network data to tap.
 
 ### Why?
 
-The "what" is easy, but how about "why?"  Before any work started the tool needed a reason to exist.  Why did it need to be built at all considering so many public sites exist for the same function?  That boiled down to two points.
+The "what" is easy, but how about "why?"  Before any work started the tool needed a reason to exist.  Why did it need to be built at all considering many similar public tools already exist?  That boiled down to a few points.
 
 * Make it easy for end users.
-* Test connectivity to campus not the Internet.
+* Support devices with no Internet access.
+* Test connectivity to campus, not the Internet.
 
-When working with end users, asking them to hit a quick website to find their address is usually easier than trying to explain commands and GUI elements, especially over all the different operating system variants.
+First and foremost, this should be a diagnostic tool.  It should provide an easier flow for campus users than navigating commands and user interfaces over the variety of operating systems.  For non-technical users the site could become a place to go and relay information to support teams.
 
-This implementation could also do something the other public tools could not.  By being positioned on campus, it could specifically test how a user connects to campus.  Since most users in our environment utilize a split-tunnel VPN, their Internet IP address is not the same thing as their campus IP address.
+The tool should deal with special campus network situations.  By running the tool from campus, it could support devices that are technically incapable of contacting the Internet while also providing granular data about off campus split-tunnel VPN clients.
 
 ### Client Detection
 
-There were a few examples floating around on the Internet, especially in PHP parsing data out of the HTTP headers.
-
-Simple code like the following was enough to display a source address on the website.
+Several examples were available online of the core mechanism needed to detect a client's IP address.  HTTP already had useful headers the server side could access and work with, especially in PHP.  Simple code like the following was enough to display a source address on the website.
 
 ```php
 <?php
@@ -40,7 +39,7 @@ echo "Your IP Address is: " . $_SERVER['REMOTE_ADDR'];
 
 ### Web Proxies
 
-Additionally, we needed to deal with clients behind web proxies.  A standard web proxy service was available but there were also a number of smaller cases where the client address could be obscured.  This lead to logic to parse the forwarding headers in the HTTP request.
+A standard web proxy service was available on campus but there were also a number of smaller cases where the client address could be obscured.  The tool needed to deal with clients behind web proxies in a useful way.  This lead to logic to parse the forwarding headers in the HTTP request like below.
 
 ```php
 <?php
@@ -58,11 +57,11 @@ function get_client_ip() {
 ?>
 ```
 
-Pulling this logic together with a simple web template rendered a workable tool.
+Pulling this logic together with a simple web template rendered a workable tool that serviced campus for a while.
 
 ## Second Approach
 
-The next iteration was a complete rewrite.  I had focused to do all new development in Python and saw no reason to stick with PHP.  Using a Flask framework would keep the overhead of the site down but provide some structure.
+The next iteration was a complete rewrite.  I was focused to do all new development in Python and saw no reason to stick with PHP.  Using a Flask framework would keep the overhead of the site down while providing some structure.
 
 ### Security and Privacy
 
