@@ -125,6 +125,9 @@ enableRobotsTXT = true
     Instagram = 'wewhitaker'
     GitHub = 'wwhitaker'
     LinkedIn = 'wewhitaker'
+    X = 'wewhitaker'
+    Facebook = 'willwhit'
+    Reddit = 'bydern'
 
   [params.seo]
     site_name = 'defingo.net'
