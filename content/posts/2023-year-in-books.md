@@ -8,7 +8,7 @@ categories = ['Personal']
 
 ## Year in Books
 
-This was the year of my first eReader. 33 books and 11.962 pages later it was over.
+This was the year of my first eReader. 33 books and 11,962 pages later it was over.
 
 ### Martin
 
