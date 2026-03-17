@@ -20,7 +20,7 @@ At the start, the concept was loosely flushed out already.  I needed a website t
 Before any work started, the "What is my ip address?" tool needed to answer a different question.  Why did it need to be built and run from campus?  That boiled down to two points.
 
 * Make it easy for end users.
-* Specifically test connectivity to campus, not the Internet.
+* Test connectivity to campus not the Internet.
 
 When working with end users, asking them to hit a quick website to find their address is usually easier than trying to explain commands and GUI elements, especially over all the different operating system variants.
 
