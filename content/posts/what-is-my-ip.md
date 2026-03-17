@@ -13,14 +13,18 @@ For a while, I've wanted to spin up a "What is my ip address?" kind of site at w
 
 ## First Approach
 
-At the start, the concept was loosely flushed out already.  I needed a website that could detect the IP address a client used to connect.
+At the start, the concept was loosely flushed out already.  I needed a website that could detect the IP address a client used to connect.  It does not need to be complicated but it could tap into the wealth of network knowledge abstracted from users.
 
 ## What is easy, but the Why?
 
 Before any work started, the "What is my ip address?" tool needed to answer a different question.  Why did it need to be built and run from campus?  That boiled down to two points.
 
-* Hitting a quick website to get your address is usually easier than trying to explain commands and GUI elements, especially over all the different operating system variants.  So it doesn't need to be complicated but it could tap into the wealth of network knowledge abstracted from users.
-* With so many public "What is my ip address?" sites in existence, whey did we need to make another?  Besides being easier on users, it became a good method to test and verify VPN connectivity to campus.
+* Make it easy for end users.
+* Specifically test connectivity to campus, not the Internet.
+
+When working with end users, asking them to hit a quick website to find their address is usually easier than trying to explain commands and GUI elements, especially over all the different operating system variants.
+
+This implementation could also do something the other public tools could not.  By being positioned on campus, it could specifically test how a user connects to campus.  Since most users in our environment utilize a split-tunnel VPN, their Internet IP address is not the same thing as their campus IP address.
 
 ### Client Detection
 
