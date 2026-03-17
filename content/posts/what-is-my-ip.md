@@ -3,7 +3,7 @@ title = 'What is my IP?'
 description = 'simple project and google search rankings'
 date = '2026-02-19'
 draft = false
-tags = ['dns', 'web']
+tags = ['python', 'http', 'ipam', 'dns', 'web']
 categories = ['Technical']
 featuredImage = '/images/posts/what-is-my-ip.png'
 featuredImagePreview = '/images/posts/what-is-my-ip.png'
@@ -13,7 +13,7 @@ For a while I have had a tool idea at work.  This post is an overview of develop
 
 ## First Approach
 
-The concept was already loosely flushed out at the start.  I wanted a website that could detect a client's IP address and provide useful feedback.  It did not need to be complicated but there was a wealth of campus network data to tap.
+The concept was already loosely fleshed out at the start.  I wanted a website that could detect a client's IP address and provide useful feedback.  It did not need to be complicated but there was a wealth of campus network data to tap.
 
 ### Why?
 
@@ -39,7 +39,7 @@ echo "Your IP Address is: " . $_SERVER['REMOTE_ADDR'];
 
 ### Web Proxies
 
-A standard web proxy service was available on campus but there were also a number of smaller cases where the client address could be obscured.  The tool needed to deal with clients behind web proxies in a useful way.  This lead to logic to parse the forwarding headers in the HTTP request like below.
+A standard web proxy service was available on campus but there were also a number of smaller cases where the client address could be obscured.  The tool needed to deal with clients behind web proxies in a useful way.  This led to logic to parse the forwarding headers in the HTTP request like below.
 
 ```php
 <?php
@@ -61,7 +61,7 @@ Pulling this logic together with a simple web template rendered a workable tool 
 
 ## Second Approach
 
-The next iteration was a complete rewrite.  I was focused to do all new development in Python and saw no reason to stick with PHP.  Using a Flask framework would keep the overhead of the site down while providing some structure.
+The next iteration was a complete rewrite.  I was focused on doing all new development in Python and saw no reason to stick with PHP.  Using a Flask framework would keep the overhead of the site down while providing some structure.
 
 ### Security and Privacy
 
@@ -81,7 +81,7 @@ A common useful piece of information on these types of sites is pinpointing a ph
 
 The [ipapi](https://ipapi.co) was a decent first option for location data.  It provides an API with 30,000 free IP lookups per month.  No API key is required and SSL is available.  Given the uncertainty of how many queries the site would actually make, this was back-burnered as an option.
 
-The [IP Geolocation API](https://ip-api.com) was a good option.  It is free for non-commercial use and no API key is required. It provides location information down to city level, but in practice seemed to be a bit "off" with pinning the actual location.  You can report bad location information for individual IP addresses or network CIDR blocks but they didn't seem to have an affect on the data.  Their site limits to 45 requests per minute and SSL is not available on the free tier.
+The [IP Geolocation API](https://ip-api.com) was a good option.  It is free for non-commercial use and no API key is required. It provides location information down to city level, but in practice seemed to be a bit "off" with pinning the actual location.  You can report bad location information for individual IP addresses or network CIDR blocks but they didn't seem to have an effect on the data.  Their site limits to 45 requests per minute and SSL is not available on the free tier.
 
 The [iplocation.net](https://iplocation.net) site provides a number of tools with API options.  It is available for free but provides location information only at the Country level.  Lacking City data was a bummer, but it really wasn't necessary due to a focus just on campus addresses.
 
@@ -91,7 +91,7 @@ A visual map on the page would be a nice addition, fed with the geolocation info
 
 The quick and free option was [Leaflet](https://leafletjs.com/) since we already had it up on a different tool.  It worked fine but lacked the "plot by street address" we really needed.
 
-That led to the second option, Google Maps API.
+That led to the second option, Google Maps API, which could leverage the street address of the physical switch or access point a device was connected through.
 
 ### Dual Stack Detection
 
@@ -105,22 +105,28 @@ A big part of this iteration was setting the site up for better dual stack detec
 
 When the client first connects to the site, it has the option to use either the IPv4 A record or the IPv6 AAAA record.  This is the information needed to tell the site what the client "preferred" to use.  Reality could be a little complicated but in general clients check IPv6 first then fall back to IPv4 if necessary.
 
+Additional specific polls could be done with the ipv4 or ipv6 subdomain to test and validate whatever wasn't the default connection method.
+
 ### DNS Detection
 
-Something a few public sites offer is a "DNS Leak Test".  This usually a privacy centric test but it also provides useful information.
+Something a few public sites offer is a "DNS Leak Test".  This is usually a privacy-centric test but it also provides useful information for us.  Campus DNS provides a security feature that filters out malware and bad domain names to protect users.  I was able to leverage the check offered by [IP Geolocation API](https://ip-api.com) to verify a unique DNS query routed through DNS servers as expected. 
 
 ### Network Access Control
 
-Tapping into the lower level network details was a bit of a challenge but ultimately not difficult.  A few additional routines allowed querying the Network Access Control to identify the physical connectivity of the device, which could be a wired switch or wireless access point.  That in turn provided deeper geolocation information and ultimately a street address that could be plotted on a map.
+Tapping into the lower level network details was a bit of a challenge but ultimately not difficult.  A few additional routines allowed querying the Network Access Control to identify the physical connectivity of the device, which could be a wired switch or wireless access point.
+
+In some cases this also adds detailed network information to help understand how a device was provisioned on the network and the access controls being applied.
 
 ### Speedtest Integration
 
-Since we already operate a Ookala Speedtest server, it was easy to add a custom widget to the site.  By default the free tier of their service does not allow you to pin the custom widget to a specific server but it does attempt to use the closest by default.
+Since we already operate a Ookla Speedtest server, it was easy to add a custom widget to the site.  By default the free tier of their service does not allow you to pin the custom widget to a specific server but it does attempt to use the closest by default.
 
 ### Google Search
 
-I have underestimated a domain’s impact on search engine optimization. My small project for a “what’s my ip” type of site has shot to 6 or 7 on Google. Most of the data is only displayed for on-campus devices but it can still check Internet addresses.
-
-<https://whatismyip.unc.edu>
+As the last step, SEO testing was done to make sure the site had all the necessary fields to be accurately returned in various search engines.  What I didn't expect however was the impact the domain had on the actual search ranking.  Shortly after being "published" it rose very high on a generic Google search, as seen below.
 
 ![search results](/images/posts/what-is-my-ip-search.png)
+
+## Final Thoughts
+
+This has been an interesting tool to work on, allowing me to connect the dots from a few different places.  Ideally I'd like to share the source code repo but for now it is still "private" due to some of the sensitivity of the tool stack in our environment.
