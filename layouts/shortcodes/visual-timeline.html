@@ -1,13 +1,86 @@
-{{- $entries := sort .Site.Data.timeline.entries "event_date" "desc" -}}
+{{- $entriesFromPosts := slice -}}
+{{- $timelinePages := where .Site.RegularPages "Params.timeline.enable" true -}}
+{{- range $timelinePages -}}
+  {{- $timeline := .Params.timeline -}}
+  {{- $eventDate := .Date.Format "2006-01-02" -}}
+  {{- with $timeline.event_date -}}
+    {{- $eventDate = . -}}
+  {{- end -}}
+  {{- $dateLabel := .Date.Format "Jan 2006" -}}
+  {{- with $timeline.date_label -}}
+    {{- $dateLabel = . -}}
+  {{- end -}}
+  {{- $title := .Title -}}
+  {{- with $timeline.title -}}
+    {{- $title = . -}}
+  {{- end -}}
+  {{- $summary := .Params.description | default (.Summary | plainify | truncate 180) -}}
+  {{- with $timeline.summary -}}
+    {{- $summary = . -}}
+  {{- end -}}
+  {{- $lane := $timeline.lane | default "career" -}}
+  {{- $kind := $timeline.kind | default "analysis" -}}
+  {{- $impact := $timeline.impact | default 2 -}}
+  {{- $outcome := $timeline.outcome | default "Noted" -}}
+  {{- $filters := $timeline.filters | default (slice) -}}
+  {{- $url := .RelPermalink -}}
+  {{- with $timeline.url -}}
+    {{- $url = . -}}
+  {{- end -}}
+  {{- $entry := dict
+      "event_date" $eventDate
+      "date_label" $dateLabel
+      "lane" $lane
+      "kind" $kind
+      "impact" $impact
+      "title" $title
+      "summary" $summary
+      "outcome" $outcome
+      "filters" $filters
+      "url" $url
+  -}}
+  {{- $entriesFromPosts = $entriesFromPosts | append $entry -}}
+{{- end -}}
+
+{{- $dataEntries := .Site.Data.timeline.entries | default (slice) -}}
+{{- $entries := slice -}}
+{{- if gt (len $entriesFromPosts) 0 -}}
+  {{- $postUrls := slice -}}
+  {{- range $entriesFromPosts -}}
+    {{- with .url -}}
+      {{- if not (in $postUrls .) -}}
+        {{- $postUrls = $postUrls | append . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{- $entries = $entriesFromPosts -}}
+  {{- range $dataEntries -}}
+    {{- $entryURL := .url | default "" -}}
+    {{- if not (and $entryURL (in $postUrls $entryURL)) -}}
+      {{- $entries = $entries | append . -}}
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- $entries = $dataEntries -}}
+{{- end -}}
+{{- $entries = sort $entries "event_date" "desc" -}}
 {{- $laneLabels := dict "career" "Career & Talks" "home" "Home & Lab" "personal" "Personal" -}}
 {{- $kindIcons := dict "talk" "fas fa-microphone" "build" "fas fa-wrench" "analysis" "fas fa-compass" "personal" "fas fa-heart" -}}
 {{- $years := slice -}}
 {{- range $entries -}}
-  {{- $y := dateFormat "2006" .event_date -}}
+  {{- $y := int (dateFormat "2006" .event_date) -}}
   {{- if not (in $years $y) -}}
     {{- $years = $years | append $y -}}
   {{- end -}}
 {{- end -}}
+{{- range .Site.Data.timeline.turning_points -}}
+  {{- $y := .year -}}
+  {{- if not (in $years $y) -}}
+    {{- $years = $years | append $y -}}
+  {{- end -}}
+{{- end -}}
+{{- $years = sort $years "value" "desc" -}}
 
 <section class="timeline-shell" data-visual-timeline>
   <header class="timeline-header">
@@ -43,7 +116,7 @@
           <h3 class="timeline-year-heading">{{ $year }}</h3>
 
           {{- range sort $.Site.Data.timeline.turning_points "year" "desc" -}}
-            {{- if eq (printf "%d" .year) $year -}}
+            {{- if eq .year $year -}}
               <article class="timeline-turning-point">
                 <h4>{{ .title }}</h4>
                 <p>{{ .summary }}</p>
@@ -53,8 +126,9 @@
 
           <div class="timeline-cards">
             {{- range $entries -}}
-              {{- if eq (dateFormat "2006" .event_date) $year -}}
-              {{- $filterTags := delimit (.filters | append .lane) "," -}}
+              {{- if eq (int (dateFormat "2006" .event_date)) $year -}}
+              {{- $baseFilters := .filters | default (slice) -}}
+              {{- $filterTags := delimit ($baseFilters | append .lane) "," -}}
               {{- $impactClass := cond (ge .impact 3) "impact-major" (cond (eq .impact 2) "impact-medium" "impact-minor") -}}
               <article class="timeline-card lane-{{ .lane }} {{ $impactClass }}" data-filters="{{ $filterTags }}">
                 <div class="timeline-card-meta">
@@ -112,7 +186,8 @@
 
     yearGroups.forEach(function(group) {
       var visibleCard = group.querySelector('.timeline-card:not([hidden])');
-      if (visibleCard) {
+      var hasTurningPoint = !!group.querySelector('.timeline-turning-point');
+      if (visibleCard || hasTurningPoint) {
         group.removeAttribute('hidden');
       } else {
         group.setAttribute('hidden', 'hidden');

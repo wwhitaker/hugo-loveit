@@ -4,6 +4,17 @@ draft = false
 title = '2025 Year in Books'
 tags = ['books']
 categories = ['Personal']
+
+[timeline]
+enable = true
+event_date = "2025-12-31"
+date_label = "Dec 2025"
+lane = "home"
+kind = "build"
+impact = 3
+summary = "Captured a year of reading, what stuck, and how those ideas changed my technical decisions."
+outcome = "Shipped"
+filters = ["homelab", "lessons"]
 +++
 
 ## Year in Books

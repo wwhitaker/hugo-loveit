@@ -12,19 +12,6 @@ filters = ["homelab", "lessons"]
 url = "/posts/speedtest-to-influxdb-v2/"
 
 [[entries]]
-year = 2025
-event_date = "2025-01-01"
-date_label = "Jan 2025"
-lane = "career"
-kind = "analysis"
-impact = 2
-title = "2025 Year in Books"
-summary = "Captured a year of reading, what stuck, and how those ideas changed my technical decisions."
-outcome = "Learned"
-filters = ["lessons"]
-url = "/posts/2025-year-in-books/"
-
-[[entries]]
 year = 2024
 event_date = "2024-10-01"
 date_label = "Oct 2024"
@@ -215,3 +202,8 @@ summary = "Projects shifted from one-off scripts toward durable tools with clear
 year = 2023
 title = "Turning Point: More Public Sharing"
 summary = "Conference talks and comparative writeups became a regular part of documenting what works in production."
+
+[[turning_points]]
+year = 2020
+title = "Turning Point: COVID-19 shift to remote work"
+summary = "Work and life had to shift to a new normal, prioritizing remote work and physical isolation."
