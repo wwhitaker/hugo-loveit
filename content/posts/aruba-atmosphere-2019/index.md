@@ -5,6 +5,7 @@ date = '2019-04-08T12:45:57-04:00'
 draft = false
 tags = ['conference', 'unc', 'wireless', 'aruba']
 categories = ['Technical']
+featuredImage = 'Aruba - What is 802.11ax - 1.jpg'
 +++
 
     March 31 - April 5, 2019
