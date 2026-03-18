@@ -32,22 +32,22 @@ enableRobotsTXT = true
   [[menu.main]]
     identifier = 'projects'
     name = 'Projects'
-    url = '/pages/projects/'
+    url = '/projects/'
     weight = 2
   [[menu.main]]
     identifier = 'resources'
     name = 'Resources'
-    url = '/pages/resources/'
+    url = '/resources/'
     weight = 3
   [[menu.main]]
     identifier = 'gallery'
     name = 'Gallery'
-    url = '/pages/gallery/'
+    url = '/gallery/'
     weight = 4
   [[menu.main]]
     identifier = 'about'
     name = 'About'
-    url = '/pages/about/'
+    url = '/about/'
     weight = 5
 
 [params]
