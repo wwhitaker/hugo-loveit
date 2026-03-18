@@ -1,6 +1,6 @@
 baseURL = 'https://defingo.net/'
 languageCode = 'en-us'
-title = 'Defingo - Personal website for William E. Whitaker, Jr'
+title = 'Defingo.net'
 theme = 'LoveIt'
 defaultContentLanguage = 'en'
 defaultTheme = 'auto'
