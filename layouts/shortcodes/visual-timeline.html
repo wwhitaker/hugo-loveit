@@ -1,0 +1,171 @@
+{{- $entries := sort .Site.Data.timeline.entries "event_date" "desc" -}}
+{{- $laneLabels := dict "career" "Career & Talks" "home" "Home & Lab" "personal" "Personal" -}}
+{{- $kindIcons := dict "talk" "fas fa-microphone" "build" "fas fa-wrench" "analysis" "fas fa-compass" "personal" "fas fa-heart" -}}
+{{- $years := slice -}}
+{{- range $entries -}}
+  {{- $y := dateFormat "2006" .event_date -}}
+  {{- if not (in $years $y) -}}
+    {{- $years = $years | append $y -}}
+  {{- end -}}
+{{- end -}}
+
+<section class="timeline-shell" data-visual-timeline>
+  <header class="timeline-header">
+    <p class="timeline-kicker">Work, lab, and life milestones</p>
+    <h2 class="timeline-title">Visual Timeline</h2>
+    <p class="timeline-subtitle">A quick scan of what I built, what I shared, and what I learned along the way.</p>
+  </header>
+
+  <div class="timeline-filter-row" role="group" aria-label="Timeline filters">
+    <button class="timeline-filter active" type="button" data-filter="all">All</button>
+    <button class="timeline-filter" type="button" data-filter="career">Career</button>
+    <button class="timeline-filter" type="button" data-filter="home">Home & Lab</button>
+    <button class="timeline-filter" type="button" data-filter="personal">Personal</button>
+    <button class="timeline-filter" type="button" data-filter="talks">Talks</button>
+    <button class="timeline-filter" type="button" data-filter="dns">DNS</button>
+    <button class="timeline-filter" type="button" data-filter="homelab">Homelab</button>
+    <button class="timeline-filter" type="button" data-filter="lessons">Lessons</button>
+  </div>
+
+  <div class="timeline-layout">
+    <aside class="timeline-year-rail" aria-label="Timeline years">
+      <ul>
+        {{- range $years -}}
+          <li><a href="#year-{{ . }}">{{ . }}</a></li>
+        {{- end -}}
+      </ul>
+    </aside>
+
+    <div class="timeline-canvas">
+      {{- range $years -}}
+        {{- $year := . -}}
+        <section class="timeline-year-group" id="year-{{ $year }}" data-year="{{ $year }}">
+          <h3 class="timeline-year-heading">{{ $year }}</h3>
+
+          {{- range sort $.Site.Data.timeline.turning_points "year" "desc" -}}
+            {{- if eq (printf "%d" .year) $year -}}
+              <article class="timeline-turning-point">
+                <h4>{{ .title }}</h4>
+                <p>{{ .summary }}</p>
+              </article>
+            {{- end -}}
+          {{- end -}}
+
+          <div class="timeline-cards">
+            {{- range $entries -}}
+              {{- if eq (dateFormat "2006" .event_date) $year -}}
+              {{- $filterTags := delimit (.filters | append .lane) "," -}}
+              {{- $impactClass := cond (ge .impact 3) "impact-major" (cond (eq .impact 2) "impact-medium" "impact-minor") -}}
+              <article class="timeline-card lane-{{ .lane }} {{ $impactClass }}" data-filters="{{ $filterTags }}">
+                <div class="timeline-card-meta">
+                  <span class="timeline-card-date">{{ .date_label }}</span>
+                  <span class="timeline-card-lane">{{ index $laneLabels .lane | default "Milestone" }}</span>
+                </div>
+                <h4 class="timeline-card-title">
+                  <i class="{{ index $kindIcons .kind | default "fas fa-circle" }}" aria-hidden="true"></i>
+                  {{ .title }}
+                </h4>
+                <p class="timeline-card-summary">{{ .summary }}</p>
+                <div class="timeline-card-footer">
+                  <span class="timeline-outcome">{{ .outcome }}</span>
+                  {{- with .url -}}
+                    <a href="{{ . }}" class="timeline-read-link">Read post</a>
+                  {{- end -}}
+                </div>
+              </article>
+              {{- end -}}
+            {{- end -}}
+          </div>
+        </section>
+      {{- end -}}
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var shell = document.querySelector('[data-visual-timeline]');
+  if (!shell) {
+    return;
+  }
+
+  var filterButtons = shell.querySelectorAll('.timeline-filter');
+  var cards = shell.querySelectorAll('.timeline-card');
+  var yearGroups = shell.querySelectorAll('.timeline-year-group');
+  var yearLinks = shell.querySelectorAll('.timeline-year-rail a');
+
+  function applyFilter(filterName) {
+    cards.forEach(function(card) {
+      if (filterName === 'all') {
+        card.removeAttribute('hidden');
+        return;
+      }
+
+      var tags = (card.getAttribute('data-filters') || '').split(',');
+      var show = tags.indexOf(filterName) !== -1;
+      if (show) {
+        card.removeAttribute('hidden');
+      } else {
+        card.setAttribute('hidden', 'hidden');
+      }
+    });
+
+    yearGroups.forEach(function(group) {
+      var visibleCard = group.querySelector('.timeline-card:not([hidden])');
+      if (visibleCard) {
+        group.removeAttribute('hidden');
+      } else {
+        group.setAttribute('hidden', 'hidden');
+      }
+    });
+  }
+
+  function setActiveYear(yearValue) {
+    yearLinks.forEach(function(link) {
+      var active = link.getAttribute('href') === '#year-' + yearValue;
+      if (active) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  filterButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      filterButtons.forEach(function(item) {
+        item.classList.remove('active');
+      });
+      button.classList.add('active');
+      applyFilter(button.getAttribute('data-filter'));
+    });
+  });
+
+  if (yearGroups.length && yearLinks.length && 'IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      var topVisible = null;
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          if (!topVisible || entry.boundingClientRect.top < topVisible.boundingClientRect.top) {
+            topVisible = entry;
+          }
+        }
+      });
+
+      if (topVisible) {
+        setActiveYear(topVisible.target.getAttribute('data-year'));
+      }
+    }, {
+      root: null,
+      rootMargin: '-25% 0px -60% 0px',
+      threshold: [0, 0.25, 0.5, 0.75, 1]
+    });
+
+    yearGroups.forEach(function(group) {
+      observer.observe(group);
+    });
+
+    setActiveYear(yearGroups[0].getAttribute('data-year'));
+  }
+})();
+</script>

@@ -1,0 +1,217 @@
+[[entries]]
+year = 2026
+event_date = "2026-03-01"
+date_label = "Mar 2026"
+lane = "home"
+kind = "build"
+impact = 3
+title = "Speedtest Pipeline Refresh"
+summary = "Updated speedtest collection and storage flow for clearer trend visibility and fewer manual checks."
+outcome = "Shipped"
+filters = ["homelab", "lessons"]
+url = "/posts/speedtest-to-influxdb-v2/"
+
+[[entries]]
+year = 2025
+event_date = "2025-01-01"
+date_label = "Jan 2025"
+lane = "career"
+kind = "analysis"
+impact = 2
+title = "2025 Year in Books"
+summary = "Captured a year of reading, what stuck, and how those ideas changed my technical decisions."
+outcome = "Learned"
+filters = ["lessons"]
+url = "/posts/2025-year-in-books/"
+
+[[entries]]
+year = 2024
+event_date = "2024-10-01"
+date_label = "Oct 2024"
+lane = "career"
+kind = "build"
+impact = 3
+title = "AKiPS Dashboard Work"
+summary = "Shaped dashboard workflows around operational visibility and faster triage for network events."
+outcome = "Shipped"
+filters = ["homelab", "lessons"]
+url = "/posts/akips-dashboard/"
+
+[[entries]]
+year = 2024
+event_date = "2024-05-01"
+date_label = "May 2024"
+lane = "career"
+kind = "build"
+impact = 2
+title = "AKiPS Python Module Progress"
+summary = "Expanded automation options around the AKiPS API and simplified repeated operational tasks."
+outcome = "Built"
+filters = ["lessons"]
+url = "/posts/akips-module/"
+
+[[entries]]
+year = 2023
+event_date = "2023-11-01"
+date_label = "Nov 2023"
+lane = "career"
+kind = "talk"
+impact = 2
+title = "All Things Open 2023"
+summary = "Shared practical field experience with the wider community and gathered ideas to bring back home."
+outcome = "Presented"
+filters = ["talks"]
+url = "/posts/all-things-open-2023/"
+
+[[entries]]
+year = 2023
+event_date = "2023-10-01"
+date_label = "Oct 2023"
+lane = "career"
+kind = "talk"
+impact = 2
+title = "UNC CAUSE 2023"
+summary = "Presented current architecture work and lessons learned from real operational constraints."
+outcome = "Presented"
+filters = ["talks"]
+url = "/posts/unc-cause-23/"
+
+[[entries]]
+year = 2023
+event_date = "2023-09-01"
+date_label = "Sep 2023"
+lane = "career"
+kind = "talk"
+impact = 2
+title = "EDUCAUSE 2023"
+summary = "Connected strategy to implementation details and highlighted measurable outcomes."
+outcome = "Presented"
+filters = ["talks"]
+url = "/posts/educause-23/"
+
+[[entries]]
+year = 2023
+event_date = "2023-07-01"
+date_label = "Jul 2023"
+lane = "home"
+kind = "analysis"
+impact = 3
+title = "DNS Firewall Comparison"
+summary = "Compared real-world DNS filtering options and documented tradeoffs in cost, safety, and usability."
+outcome = "Learned"
+filters = ["dns", "lessons"]
+url = "/posts/dns-firewall-comparison/"
+
+[[entries]]
+year = 2023
+event_date = "2023-06-01"
+date_label = "Jun 2023"
+lane = "home"
+kind = "build"
+impact = 2
+title = "Safe Search by DNS"
+summary = "Implemented family-safe DNS policies and documented where controls worked and where they did not."
+outcome = "Built"
+filters = ["dns", "homelab"]
+url = "/posts/dns-safe-search/"
+
+[[entries]]
+year = 2023
+event_date = "2023-04-01"
+date_label = "Apr 2023"
+lane = "personal"
+kind = "personal"
+impact = 2
+title = "Dad and Grizz"
+summary = "A personal milestone that shaped perspective and priorities for work and home projects."
+outcome = "Remembered"
+filters = ["lessons", "personal"]
+url = "/posts/dad-and-grizz/"
+
+[[entries]]
+year = 2023
+event_date = "2023-03-01"
+date_label = "Mar 2023"
+lane = "home"
+kind = "build"
+impact = 2
+title = "Secondary WAN Project"
+summary = "Improved resiliency at home with dual-WAN strategy and practical failover testing."
+outcome = "Shipped"
+filters = ["homelab", "lessons"]
+url = "/posts/secondary-wan/"
+
+[[entries]]
+year = 2022
+event_date = "2022-10-01"
+date_label = "Oct 2022"
+lane = "career"
+kind = "talk"
+impact = 2
+title = "Internet2 TechEX 2022"
+summary = "Participated in a panel on UNC automation and discussed repeatable patterns that scale."
+outcome = "Presented"
+filters = ["talks"]
+url = "/posts/techex-22/"
+
+[[entries]]
+year = 2019
+event_date = "2019-11-01"
+date_label = "Nov 2019"
+lane = "career"
+kind = "talk"
+impact = 2
+title = "All Things Open 2019"
+summary = "Presented operational insights from DNS and infrastructure work in a public conference setting."
+outcome = "Presented"
+filters = ["talks"]
+url = "/posts/all-things-open-2019/"
+
+[[entries]]
+year = 2019
+event_date = "2019-10-01"
+date_label = "Oct 2019"
+lane = "career"
+kind = "talk"
+impact = 2
+title = "EDUCAUSE 2019"
+summary = "Shared approach and results around DNS-over-HTTPS and modern service controls."
+outcome = "Presented"
+filters = ["talks", "dns"]
+url = "/posts/educause-19/"
+
+[[entries]]
+year = 2018
+event_date = "2018-11-01"
+date_label = "Nov 2018"
+lane = "career"
+kind = "talk"
+impact = 1
+title = "UNC CAUSE 2018"
+summary = "Presented practical improvements from legacy spreadsheet workflows toward modern DDI practices."
+outcome = "Presented"
+filters = ["talks"]
+url = "/posts/unc-cause-18/"
+
+[[entries]]
+year = 2017
+event_date = "2017-10-01"
+date_label = "Oct 2017"
+lane = "career"
+kind = "talk"
+impact = 1
+title = "Internet2 TechEX 2017"
+summary = "Discussed field-tested techniques and lessons from network operations."
+outcome = "Presented"
+filters = ["talks"]
+url = "/posts/techex-17/"
+
+[[turning_points]]
+year = 2024
+title = "Turning Point: Tooling to Product Mindset"
+summary = "Projects shifted from one-off scripts toward durable tools with clearer outcomes, docs, and reuse."
+
+[[turning_points]]
+year = 2023
+title = "Turning Point: More Public Sharing"
+summary = "Conference talks and comparative writeups became a regular part of documenting what works in production."
