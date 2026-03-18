@@ -11,3 +11,5 @@ description = 'I am an information systems professional with broad background in
 It seems fitting, seeing how I have spent so much time building and supporting services to connect people, devices, and software together.
 
 ---
+
+{{< homelab-snapshot >}}

@@ -29,6 +29,131 @@
   display: none;
 }
 
+.homelab-snapshot {
+  --homelab-accent: #0f6a8f;
+  --homelab-accent-soft: rgba(15, 106, 143, 0.14);
+  --homelab-glow: rgba(12, 80, 108, 0.25);
+  margin: 1.8rem 0 2.2rem;
+  padding: 1rem 1rem 1.1rem;
+  border: 1px solid var(--global-border-color);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(76, 170, 217, 0.16), transparent 45%),
+    linear-gradient(165deg, rgba(22, 119, 158, 0.08), rgba(40, 164, 128, 0.05) 45%, transparent 100%),
+    var(--global-background-color);
+  box-shadow: 0 18px 26px -24px var(--homelab-glow);
+}
+
+[theme=dark] .homelab-snapshot {
+  --homelab-accent: #8cc8e2;
+  --homelab-accent-soft: rgba(115, 178, 207, 0.2);
+  --homelab-glow: rgba(0, 0, 0, 0.4);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(71, 132, 160, 0.28), transparent 45%),
+    linear-gradient(165deg, rgba(46, 88, 109, 0.45), rgba(32, 79, 71, 0.28) 45%, transparent 100%),
+    var(--global-background-color);
+}
+
+.homelab-snapshot-header {
+  margin-bottom: 0.85rem;
+}
+
+.homelab-snapshot-header h2 {
+  margin: 0;
+}
+
+.homelab-snapshot-updated {
+  margin: 0.2rem 0 0;
+  color: var(--global-font-secondary-color);
+  font-size: 0.92rem;
+}
+
+.homelab-snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-bottom: 0.8rem;
+}
+
+.homelab-snapshot-card {
+  border: 1px solid var(--global-border-color);
+  border-radius: 12px;
+  padding: 0.7rem 0.75rem 0.75rem;
+  background: var(--global-background-color);
+}
+
+.homelab-snapshot-kicker {
+  margin: 0;
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--global-font-secondary-color);
+}
+
+.homelab-snapshot-value {
+  margin: 0.15rem 0 0;
+  font-size: 1.58rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--homelab-accent);
+}
+
+.homelab-snapshot-value span {
+  font-size: 0.92rem;
+  color: var(--global-font-secondary-color);
+  font-weight: 500;
+}
+
+.homelab-snapshot-details {
+  border: 1px solid var(--global-border-color);
+  border-radius: 12px;
+  padding: 0.75rem 0.8rem;
+  background: var(--global-background-color);
+}
+
+.homelab-snapshot-details p {
+  margin: 0;
+}
+
+.homelab-snapshot-details p + p {
+  margin-top: 0.38rem;
+}
+
+.homelab-snapshot-links {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.homelab-snapshot-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid var(--global-border-color);
+  border-radius: 999px;
+  padding: 0.3rem 0.65rem;
+  color: var(--global-font-color);
+  text-decoration: none;
+  background: var(--global-background-color);
+}
+
+.homelab-snapshot-links a:hover {
+  border-color: var(--homelab-accent);
+  color: var(--homelab-accent);
+  background: var(--homelab-accent-soft);
+}
+
+@media (max-width: 780px) {
+  .homelab-snapshot-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .homelab-snapshot {
+    padding: 0.9rem;
+  }
+}
+
 [theme=dark] .github-contrib-calendar .calendar-image-light {
   display: none;
 }

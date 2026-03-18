@@ -1,0 +1,23 @@
+title = "Homelab Snapshot"
+last_updated = "Mar 18, 2026"
+services_running = 18
+services_total = 19
+uptime_days = 43
+latest_deployment = "CoreDNS policy update to primary resolver"
+last_incident = "Short AP reboot loop, resolved in 12 minutes"
+current_focus = "Splitting IoT DNS policy from family-safe profile"
+
+[[links]]
+label = "Projects"
+url = "/projects/"
+icon = "fas fa-diagram-project"
+
+[[links]]
+label = "Timeline"
+url = "/timeline/"
+icon = "fas fa-timeline"
+
+[[links]]
+label = "Recent Posts"
+url = "/posts/"
+icon = "fas fa-book-open"
