@@ -3,7 +3,7 @@ title = 'TechEX18'
 description = '2018 Internet2 Technology Exchange (TechEX18)'
 date = '2018-10-19T11:52:57-04:00'
 draft = true
-tags = ['conference']
+tags = ['conference', 'unc']
 categories = ['Technical']
 +++
 
