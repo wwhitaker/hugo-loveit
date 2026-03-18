@@ -9,7 +9,7 @@ enableRobotsTXT = true
 
 [author]
   name = 'William E. Whitaker, Jr'
-  email = 'witty.book0848@fastmail.com'
+  email = 'odd.grape2822@defingo.net'
 
 [menu]
   [[menu.main]]
@@ -58,7 +58,7 @@ enableRobotsTXT = true
   
   [params.author]
     name = 'wew'
-    email = 'witty.book0848@fastmail.com'
+    email = 'odd.grape2822@defingo.net'
   
   [params.header]
     [params.header.title]
@@ -128,7 +128,7 @@ enableRobotsTXT = true
     X = 'wewhitaker'
     Facebook = 'willwhit'
     Reddit = 'bydern'
-    Email = 'witty.book0848@fastmail.com'
+    Email = 'odd.grape2822@defingo.net'
 
   [params.seo]
     site_name = 'defingo.net'
