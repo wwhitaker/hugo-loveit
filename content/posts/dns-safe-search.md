@@ -5,6 +5,18 @@ date = '2025-07-19'
 draft = false
 tags = ['dns', 'security', 'network']
 categories = ['Technical']
+
+[timeline]
+enable = true
+event_date = '2023-06-01'
+date_label = 'Jun 2023'
+lane = 'home'
+kind = 'build'
+impact = 2
+title = 'Safe Search by DNS'
+summary = 'Implemented family-safe DNS policies and documented where controls worked and where they did not.'
+outcome = 'Built'
+filters = ['dns', 'homelab']
 +++
 
 Multiple options exist to enable and enforce safe searching at both application and account levels. If you want to enforce it over an entire network you will need to look at DNS records.

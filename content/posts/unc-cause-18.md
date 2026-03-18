@@ -5,6 +5,18 @@ date = '2018-10-03T11:52:57-04:00'
 draft = false
 tags = ['conference', 'unc', 'dns', 'security', 'infoblox']
 categories = ['Technical']
+
+[timeline]
+enable = true
+event_date = '2018-11-01'
+date_label = 'Nov 2018'
+lane = 'career'
+kind = 'talk'
+impact = 1
+title = 'UNC CAUSE 2018'
+summary = 'Presented practical improvements from legacy spreadsheet workflows toward modern DDI practices.'
+outcome = 'Presented'
+filters = ['talks']
 +++
 
     October 1-3, 2018

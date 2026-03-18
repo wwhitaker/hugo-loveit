@@ -8,6 +8,18 @@ categories = ['Personal']
 image = '/images/posts/clubhouse.jpg'
 featuredImage = '/images/posts/clubhouse.jpg'
 featuredImagePreview = '/images/posts/clubhouse.jpg'
+
+[timeline]
+enable = true
+event_date = '2023-04-01'
+date_label = 'Apr 2023'
+lane = 'personal'
+kind = 'personal'
+impact = 2
+title = 'Dad and Grizz'
+summary = 'A personal milestone that shaped perspective and priorities for work and home projects.'
+outcome = 'Remembered'
+filters = ['lessons', 'personal']
 +++
 
 This picture here is hard to appreciate with 2010 camera quality but it reminds me of quality time spent with two great men. For some odd reason I felt the need to pause and snap it a little after 4am that November morning. It was cold and dark, but I was warm, happy, and wanting to remember it later.

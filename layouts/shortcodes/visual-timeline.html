@@ -6,7 +6,7 @@
   {{- with $timeline.event_date -}}
     {{- $eventDate = . -}}
   {{- end -}}
-  {{- $dateLabel := .Date.Format "Jan 2006" -}}
+  {{- $dateLabel := dateFormat "Jan 2006" $eventDate -}}
   {{- with $timeline.date_label -}}
     {{- $dateLabel = . -}}
   {{- end -}}

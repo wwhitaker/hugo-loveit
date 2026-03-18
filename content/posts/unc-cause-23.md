@@ -7,6 +7,18 @@ tags = ['conference', 'unc', 'development', 'python']
 categories = ['Technical']
 featuredImage = '/images/posts/unc-cause-23.jpeg'
 featuredImagePreview = '/images/posts/unc-cause-23.jpeg'
+
+[timeline]
+enable = true
+event_date = '2023-10-01'
+date_label = 'Oct 2023'
+lane = 'career'
+kind = 'talk'
+impact = 2
+title = 'UNC CAUSE 2023'
+summary = 'Presented current architecture work and lessons learned from real operational constraints.'
+outcome = 'Presented'
+filters = ['talks']
 +++
 
     October 25-27, 2023

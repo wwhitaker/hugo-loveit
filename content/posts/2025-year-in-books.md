@@ -7,8 +7,6 @@ categories = ['Personal']
 
 [timeline]
 enable = true
-event_date = "2025-12-31"
-date_label = "Dec 2025"
 lane = "home"
 kind = "build"
 impact = 3
