@@ -1,5 +1,5 @@
 {{- /* Desktop header */ -}}
-{{- $allowedMainMenuIDs := slice "posts" "projects" "timeline" "resources" "gallery" "about" -}}
+{{- $allowedMainMenuIDs := slice "posts" "projects" "timeline" "resources" "gallery" "about" "search" -}}
 {{- $mainMenu := where .Site.Menus.main "Identifier" "in" $allowedMainMenuIDs | default .Site.Menus.main -}}
 <header class="desktop" id="header-desktop">
     <div class="header-wrapper">

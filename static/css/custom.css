@@ -154,6 +154,66 @@
   }
 }
 
+.pagefind-search-shell {
+  margin: 1.2rem 0 2.4rem;
+  padding: 1rem;
+  border: 1px solid var(--global-border-color);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(77, 139, 214, 0.12), transparent 42%),
+    radial-gradient(circle at 0% 100%, rgba(33, 140, 108, 0.1), transparent 48%),
+    var(--global-background-color);
+}
+
+.pagefind-search-header h2 {
+  margin: 0;
+}
+
+.pagefind-search-header p {
+  margin: 0.2rem 0 0.9rem;
+  color: var(--global-font-secondary-color);
+}
+
+.pagefind-ui__form {
+  margin-bottom: 0.9rem;
+}
+
+.pagefind-ui__search-input {
+  border: 1px solid var(--global-border-color);
+  border-radius: 10px;
+  background: var(--global-background-color);
+  color: var(--global-font-color);
+}
+
+.pagefind-ui__search-clear {
+  color: var(--global-font-secondary-color);
+}
+
+.pagefind-ui__result {
+  border: 1px solid var(--global-border-color);
+  border-radius: 12px;
+  padding: 0.72rem 0.78rem;
+  margin-top: 0.65rem;
+  background: var(--global-background-color);
+}
+
+.pagefind-ui__result-title a {
+  color: var(--global-link-color);
+}
+
+.pagefind-ui__result-excerpt {
+  color: var(--global-font-color);
+}
+
+.pagefind-ui__message {
+  color: var(--global-font-secondary-color);
+}
+
+[theme=dark] .pagefind-ui__search-input,
+[theme=dark] .pagefind-ui__result {
+  background: #161c22;
+}
+
 [theme=dark] .github-contrib-calendar .calendar-image-light {
   display: none;
 }

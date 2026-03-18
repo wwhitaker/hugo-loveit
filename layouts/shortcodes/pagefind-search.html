@@ -1,0 +1,52 @@
+<section class="pagefind-search-shell" aria-label="Site search">
+  <header class="pagefind-search-header">
+    <h2>Search the site</h2>
+    <p>Find posts, project notes, and resources across the entire site.</p>
+  </header>
+
+  <div id="search"></div>
+</section>
+
+<noscript>
+  <p>Search requires JavaScript. Please enable JavaScript to use Pagefind search.</p>
+</noscript>
+
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css">
+<script src="/pagefind/pagefind-ui.js"></script>
+<script>
+window.addEventListener("DOMContentLoaded", function () {
+  var tries = 0;
+
+  function initSearch() {
+    if (!window.PagefindUI) {
+      return false;
+    }
+
+    new PagefindUI({
+      element: "#search",
+      bundlePath: "/pagefind/",
+      showSubResults: true,
+      pageSize: 8,
+      excerptLength: 24,
+      showImages: false,
+      resetStyles: false,
+      translations: {
+        placeholder: "Search posts, talks, and projects"
+      }
+    });
+
+    return true;
+  }
+
+  if (initSearch()) {
+    return;
+  }
+
+  var timer = window.setInterval(function() {
+    tries += 1;
+    if (initSearch() || tries > 20) {
+      window.clearInterval(timer);
+    }
+  }, 100);
+});
+</script>

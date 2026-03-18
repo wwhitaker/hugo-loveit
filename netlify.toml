@@ -6,13 +6,13 @@
     HUGO_ENV = "production"
 
 [context.production]
-  command = "hugo --gc --minify"
+  command = "hugo --gc --minify && npx -y pagefind --site public"
 
 [context.deploy-preview]
-  command = "hugo --gc --minify --buildDrafts"
+  command = "hugo --gc --minify --buildDrafts && npx -y pagefind --site public"
 
 [context.branch-deploy]
-  command = "hugo --gc --minify"
+  command = "hugo --gc --minify && npx -y pagefind --site public"
 
 # Security headers applied to every response
 [[headers]]

@@ -54,6 +54,11 @@ enableRobotsTXT = true
     name = 'About'
     url = '/about/'
     weight = 6
+  [[menu.main]]
+    identifier = 'search'
+    name = 'Search'
+    url = '/search/'
+    weight = 7
 
 [params]
   description = 'I am an information systems professional with broad background in network support, system administration and software development focused on security topics.'
