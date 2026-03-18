@@ -12,4 +12,4 @@ It seems fitting, seeing how I have spent so much time building and supporting s
 
 ---
 
-{{< homelab-snapshot >}}
+<!-- {{< homelab-snapshot >}} -->
