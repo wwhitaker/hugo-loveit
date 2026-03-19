@@ -1,0 +1,11 @@
+<nav class="home-actions" aria-label="Homepage actions">
+  {{- with .Get "primary_label" -}}
+    <a class="home-action home-action-primary" href="{{ $.Get "primary_url" }}">{{ . }}</a>
+  {{- end -}}
+  {{- with .Get "secondary_label" -}}
+    <a class="home-action" href="{{ $.Get "secondary_url" }}">{{ . }}</a>
+  {{- end -}}
+  {{- with .Get "tertiary_label" -}}
+    <a class="home-action" href="{{ $.Get "tertiary_url" }}">{{ . }}</a>
+  {{- end -}}
+</nav>
