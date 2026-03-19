@@ -740,24 +740,49 @@
   --kuma-degraded: #bb6b00;
   --kuma-outage: #b4232f;
   --kuma-unknown: #5b6777;
+  --kuma-card-glow: rgba(20, 109, 120, 0.12);
+  position: relative;
+  overflow: hidden;
   margin: 1.6rem 0 2rem;
-  padding: 1rem 1rem 1.1rem;
+  padding: 1.05rem 1.05rem 1.15rem;
   border: var(--surface-border);
   border-radius: var(--surface-radius-lg);
   background:
-    radial-gradient(circle at 95% 5%, rgba(29, 113, 82, 0.12), transparent 40%),
-    radial-gradient(circle at 0% 100%, rgba(25, 92, 154, 0.12), transparent 43%),
-    linear-gradient(165deg, rgba(20, 109, 120, 0.08), rgba(22, 141, 94, 0.06) 42%, transparent 100%),
+    radial-gradient(circle at 92% 8%, rgba(29, 113, 82, 0.18), transparent 36%),
+    radial-gradient(circle at 0% 100%, rgba(25, 92, 154, 0.18), transparent 42%),
+    linear-gradient(155deg, rgba(20, 109, 120, 0.12), rgba(22, 141, 94, 0.08) 42%, transparent 100%),
     var(--global-background-color);
   box-shadow: var(--surface-shadow-soft);
 }
 
 [theme=dark] .kuma-status-card {
+  --kuma-card-glow: rgba(44, 112, 135, 0.22);
   background:
-    radial-gradient(circle at 95% 5%, rgba(42, 114, 84, 0.3), transparent 42%),
-    radial-gradient(circle at 0% 100%, rgba(31, 73, 118, 0.28), transparent 45%),
-    linear-gradient(165deg, rgba(24, 58, 73, 0.45), rgba(16, 78, 56, 0.36) 42%, transparent 100%),
+    radial-gradient(circle at 92% 8%, rgba(42, 114, 84, 0.34), transparent 40%),
+    radial-gradient(circle at 0% 100%, rgba(31, 73, 118, 0.32), transparent 44%),
+    linear-gradient(155deg, rgba(24, 58, 73, 0.5), rgba(16, 78, 56, 0.38) 42%, transparent 100%),
     var(--global-background-color);
+}
+
+.kuma-status-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0) 36%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent 28%);
+  pointer-events: none;
+}
+
+[theme=dark] .kuma-status-card::before {
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0) 36%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 28%);
+}
+
+.kuma-status-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .kuma-status-header {
@@ -765,7 +790,7 @@
   align-items: baseline;
   justify-content: space-between;
   gap: 0.8rem;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.8rem;
 }
 
 .kuma-status-header h2 {
@@ -790,11 +815,33 @@
   font-size: 0.9rem;
 }
 
+.kuma-status-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.9rem;
+  align-items: center;
+  margin: 0 0 0.85rem;
+  padding: 0.9rem 0.95rem;
+  border: 1px solid rgba(45, 150, 189, 0.14);
+  border-radius: calc(var(--surface-radius-md) + 2px);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+[theme=dark] .kuma-status-hero {
+  border-color: rgba(85, 189, 226, 0.16);
+  background: rgba(15, 21, 28, 0.4);
+}
+
+.kuma-status-hero-copy {
+  min-width: 0;
+}
+
 .kuma-status-overview {
   display: flex;
   align-items: center;
   gap: 0.55rem;
-  margin: 0.2rem 0 0.75rem;
+  margin: 0;
 }
 
 .kuma-status-dot {
@@ -815,14 +862,72 @@
 .kuma-status-metrics {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  font-size: 1.05rem;
   gap: 0.6rem;
 }
+
+.kuma-status-summary {
+  margin: 0.4rem 0 0;
+  max-width: 34rem;
+  color: var(--global-font-secondary-color);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.kuma-status-visual {
+  position: relative;
+  width: 5.9rem;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.kuma-status-visual-ring,
+.kuma-status-visual-glow {
+  position: absolute;
+  border-radius: 50%;
+}
+
+.kuma-status-visual-ring-one {
+  inset: 0;
+  border: 1px solid rgba(45, 150, 189, 0.22);
+  background: radial-gradient(circle at 50% 50%, rgba(45, 150, 189, 0.14), transparent 68%);
+}
+
+.kuma-status-visual-ring-two {
+  inset: 0.62rem;
+  border: 1px dashed rgba(45, 150, 189, 0.2);
+}
+
+.kuma-status-visual-glow {
+  inset: 1.05rem;
+  background: radial-gradient(circle, var(--kuma-card-glow), transparent 70%);
+}
+
+[theme=dark] .kuma-status-visual-ring-one {
+  border-color: rgba(85, 189, 226, 0.24);
+  background: radial-gradient(circle at 50% 50%, rgba(85, 189, 226, 0.16), transparent 68%);
+}
+
+[theme=dark] .kuma-status-visual-ring-two {
+  border-color: rgba(85, 189, 226, 0.22);
+}
+
+.kuma-status-visual-icon {
+  position: relative;
+  z-index: 1;
+  color: var(--home-accent);
+  font-size: 1.45rem;
+}
+
 
 .kuma-status-metric {
   border: var(--surface-border);
   border-radius: var(--surface-radius-md);
-  padding: 0.6rem 0.68rem;
-  background: var(--global-background-color);
+  padding: 0.72rem 0.8rem 0.76rem;
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28);
 }
 
 .kuma-status-kicker {
@@ -833,11 +938,97 @@
   color: var(--global-font-secondary-color);
 }
 
+[theme=dark] .kuma-status-metric {
+  background: rgba(16, 22, 29, 0.72);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.kuma-status-metric-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.kuma-status-metric-icon {
+  color: var(--global-font-secondary-color);
+  font-size: 0.88rem;
+}
+
 .kuma-status-value {
   margin: 0.2rem 0 0;
-  font-size: 1.22rem;
+  font-size: clamp(1.35rem, 2vw, 1.55rem);
   line-height: 1.1;
   font-weight: 700;
+}
+
+.kuma-status-metric-up .kuma-status-value,
+.kuma-status-metric-up .kuma-status-metric-icon,
+.kuma-status-metric-up[data-state='healthy'] {
+  color: var(--kuma-operational);
+}
+
+.kuma-status-metric-down[data-state='issues'] .kuma-status-value,
+.kuma-status-metric-down[data-state='issues'] .kuma-status-metric-icon {
+  color: var(--kuma-outage);
+}
+
+.kuma-status-metric-down[data-state='clear'] .kuma-status-value,
+.kuma-status-metric-down[data-state='clear'] .kuma-status-metric-icon {
+  color: var(--kuma-operational);
+}
+
+.kuma-status-metric-down[data-state='unknown'] .kuma-status-value,
+.kuma-status-metric-down[data-state='unknown'] .kuma-status-metric-icon,
+.kuma-status-metric-up[data-state='unknown'] .kuma-status-value,
+.kuma-status-metric-up[data-state='unknown'] .kuma-status-metric-icon,
+.kuma-status-metric-uptime[data-state='unknown'] .kuma-status-value,
+.kuma-status-metric-uptime[data-state='unknown'] .kuma-status-metric-icon {
+  color: var(--kuma-unknown);
+}
+
+.kuma-status-metric-uptime[data-state='healthy'] .kuma-status-value,
+.kuma-status-metric-uptime[data-state='healthy'] .kuma-status-metric-icon {
+  color: #0f6a8f;
+}
+
+.kuma-status-metric-uptime[data-state='watch'] .kuma-status-value,
+.kuma-status-metric-uptime[data-state='watch'] .kuma-status-metric-icon {
+  color: var(--kuma-degraded);
+}
+
+.kuma-status-metric-uptime[data-state='issues'] .kuma-status-value,
+.kuma-status-metric-uptime[data-state='issues'] .kuma-status-metric-icon {
+  color: var(--kuma-outage);
+}
+
+.kuma-status-metric[data-state='healthy'],
+.kuma-status-metric[data-state='clear'] {
+  border-color: rgba(21, 115, 71, 0.2);
+  background: linear-gradient(180deg, rgba(21, 115, 71, 0.08), rgba(255, 255, 255, 0.74));
+}
+
+.kuma-status-metric[data-state='watch'] {
+  border-color: rgba(187, 107, 0, 0.22);
+  background: linear-gradient(180deg, rgba(187, 107, 0, 0.09), rgba(255, 255, 255, 0.74));
+}
+
+.kuma-status-metric[data-state='issues'] {
+  border-color: rgba(180, 35, 47, 0.22);
+  background: linear-gradient(180deg, rgba(180, 35, 47, 0.09), rgba(255, 255, 255, 0.74));
+}
+
+[theme=dark] .kuma-status-metric[data-state='healthy'],
+[theme=dark] .kuma-status-metric[data-state='clear'] {
+  background: linear-gradient(180deg, rgba(21, 115, 71, 0.13), rgba(16, 22, 29, 0.72));
+}
+
+[theme=dark] .kuma-status-metric[data-state='watch'] {
+  background: linear-gradient(180deg, rgba(187, 107, 0, 0.14), rgba(16, 22, 29, 0.72));
+}
+
+[theme=dark] .kuma-status-metric[data-state='issues'] {
+  background: linear-gradient(180deg, rgba(180, 35, 47, 0.16), rgba(16, 22, 29, 0.72));
 }
 
 .kuma-status-footer {
@@ -870,6 +1061,18 @@
   background: var(--kuma-unknown);
 }
 
+.kuma-status-card.status-operational .kuma-status-hero {
+  border-color: rgba(21, 115, 71, 0.18);
+}
+
+.kuma-status-card.status-degraded .kuma-status-hero {
+  border-color: rgba(187, 107, 0, 0.2);
+}
+
+.kuma-status-card.status-outage .kuma-status-hero {
+  border-color: rgba(180, 35, 47, 0.2);
+}
+
 .kuma-status-card.status-degraded .kuma-status-dot,
 .kuma-status-card.status-outage .kuma-status-dot {
   animation: kumaPulse 2s infinite;
@@ -895,6 +1098,20 @@
     align-items: flex-start;
   }
 
+  .kuma-status-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .kuma-status-visual {
+    width: 4.9rem;
+  }
+
+  .kuma-status-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
   .kuma-status-metrics {
     grid-template-columns: 1fr;
   }

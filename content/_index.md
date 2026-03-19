@@ -36,8 +36,6 @@ description="Small software and integration work that makes infrastructure easie
 >}}
 {{< /home-focus-grid >}}
 
-## Live Operations
-
-A quick snapshot of the services I actively monitor and maintain.
-
 {{< uptime-kuma-status title="Service Health" apiPath="/api/kuma-status" >}}
+
+{{< github-contrib-calendar >}}

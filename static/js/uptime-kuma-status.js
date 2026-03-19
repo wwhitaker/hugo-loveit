@@ -44,6 +44,12 @@
     card.classList.add(`status-${overall || 'unknown'}`);
   }
 
+  function setMetricState(metric, state) {
+    if (metric) {
+      metric.setAttribute('data-state', state);
+    }
+  }
+
   async function hydrateCard(card) {
     const apiPath = card.getAttribute('data-kuma-api') || '/api/kuma-status';
     const statusLink = card.querySelector('[data-kuma-link]');
@@ -52,6 +58,9 @@
     const up = card.querySelector('[data-kuma-up]');
     const down = card.querySelector('[data-kuma-down]');
     const uptime = card.querySelector('[data-kuma-uptime]');
+    const upCard = card.querySelector('[data-kuma-up-card]');
+    const downCard = card.querySelector('[data-kuma-down-card]');
+    const uptimeCard = card.querySelector('[data-kuma-uptime-card]');
 
     try {
       const response = await fetch(apiPath, {
@@ -66,13 +75,29 @@
       const payload = await response.json();
       const summary = payload.summary || {};
       const overall = payload.overall || 'unknown';
+      const upCount = Number(summary.up || 0);
+      const downCount = Number((summary.down || 0) + (summary.degraded || 0));
+      const avgUptime = typeof summary.avgUptime === 'number' ? summary.avgUptime : null;
 
       applyStatusClass(card, overall);
       label.textContent = formatStatus(overall);
       meta.textContent = `${formatRelativeTime(payload.generatedAt)} • ${summary.total || 0} monitors`;
-      up.textContent = String(summary.up || 0);
-      down.textContent = String((summary.down || 0) + (summary.degraded || 0));
-      uptime.textContent = typeof summary.avgUptime === 'number' ? `${summary.avgUptime.toFixed(2)}%` : 'N/A';
+      up.textContent = String(upCount);
+      down.textContent = String(downCount);
+      uptime.textContent = avgUptime !== null ? `${avgUptime.toFixed(2)}%` : 'N/A';
+
+      setMetricState(upCard, upCount > 0 ? 'healthy' : 'idle');
+      setMetricState(downCard, downCount > 0 ? 'issues' : 'clear');
+
+      if (avgUptime === null) {
+        setMetricState(uptimeCard, 'unknown');
+      } else if (avgUptime >= 99.95) {
+        setMetricState(uptimeCard, 'healthy');
+      } else if (avgUptime >= 99.5) {
+        setMetricState(uptimeCard, 'watch');
+      } else {
+        setMetricState(uptimeCard, 'issues');
+      }
 
       if (payload.statusPageUrl && statusLink) {
         statusLink.href = payload.statusPageUrl;
@@ -84,6 +109,9 @@
       up.textContent = '--';
       down.textContent = '--';
       uptime.textContent = '--';
+      setMetricState(upCard, 'unknown');
+      setMetricState(downCard, 'unknown');
+      setMetricState(uptimeCard, 'unknown');
     } finally {
       card.classList.remove('is-loading');
     }

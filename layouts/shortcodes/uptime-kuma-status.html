@@ -11,28 +11,49 @@
 >
   <header class="kuma-status-header">
     <h2>
-      <i class="fas fa-server kuma-status-title-icon" aria-hidden="true"></i>
+      <i class="fas fa-chart-line kuma-status-title-icon" aria-hidden="true"></i>
       <span>{{ $title }}</span>
     </h2>
     <p class="kuma-status-meta" data-kuma-meta>Checking current status...</p>
   </header>
 
-  <div class="kuma-status-overview">
-    <span class="kuma-status-dot" data-kuma-dot aria-hidden="true"></span>
-    <p class="kuma-status-label" data-kuma-label>Loading service status</p>
+  <div class="kuma-status-hero">
+    <div class="kuma-status-hero-copy">
+      <div class="kuma-status-overview">
+        <span class="kuma-status-dot" data-kuma-dot aria-hidden="true"></span>
+        <p class="kuma-status-label" data-kuma-label>Loading service status</p>
+      </div>
+      <p class="kuma-status-summary">Live rollup from the monitors behind the public status page.</p>
+    </div>
+
+    <div class="kuma-status-visual" aria-hidden="true">
+      <span class="kuma-status-visual-ring kuma-status-visual-ring-one"></span>
+      <span class="kuma-status-visual-ring kuma-status-visual-ring-two"></span>
+      <span class="kuma-status-visual-glow"></span>
+      <i class="fas fa-chart-line kuma-status-visual-icon"></i>
+    </div>
   </div>
 
   <div class="kuma-status-metrics" aria-live="polite">
-    <article class="kuma-status-metric">
-      <p class="kuma-status-kicker">Up</p>
+    <article class="kuma-status-metric kuma-status-metric-up" data-kuma-up-card>
+      <div class="kuma-status-metric-head">
+        <p class="kuma-status-kicker">Up</p>
+        <i class="fas fa-check-circle kuma-status-metric-icon" aria-hidden="true"></i>
+      </div>
       <p class="kuma-status-value" data-kuma-up>--</p>
     </article>
-    <article class="kuma-status-metric">
-      <p class="kuma-status-kicker">Down</p>
+    <article class="kuma-status-metric kuma-status-metric-down" data-kuma-down-card>
+      <div class="kuma-status-metric-head">
+        <p class="kuma-status-kicker">Down</p>
+        <i class="fas fa-exclamation-triangle kuma-status-metric-icon" aria-hidden="true"></i>
+      </div>
       <p class="kuma-status-value" data-kuma-down>--</p>
     </article>
-    <article class="kuma-status-metric">
-      <p class="kuma-status-kicker">Avg Uptime</p>
+    <article class="kuma-status-metric kuma-status-metric-uptime" data-kuma-uptime-card>
+      <div class="kuma-status-metric-head">
+        <p class="kuma-status-kicker">Avg Uptime</p>
+        <i class="fas fa-wave-square kuma-status-metric-icon" aria-hidden="true"></i>
+      </div>
       <p class="kuma-status-value" data-kuma-uptime>--</p>
     </article>
   </div>
