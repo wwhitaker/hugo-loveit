@@ -29,6 +29,159 @@
   display: none;
 }
 
+.kuma-status-card {
+  --kuma-operational: #157347;
+  --kuma-degraded: #bb6b00;
+  --kuma-outage: #b4232f;
+  --kuma-unknown: #5b6777;
+  margin: 1.6rem 0 2rem;
+  padding: 1rem 1rem 1.1rem;
+  border: 1px solid var(--global-border-color);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 95% 5%, rgba(29, 113, 82, 0.12), transparent 40%),
+    radial-gradient(circle at 0% 100%, rgba(25, 92, 154, 0.12), transparent 43%),
+    linear-gradient(165deg, rgba(20, 109, 120, 0.08), rgba(22, 141, 94, 0.06) 42%, transparent 100%),
+    var(--global-background-color);
+  box-shadow: 0 18px 30px -26px rgba(13, 40, 62, 0.36);
+}
+
+[theme=dark] .kuma-status-card {
+  background:
+    radial-gradient(circle at 95% 5%, rgba(42, 114, 84, 0.3), transparent 42%),
+    radial-gradient(circle at 0% 100%, rgba(31, 73, 118, 0.28), transparent 45%),
+    linear-gradient(165deg, rgba(24, 58, 73, 0.45), rgba(16, 78, 56, 0.36) 42%, transparent 100%),
+    var(--global-background-color);
+}
+
+.kuma-status-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-bottom: 0.65rem;
+}
+
+.kuma-status-header h2 {
+  margin: 0;
+}
+
+.kuma-status-meta {
+  margin: 0;
+  color: var(--global-font-secondary-color);
+  font-size: 0.9rem;
+}
+
+.kuma-status-overview {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0.2rem 0 0.75rem;
+}
+
+.kuma-status-dot {
+  --kuma-pulse-rgb: 91, 103, 119;
+  width: 0.72rem;
+  height: 0.72rem;
+  border-radius: 50%;
+  background: var(--kuma-unknown);
+  box-shadow: 0 0 0 0 rgba(91, 103, 119, 0.35);
+}
+
+.kuma-status-label {
+  margin: 0;
+  font-weight: 600;
+  color: var(--global-font-color);
+}
+
+.kuma-status-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.kuma-status-metric {
+  border: 1px solid var(--global-border-color);
+  border-radius: 12px;
+  padding: 0.6rem 0.68rem;
+  background: var(--global-background-color);
+}
+
+.kuma-status-kicker {
+  margin: 0;
+  font-size: 0.74rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--global-font-secondary-color);
+}
+
+.kuma-status-value {
+  margin: 0.2rem 0 0;
+  font-size: 1.22rem;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.kuma-status-footer {
+  margin-top: 0.72rem;
+}
+
+.kuma-status-footer a {
+  text-decoration: none;
+}
+
+.kuma-status-card.status-operational .kuma-status-dot {
+  --kuma-pulse-rgb: 21, 115, 71;
+  background: var(--kuma-operational);
+  box-shadow: 0 0 0 0 rgba(21, 115, 71, 0.35);
+}
+
+.kuma-status-card.status-degraded .kuma-status-dot {
+  --kuma-pulse-rgb: 187, 107, 0;
+  background: var(--kuma-degraded);
+  box-shadow: 0 0 0 0 rgba(187, 107, 0, 0.32);
+}
+
+.kuma-status-card.status-outage .kuma-status-dot {
+  --kuma-pulse-rgb: 180, 35, 47;
+  background: var(--kuma-outage);
+  box-shadow: 0 0 0 0 rgba(180, 35, 47, 0.35);
+}
+
+.kuma-status-card.status-unknown .kuma-status-dot {
+  background: var(--kuma-unknown);
+}
+
+.kuma-status-card.status-degraded .kuma-status-dot,
+.kuma-status-card.status-outage .kuma-status-dot {
+  animation: kumaPulse 2s infinite;
+}
+
+@keyframes kumaPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--kuma-pulse-rgb), 0.45);
+  }
+
+  70% {
+    box-shadow: 0 0 0 11px rgba(var(--kuma-pulse-rgb), 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+@media (max-width: 780px) {
+  .kuma-status-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .kuma-status-metrics {
+    grid-template-columns: 1fr;
+  }
+}
+
 .homelab-snapshot {
   --homelab-accent: #0f6a8f;
   --homelab-accent-soft: rgba(15, 106, 143, 0.14);

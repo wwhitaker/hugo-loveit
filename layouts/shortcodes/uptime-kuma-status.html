@@ -1,0 +1,44 @@
+{{- $apiPath := .Get "apiPath" | default "/api/kuma-status" -}}
+{{- $statusURL := .Get "statusUrl" | default "https://status.defingo.net/" -}}
+{{- $title := .Get "title" | default "Service Health" -}}
+
+<section
+  class="kuma-status-card is-loading"
+  aria-label="Service health"
+  data-kuma-card
+  data-kuma-api="{{ $apiPath }}"
+  data-kuma-url="{{ $statusURL }}"
+>
+  <header class="kuma-status-header">
+    <h2>{{ $title }}</h2>
+    <p class="kuma-status-meta" data-kuma-meta>Checking current status...</p>
+  </header>
+
+  <div class="kuma-status-overview">
+    <span class="kuma-status-dot" data-kuma-dot aria-hidden="true"></span>
+    <p class="kuma-status-label" data-kuma-label>Loading service status</p>
+  </div>
+
+  <div class="kuma-status-metrics" aria-live="polite">
+    <article class="kuma-status-metric">
+      <p class="kuma-status-kicker">Up</p>
+      <p class="kuma-status-value" data-kuma-up>--</p>
+    </article>
+    <article class="kuma-status-metric">
+      <p class="kuma-status-kicker">Down</p>
+      <p class="kuma-status-value" data-kuma-down>--</p>
+    </article>
+    <article class="kuma-status-metric">
+      <p class="kuma-status-kicker">Avg Uptime</p>
+      <p class="kuma-status-value" data-kuma-uptime>--</p>
+    </article>
+  </div>
+
+  <footer class="kuma-status-footer">
+    <a href="{{ $statusURL }}" target="_blank" rel="noopener noreferrer" data-kuma-link>
+      View full status
+    </a>
+  </footer>
+</section>
+
+<script defer src="/js/uptime-kuma-status.js"></script>

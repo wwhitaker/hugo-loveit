@@ -14,6 +14,11 @@
 [context.branch-deploy]
   command = "hugo --gc --minify && npx -y pagefind --site public"
 
+[[redirects]]
+  from = "/api/kuma-status"
+  to = "/.netlify/functions/kuma-status"
+  status = 200
+
 # Security headers applied to every response
 [[headers]]
   for = "/*"
