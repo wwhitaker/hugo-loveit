@@ -18,24 +18,6 @@ tertiary_label="Read Posts"
 tertiary_url="/posts/"
 >}}
 
-<!-- {{< home-focus-grid >}}
-{{< home-focus-card
-icon="fas fa-network-wired"
-title="Network Operations"
-description="Campus and edge networking work shaped around uptime, observability, and clear operational ownership."
->}}
-{{< home-focus-card
-icon="fas fa-shield-alt"
-title="Security and Resilience"
-description="Practical hardening, DNS and policy controls, and service design that reduce surprises in production."
->}}
-{{< home-focus-card
-icon="fas fa-code-branch"
-title="Automation and Tooling"
-description="Small software and integration work that makes infrastructure easier to operate, monitor, and explain."
->}}
-{{< /home-focus-grid >}} -->
-
 {{< uptime-kuma-status title="Service Health" apiPath="/api/kuma-status" >}}
 
 {{< homelab-snapshot >}}

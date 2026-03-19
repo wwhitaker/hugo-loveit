@@ -9,7 +9,7 @@ current_focus = "Splitting IoT DNS policy from family-safe profile"
 name = "UniFi"
 label = "Gateway and Wi-Fi"
 mark = "/images/platforms/unifi-mark.svg"
-url = "/posts/secondary-wan/"
+url = "/posts/unifi-overview/"
 
 [[platforms]]
 name = "Cloudflare"
