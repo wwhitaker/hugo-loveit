@@ -63,7 +63,19 @@
 }
 
 .kuma-status-header h2 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
   margin: 0;
+}
+
+.kuma-status-title-icon {
+  color: #2d96bd;
+  font-size: 0.92em;
+}
+
+[theme=dark] .kuma-status-title-icon {
+  color: #55bde2;
 }
 
 .kuma-status-meta {

@@ -13,5 +13,3 @@ It seems fitting, seeing how I have spent so much time building and supporting s
 ---
 
 {{< uptime-kuma-status title="Service Health" apiPath="/api/kuma-status" >}}
-
-<!-- {{< homelab-snapshot >}} -->

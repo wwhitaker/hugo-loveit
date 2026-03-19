@@ -76,8 +76,18 @@ function calculateSummary(heartbeatPayload) {
     .map((value) => Number(value))
     .filter((value) => Number.isFinite(value));
 
-  const avgUptime = uptimes.length
-    ? Math.round((uptimes.reduce((sum, value) => sum + value, 0) / uptimes.length) * 100) / 100
+  const uptimePercentages = uptimes.map((value) => {
+    // Uptime Kuma can return uptime as ratio (1 = 100%) or already as percent.
+    if (value >= 0 && value <= 1) {
+      return value * 100;
+    }
+    return value;
+  });
+
+  const avgUptime = uptimePercentages.length
+    ? Math.round(
+      (uptimePercentages.reduce((sum, value) => sum + value, 0) / uptimePercentages.length) * 100
+    ) / 100
     : null;
 
   const total = monitorIds.length;
