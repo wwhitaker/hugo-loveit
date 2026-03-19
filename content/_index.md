@@ -18,7 +18,7 @@ tertiary_label="Read Posts"
 tertiary_url="/posts/"
 >}}
 
-{{< home-focus-grid >}}
+<!-- {{< home-focus-grid >}}
 {{< home-focus-card
 icon="fas fa-network-wired"
 title="Network Operations"
@@ -34,21 +34,10 @@ icon="fas fa-code-branch"
 title="Automation and Tooling"
 description="Small software and integration work that makes infrastructure easier to operate, monitor, and explain."
 >}}
-{{< /home-focus-grid >}}
+{{< /home-focus-grid >}} -->
 
-{{< home-dashboard
-title="Live signals from the systems I run"
-summary="A compact view of service health, current platform stack, and recent development activity across the environments I maintain."
->}}
-	{{< home-dashboard-panel class="home-dashboard-panel-status" >}}
-		{{< uptime-kuma-status title="Service Health" apiPath="/api/kuma-status" >}}
-	{{< /home-dashboard-panel >}}
+{{< uptime-kuma-status title="Service Health" apiPath="/api/kuma-status" >}}
 
-	{{< home-dashboard-panel class="home-dashboard-panel-homelab" >}}
-		{{< homelab-snapshot >}}
-	{{< /home-dashboard-panel >}}
+{{< homelab-snapshot >}}
 
-	{{< home-dashboard-panel class="home-dashboard-panel-github" >}}
-		{{< github-contrib-calendar >}}
-	{{< /home-dashboard-panel >}}
-{{< /home-dashboard >}}
+{{< github-contrib-calendar >}}
