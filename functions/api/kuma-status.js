@@ -52,6 +52,25 @@ async function fetchJson(url, headers) {
   }
 }
 
+function getLatestHeartbeat(entries) {
+  if (!Array.isArray(entries) || entries.length === 0) {
+    return null;
+  }
+
+  let latest = entries[entries.length - 1];
+  let latestTime = Date.parse(latest?.time || '');
+
+  for (const entry of entries) {
+    const parsed = Date.parse(entry?.time || '');
+    if (Number.isFinite(parsed) && (!Number.isFinite(latestTime) || parsed > latestTime)) {
+      latest = entry;
+      latestTime = parsed;
+    }
+  }
+
+  return latest;
+}
+
 function calculateSummary(heartbeatPayload) {
   const heartbeatList = heartbeatPayload?.heartbeatList ?? {};
   const uptimeList = heartbeatPayload?.uptimeList ?? {};
@@ -67,7 +86,14 @@ function calculateSummary(heartbeatPayload) {
       degraded += 1;
       continue;
     }
-    const status = Number(entries[0].status);
+
+    const latest = getLatestHeartbeat(entries);
+    if (!latest) {
+      degraded += 1;
+      continue;
+    }
+
+    const status = Number(latest.status);
     if (status === STATUS_UP) up += 1;
     else if (status === STATUS_DOWN) down += 1;
     else degraded += 1;
