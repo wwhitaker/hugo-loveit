@@ -9,31 +9,37 @@ current_focus = "Splitting IoT DNS policy from family-safe profile"
 name = "UniFi"
 label = "Gateway and Wi-Fi"
 mark = "/images/platforms/unifi-mark.svg"
+url = "/posts/secondary-wan/"
 
 [[platforms]]
 name = "Cloudflare"
 label = "DNS and edge"
 mark = "/images/platforms/cloudflare-mark.svg"
+url = "/posts/www-or-not/"
 
 [[platforms]]
 name = "Proxmox"
 label = "Virtualization"
 mark = "/images/platforms/proxmox-mark.svg"
+url = "/posts/homelab-update/"
 
 [[platforms]]
 name = "Ubuntu"
 label = "Linux services"
 mark = "/images/platforms/ubuntu-mark.svg"
+url = "/posts/homelab-update/"
 
 [[platforms]]
 name = "Docker"
 label = "Containers"
 mark = "/images/platforms/docker-mark.svg"
+url = "/posts/speedtest-to-influxdb-v2/"
 
 [[platforms]]
 name = "Synology"
 label = "Storage and backups"
 mark = "/images/platforms/synology-mark.svg"
+url = "/posts/homelab-dns-domain/"
 
 [[links]]
 label = "Projects"

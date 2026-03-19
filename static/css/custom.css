@@ -1436,11 +1436,44 @@
   display: flex;
   align-items: center;
   gap: 0.6rem;
+  transition: transform var(--motion-fast), border-color var(--motion-fast), box-shadow var(--motion-fast), background var(--motion-fast);
 }
 
 [theme=dark] .homelab-platform-card {
   background: rgba(16, 22, 29, 0.72);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.homelab-platform-card-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.homelab-platform-card-link:hover,
+.homelab-platform-card-link:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(45, 150, 189, 0.3);
+  background: linear-gradient(180deg, rgba(45, 150, 189, 0.1), rgba(255, 255, 255, 0.74));
+  box-shadow: 0 12px 24px -20px rgba(13, 40, 62, 0.32), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+[theme=dark] .homelab-platform-card-link:hover,
+[theme=dark] .homelab-platform-card-link:focus-visible {
+  border-color: rgba(85, 189, 226, 0.3);
+  background: linear-gradient(180deg, rgba(85, 189, 226, 0.12), rgba(16, 22, 29, 0.72));
+  box-shadow: 0 14px 28px -22px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.homelab-platform-card-link:hover .homelab-platform-mark,
+.homelab-platform-card-link:focus-visible .homelab-platform-mark {
+  border-color: rgba(45, 150, 189, 0.24);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+[theme=dark] .homelab-platform-card-link:hover .homelab-platform-mark,
+[theme=dark] .homelab-platform-card-link:focus-visible .homelab-platform-mark {
+  border-color: rgba(85, 189, 226, 0.24);
+  background: rgba(18, 26, 34, 0.86);
 }
 
 .homelab-platform-mark {

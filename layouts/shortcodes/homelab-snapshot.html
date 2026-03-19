@@ -14,17 +14,34 @@
   {{- with $snap.platforms -}}
     <div class="homelab-platforms" aria-label="Homelab platforms">
       {{- range . -}}
-        <article class="homelab-platform-card">
-          <div class="homelab-platform-mark" aria-hidden="true">
-            {{- with .mark -}}
-              <img class="homelab-platform-mark-image" src="{{ . }}" alt="">
-            {{- end -}}
-          </div>
-          <div class="homelab-platform-copy">
-            <p class="homelab-platform-name">{{ .name }}</p>
-            <p class="homelab-platform-label">{{ .label }}</p>
-          </div>
-        </article>
+        {{- $name := .name -}}
+        {{- $label := .label -}}
+        {{- $mark := .mark -}}
+        {{- with .url -}}
+          <a class="homelab-platform-card homelab-platform-card-link" href="{{ . }}" aria-label="View related page for {{ $name }}">
+            <div class="homelab-platform-mark" aria-hidden="true">
+              {{- with $mark -}}
+                <img class="homelab-platform-mark-image" src="{{ . }}" alt="">
+              {{- end -}}
+            </div>
+            <div class="homelab-platform-copy">
+              <p class="homelab-platform-name">{{ $name }}</p>
+              <p class="homelab-platform-label">{{ $label }}</p>
+            </div>
+          </a>
+        {{- else -}}
+          <article class="homelab-platform-card">
+            <div class="homelab-platform-mark" aria-hidden="true">
+              {{- with $mark -}}
+                <img class="homelab-platform-mark-image" src="{{ . }}" alt="">
+              {{- end -}}
+            </div>
+            <div class="homelab-platform-copy">
+              <p class="homelab-platform-name">{{ $name }}</p>
+              <p class="homelab-platform-label">{{ $label }}</p>
+            </div>
+          </article>
+        {{- end -}}
       {{- end -}}
     </div>
   {{- end -}}
