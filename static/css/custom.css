@@ -240,6 +240,85 @@
   border-color: rgba(85, 189, 226, 0.25);
 }
 
+.home-dashboard {
+  margin: 1.2rem 0 2rem;
+  padding: 0.95rem;
+  border: var(--surface-border);
+  border-radius: calc(var(--surface-radius-lg) + 2px);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(77, 139, 214, 0.12), transparent 40%),
+    radial-gradient(circle at 0% 100%, rgba(33, 140, 108, 0.1), transparent 46%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 18%),
+    var(--global-background-color);
+  box-shadow: var(--surface-shadow-soft);
+}
+
+[theme=dark] .home-dashboard {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(57, 106, 161, 0.28), transparent 42%),
+    radial-gradient(circle at 0% 100%, rgba(32, 91, 72, 0.24), transparent 48%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0) 18%),
+    #161c22;
+}
+
+.home-dashboard-header {
+  margin-bottom: 0.75rem;
+}
+
+.home-dashboard-kicker {
+  margin: 0;
+  color: var(--home-accent);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.home-dashboard-header h2 {
+  margin: 0.2rem 0 0;
+  max-width: 18ch;
+  letter-spacing: -0.03em;
+  font-size: clamp(1.5rem, 2.7vw, 2rem);
+  line-height: 1.08;
+}
+
+.home-dashboard-summary {
+  margin: 0.32rem 0 0;
+  max-width: 42rem;
+  color: var(--global-font-secondary-color);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+.home-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.7rem;
+}
+
+.home-dashboard-panel {
+  min-width: 0;
+}
+
+.home-dashboard-panel-status,
+.home-dashboard-panel-homelab,
+.home-dashboard-panel-github {
+  grid-column: auto;
+}
+
+.home-dashboard-panel > .kuma-status-card,
+.home-dashboard-panel > .github-contrib-calendar,
+.home-dashboard-panel > .homelab-snapshot {
+  margin: 0;
+  height: 100%;
+}
+
+.home-dashboard-panel > .github-contrib-calendar,
+.home-dashboard-panel > .homelab-snapshot,
+.home-dashboard-panel > .kuma-status-card {
+  min-height: 100%;
+}
+
 .home-profile .links {
   display: flex;
   flex-wrap: wrap;
@@ -678,6 +757,9 @@
 @media (prefers-reduced-motion: reduce) {
   .home-action,
   .home-focus-card,
+  .home-dashboard-panel > .kuma-status-card,
+  .home-dashboard-panel > .github-contrib-calendar,
+  .home-dashboard-panel > .homelab-snapshot,
   .home-profile .links a,
   .project-card,
   .project-card-links a,
@@ -710,29 +792,209 @@
 }
 
 .github-contrib-calendar {
-  margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
+  margin: 0 0 2rem;
+  padding: 1.05rem 1.05rem 1.15rem;
+  border: var(--surface-border);
+  border-radius: var(--surface-radius-lg);
+  background:
+    radial-gradient(circle at 92% 8%, rgba(45, 150, 189, 0.18), transparent 34%),
+    radial-gradient(circle at 0% 100%, rgba(25, 92, 154, 0.16), transparent 40%),
+    linear-gradient(155deg, rgba(20, 109, 120, 0.1), rgba(22, 141, 94, 0.06) 42%, transparent 100%),
+    var(--global-background-color);
+  box-shadow: var(--surface-shadow-soft);
 }
 
-.github-contrib-calendar h2 {
-  margin-bottom: 0.75rem;
+[theme=dark] .github-contrib-calendar {
+  background:
+    radial-gradient(circle at 92% 8%, rgba(85, 189, 226, 0.22), transparent 36%),
+    radial-gradient(circle at 0% 100%, rgba(31, 73, 118, 0.3), transparent 43%),
+    linear-gradient(155deg, rgba(24, 58, 73, 0.46), rgba(16, 78, 56, 0.3) 42%, transparent 100%),
+    var(--global-background-color);
+}
+
+.github-contrib-calendar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 36%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 28%);
+  pointer-events: none;
+}
+
+[theme=dark] .github-contrib-calendar::before {
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0) 36%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 28%);
+}
+
+.github-contrib-calendar > * {
+  position: relative;
+  z-index: 1;
+}
+
+.dashboard-card-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.dashboard-card-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  margin: 0;
+}
+
+.dashboard-card-meta {
+  margin: 0;
+  color: var(--global-font-secondary-color);
+  font-size: 0.9rem;
+}
+
+.github-contrib-calendar-header {
+  margin-bottom: 0.55rem;
+}
+
+.github-contrib-calendar-title-icon {
+  color: var(--home-accent);
+  font-size: 0.98em;
+}
+
+.github-contrib-calendar-summary {
+  margin: 0 0 0.9rem;
+  max-width: 34rem;
+  color: var(--global-font-secondary-color);
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
 .github-contrib-calendar .calendar-link {
-  display: inline-block;
+  display: block;
   width: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.github-contrib-calendar-frame {
+  padding: 0.9rem 0.95rem 1rem;
+  border: 1px solid rgba(45, 150, 189, 0.14);
+  border-radius: calc(var(--surface-radius-md) + 2px);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
   overflow-x: auto;
+}
+
+[theme=dark] .github-contrib-calendar-frame {
+  border-color: rgba(85, 189, 226, 0.16);
+  background: rgba(15, 21, 28, 0.4);
+}
+
+.github-contrib-calendar-caption {
+  margin: 0 0 0.8rem;
+  color: var(--global-font-secondary-color);
+  font-size: 0.92rem;
+  line-height: 1.55;
 }
 
 .github-contrib-calendar img {
   display: block;
   width: 100%;
-  max-width: 760px;
+  min-width: 680px;
+  max-width: 740px;
   height: auto;
-  border-radius: 6px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 14px 24px -20px rgba(13, 40, 62, 0.32);
 }
 
 .github-contrib-calendar .calendar-image-dark {
   display: none;
+}
+
+.github-contrib-calendar-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+}
+
+.github-contrib-calendar-handle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.48rem 0.72rem;
+  border: 1px solid rgba(45, 150, 189, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.46);
+  color: var(--global-font-color);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+[theme=dark] .github-contrib-calendar-handle {
+  border-color: rgba(85, 189, 226, 0.16);
+  background: rgba(15, 21, 28, 0.4);
+}
+
+.github-contrib-calendar-profile-link {
+  color: var(--home-accent);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.github-contrib-calendar-profile-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 780px) {
+  .home-dashboard {
+    padding: 0.88rem;
+  }
+
+  .home-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-dashboard-panel-status,
+  .home-dashboard-panel-homelab,
+  .home-dashboard-panel-github {
+    grid-column: auto;
+  }
+
+  .dashboard-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .github-contrib-calendar-header {
+    margin-bottom: 0.45rem;
+  }
+
+  .github-contrib-calendar-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .github-contrib-calendar {
+    padding: 0.95rem;
+  }
+
+  .github-contrib-calendar-frame {
+    padding: 0.8rem 0.8rem 0.9rem;
+  }
+
+  .github-contrib-calendar img {
+    min-width: 560px;
+  }
 }
 
 .kuma-status-card {
@@ -785,21 +1047,6 @@
   z-index: 1;
 }
 
-.kuma-status-header {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.8rem;
-  margin-bottom: 0.8rem;
-}
-
-.kuma-status-header h2 {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.42rem;
-  margin: 0;
-}
-
 .kuma-status-title-icon {
   color: #2d96bd;
   font-size: 0.92em;
@@ -807,12 +1054,6 @@
 
 [theme=dark] .kuma-status-title-icon {
   color: #55bde2;
-}
-
-.kuma-status-meta {
-  margin: 0;
-  color: var(--global-font-secondary-color);
-  font-size: 0.9rem;
 }
 
 .kuma-status-hero {
@@ -1093,11 +1334,6 @@
 }
 
 @media (max-width: 780px) {
-  .kuma-status-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
   .kuma-status-hero {
     grid-template-columns: 1fr;
   }
@@ -1121,13 +1357,16 @@
   --homelab-accent: #0f6a8f;
   --homelab-accent-soft: rgba(15, 106, 143, 0.14);
   --homelab-glow: rgba(12, 80, 108, 0.25);
-  margin: 1.8rem 0 2.2rem;
-  padding: 1rem 1rem 1.1rem;
+  position: relative;
+  overflow: hidden;
+  margin: 0 0 2.2rem;
+  padding: 1.05rem 1.05rem 1.15rem;
   border: var(--surface-border);
   border-radius: var(--surface-radius-lg);
   background:
-    radial-gradient(circle at 0% 0%, rgba(76, 170, 217, 0.16), transparent 45%),
-    linear-gradient(165deg, rgba(22, 119, 158, 0.08), rgba(40, 164, 128, 0.05) 45%, transparent 100%),
+    radial-gradient(circle at 92% 8%, rgba(76, 170, 217, 0.18), transparent 36%),
+    radial-gradient(circle at 0% 100%, rgba(28, 92, 154, 0.16), transparent 42%),
+    linear-gradient(155deg, rgba(22, 119, 158, 0.1), rgba(40, 164, 128, 0.06) 45%, transparent 100%),
     var(--global-background-color);
   box-shadow: var(--surface-shadow-soft);
 }
@@ -1137,66 +1376,126 @@
   --homelab-accent-soft: rgba(115, 178, 207, 0.2);
   --homelab-glow: rgba(0, 0, 0, 0.4);
   background:
-    radial-gradient(circle at 0% 0%, rgba(71, 132, 160, 0.28), transparent 45%),
-    linear-gradient(165deg, rgba(46, 88, 109, 0.45), rgba(32, 79, 71, 0.28) 45%, transparent 100%),
+    radial-gradient(circle at 92% 8%, rgba(71, 132, 160, 0.28), transparent 38%),
+    radial-gradient(circle at 0% 100%, rgba(31, 73, 118, 0.3), transparent 43%),
+    linear-gradient(155deg, rgba(46, 88, 109, 0.46), rgba(32, 79, 71, 0.28) 45%, transparent 100%),
     var(--global-background-color);
 }
 
+.homelab-snapshot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 36%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 28%);
+  pointer-events: none;
+}
+
+[theme=dark] .homelab-snapshot::before {
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0) 36%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 28%);
+}
+
+.homelab-snapshot > * {
+  position: relative;
+  z-index: 1;
+}
+
 .homelab-snapshot-header {
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.55rem;
 }
 
-.homelab-snapshot-header h2 {
-  margin: 0;
+.homelab-snapshot-title-icon {
+  color: var(--homelab-accent);
+  font-size: 0.94em;
 }
 
-.homelab-snapshot-updated {
-  margin: 0.2rem 0 0;
+.homelab-snapshot-summary {
+  margin: 0 0 0.9rem;
+  max-width: 34rem;
   color: var(--global-font-secondary-color);
-  font-size: 0.92rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-.homelab-snapshot-grid {
+.homelab-platforms {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.7rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.55rem;
   margin-bottom: 0.8rem;
 }
 
-.homelab-snapshot-card {
+.homelab-platform-card {
   border: var(--surface-border);
   border-radius: var(--surface-radius-md);
-  padding: 0.7rem 0.75rem 0.75rem;
-  background: var(--global-background-color);
+  padding: 0.62rem 0.68rem;
+  background: rgba(255, 255, 255, 0.74);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
-.homelab-snapshot-kicker {
+[theme=dark] .homelab-platform-card {
+  background: rgba(16, 22, 29, 0.72);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.homelab-platform-mark {
+  display: grid;
+  place-items: center;
+  width: 2.45rem;
+  height: 2.45rem;
+  border: 1px solid rgba(45, 150, 189, 0.12);
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.58);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+[theme=dark] .homelab-platform-mark {
+  border-color: rgba(85, 189, 226, 0.16);
+  background: rgba(16, 22, 29, 0.74);
+}
+
+.homelab-platform-mark-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.homelab-platform-copy {
+  min-width: 0;
+}
+
+.homelab-platform-name {
   margin: 0;
-  font-size: 0.76rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--global-font-secondary-color);
-}
-
-.homelab-snapshot-value {
-  margin: 0.15rem 0 0;
-  font-size: 1.58rem;
+  color: var(--global-font-color);
+  font-size: 0.94rem;
   font-weight: 700;
-  line-height: 1.15;
-  color: var(--homelab-accent);
+  line-height: 1.2;
 }
 
-.homelab-snapshot-value span {
-  font-size: 0.92rem;
+.homelab-platform-label {
+  margin: 0.16rem 0 0;
+  font-size: 0.82rem;
   color: var(--global-font-secondary-color);
-  font-weight: 500;
+  line-height: 1.35;
 }
 
 .homelab-snapshot-details {
-  border: var(--surface-border);
+  border: 1px solid rgba(45, 150, 189, 0.14);
   border-radius: var(--surface-radius-md);
   padding: 0.75rem 0.8rem;
-  background: var(--global-background-color);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+[theme=dark] .homelab-snapshot-details {
+  border-color: rgba(85, 189, 226, 0.16);
+  background: rgba(15, 21, 28, 0.4);
 }
 
 .homelab-snapshot-details p {
@@ -1218,12 +1517,17 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  border: 1px solid var(--global-border-color);
+  border: 1px solid rgba(45, 150, 189, 0.14);
   border-radius: 999px;
-  padding: 0.3rem 0.65rem;
+  padding: 0.38rem 0.72rem;
   color: var(--global-font-color);
   text-decoration: none;
-  background: var(--global-background-color);
+  background: rgba(255, 255, 255, 0.46);
+}
+
+[theme=dark] .homelab-snapshot-links a {
+  border-color: rgba(85, 189, 226, 0.16);
+  background: rgba(15, 21, 28, 0.4);
 }
 
 .homelab-snapshot-links a:hover {
@@ -1233,12 +1537,18 @@
 }
 
 @media (max-width: 780px) {
-  .homelab-snapshot-grid {
-    grid-template-columns: 1fr;
+  .homelab-platforms {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .homelab-snapshot {
-    padding: 0.9rem;
+    padding: 0.95rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .homelab-platforms {
+    grid-template-columns: 1fr;
   }
 }
 

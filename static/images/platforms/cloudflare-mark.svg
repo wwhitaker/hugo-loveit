@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-labelledby="title desc">
+  <title id="title">Cloudflare platform mark</title>
+  <desc id="desc">Original SVG badge representing Cloudflare edge services.</desc>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff4ea"/>
+      <stop offset="100%" stop-color="#ffe3c7"/>
+    </linearGradient>
+  </defs>
+  <rect width="96" height="96" rx="22" fill="url(#g)"/>
+  <path d="M26 58c1-9 8-16 17-16 7 0 13 4 16 10 1-1 3-1 5-1 6 0 10 4 11 10H26z" fill="#f38020"/>
+  <path d="M32 62c1-5 5-8 10-8 4 0 7 2 9 5 1 0 2-1 3-1 4 0 7 2 8 4H32z" fill="#faad3f"/>
+  <text x="48" y="81" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" letter-spacing="1.1" fill="#b25a08">CLOUDFLARE</text>
+</svg>

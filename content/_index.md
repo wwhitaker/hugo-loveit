@@ -36,6 +36,19 @@ description="Small software and integration work that makes infrastructure easie
 >}}
 {{< /home-focus-grid >}}
 
-{{< uptime-kuma-status title="Service Health" apiPath="/api/kuma-status" >}}
+{{< home-dashboard
+title="Live signals from the systems I run"
+summary="A compact view of service health, current platform stack, and recent development activity across the environments I maintain."
+>}}
+	{{< home-dashboard-panel class="home-dashboard-panel-status" >}}
+		{{< uptime-kuma-status title="Service Health" apiPath="/api/kuma-status" >}}
+	{{< /home-dashboard-panel >}}
 
-{{< github-contrib-calendar >}}
+	{{< home-dashboard-panel class="home-dashboard-panel-homelab" >}}
+		{{< homelab-snapshot >}}
+	{{< /home-dashboard-panel >}}
+
+	{{< home-dashboard-panel class="home-dashboard-panel-github" >}}
+		{{< github-contrib-calendar >}}
+	{{< /home-dashboard-panel >}}
+{{< /home-dashboard >}}

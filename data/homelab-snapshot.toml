@@ -1,11 +1,39 @@
 title = "Homelab Snapshot"
 last_updated = "Mar 18, 2026"
-services_running = 18
-services_total = 19
-uptime_days = 43
+role_summary = "Network, virtualization, containers, and storage across the core homelab stack."
 latest_deployment = "CoreDNS policy update to primary resolver"
 last_incident = "Short AP reboot loop, resolved in 12 minutes"
 current_focus = "Splitting IoT DNS policy from family-safe profile"
+
+[[platforms]]
+name = "UniFi"
+label = "Gateway and Wi-Fi"
+mark = "/images/platforms/unifi-mark.svg"
+
+[[platforms]]
+name = "Cloudflare"
+label = "DNS and edge"
+mark = "/images/platforms/cloudflare-mark.svg"
+
+[[platforms]]
+name = "Proxmox"
+label = "Virtualization"
+mark = "/images/platforms/proxmox-mark.svg"
+
+[[platforms]]
+name = "Ubuntu"
+label = "Linux services"
+mark = "/images/platforms/ubuntu-mark.svg"
+
+[[platforms]]
+name = "Docker"
+label = "Containers"
+mark = "/images/platforms/docker-mark.svg"
+
+[[platforms]]
+name = "Synology"
+label = "Storage and backups"
+mark = "/images/platforms/synology-mark.svg"
 
 [[links]]
 label = "Projects"

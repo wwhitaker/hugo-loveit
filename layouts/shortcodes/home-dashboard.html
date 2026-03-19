@@ -1,0 +1,14 @@
+{{- $title := .Get "title" | default "Live signals from the systems I run" -}}
+{{- $summary := .Get "summary" | default "A compact view of service health, current platform stack, and recent development activity across the environments I maintain." -}}
+
+<section class="home-dashboard" aria-labelledby="home-dashboard-title">
+  <div class="home-dashboard-header">
+    <p class="home-dashboard-kicker">Operations Dashboard</p>
+    <h2 id="home-dashboard-title">{{ $title }}</h2>
+    <p class="home-dashboard-summary">{{ $summary }}</p>
+  </div>
+
+  <div class="home-dashboard-grid">
+    {{ .Inner }}
+  </div>
+</section>

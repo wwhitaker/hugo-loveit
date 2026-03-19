@@ -1,22 +1,44 @@
 {{- $user := .Get "user" | default .Site.Params.social.GitHub -}}
 {{- if $user -}}
-<div class="github-contrib-calendar">
-  <h2>GitHub Contributions</h2>
+<section class="github-contrib-calendar" aria-label="GitHub contributions">
+  <header class="github-contrib-calendar-header dashboard-card-header">
+    <h2 class="dashboard-card-title">
+      <i class="fab fa-github github-contrib-calendar-title-icon" aria-hidden="true"></i>
+      <span>GitHub Contributions</span>
+    </h2>
+    <p class="github-contrib-calendar-meta dashboard-card-meta">Past 12 months</p>
+  </header>
+
+  <p class="github-contrib-calendar-summary">A year-at-a-glance view of active coding, maintenance work, and repository activity.</p>
+
   <a class="calendar-link" href="https://github.com/{{ $user }}" target="_blank" rel="noopener noreferrer" aria-label="View {{ $user }} on GitHub">
-    <img
-      class="calendar-image calendar-image-light"
-      src="https://ghchart.rshah.org/2da44e/{{ $user }}"
-      alt="GitHub contributions calendar for {{ $user }}"
-      loading="lazy"
-      decoding="async"
-    >
-    <img
-      class="calendar-image calendar-image-dark"
-      src="https://ghchart.rshah.org/39d353/{{ $user }}"
-      alt="GitHub contributions calendar for {{ $user }}"
-      loading="lazy"
-      decoding="async"
-    >
+    <div class="github-contrib-calendar-frame">
+      <p class="github-contrib-calendar-caption">Tap through for repositories, commit history, and contribution details.</p>
+      <img
+        class="calendar-image calendar-image-light"
+        src="https://ghchart.rshah.org/2da44e/{{ $user }}"
+        alt="GitHub contributions calendar for {{ $user }}"
+        loading="lazy"
+        decoding="async"
+      >
+      <img
+        class="calendar-image calendar-image-dark"
+        src="https://ghchart.rshah.org/39d353/{{ $user }}"
+        alt="GitHub contributions calendar for {{ $user }}"
+        loading="lazy"
+        decoding="async"
+      >
+    </div>
   </a>
-</div>
+
+  <footer class="github-contrib-calendar-footer">
+    <span class="github-contrib-calendar-handle">
+      <i class="fab fa-github" aria-hidden="true"></i>
+      <span>@{{ $user }}</span>
+    </span>
+    <a class="github-contrib-calendar-profile-link" href="https://github.com/{{ $user }}" target="_blank" rel="noopener noreferrer">
+      View profile
+    </a>
+  </footer>
+</section>
 {{- end -}}

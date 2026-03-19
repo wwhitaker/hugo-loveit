@@ -1,21 +1,33 @@
 {{- $snap := index .Site.Data "homelab-snapshot" -}}
 {{- if $snap -}}
 <section class="homelab-snapshot" aria-label="Homelab snapshot">
-  <header class="homelab-snapshot-header">
-    <h2>{{ $snap.title | default "Homelab Snapshot" }}</h2>
-    <p class="homelab-snapshot-updated">Last updated: {{ $snap.last_updated }}</p>
+  <header class="homelab-snapshot-header dashboard-card-header">
+    <h2 class="dashboard-card-title">
+      <i class="fas fa-network-wired homelab-snapshot-title-icon" aria-hidden="true"></i>
+      <span>{{ $snap.title | default "Homelab Snapshot" }}</span>
+    </h2>
+    <p class="homelab-snapshot-updated dashboard-card-meta">Last updated: {{ $snap.last_updated }}</p>
   </header>
 
-  <div class="homelab-snapshot-grid">
-    <article class="homelab-snapshot-card">
-      <p class="homelab-snapshot-kicker">Services Running</p>
-      <p class="homelab-snapshot-value">{{ $snap.services_running }} <span>/ {{ $snap.services_total }}</span></p>
-    </article>
-    <article class="homelab-snapshot-card">
-      <p class="homelab-snapshot-kicker">Uptime Streak</p>
-      <p class="homelab-snapshot-value">{{ $snap.uptime_days }} <span>days</span></p>
-    </article>
-  </div>
+  <p class="homelab-snapshot-summary">{{ $snap.role_summary | default "A concise view of the services, incidents, and platform work currently shaping the lab." }}</p>
+
+  {{- with $snap.platforms -}}
+    <div class="homelab-platforms" aria-label="Homelab platforms">
+      {{- range . -}}
+        <article class="homelab-platform-card">
+          <div class="homelab-platform-mark" aria-hidden="true">
+            {{- with .mark -}}
+              <img class="homelab-platform-mark-image" src="{{ . }}" alt="">
+            {{- end -}}
+          </div>
+          <div class="homelab-platform-copy">
+            <p class="homelab-platform-name">{{ .name }}</p>
+            <p class="homelab-platform-label">{{ .label }}</p>
+          </div>
+        </article>
+      {{- end -}}
+    </div>
+  {{- end -}}
 
   <div class="homelab-snapshot-details">
     <p><strong>Latest deployment:</strong> {{ $snap.latest_deployment }}</p>
