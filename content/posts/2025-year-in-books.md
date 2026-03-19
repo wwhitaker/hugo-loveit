@@ -7,12 +7,10 @@ categories = ['Personal']
 
 [timeline]
 enable = true
-lane = "home"
-kind = "build"
+kind = "read"
 impact = 3
 summary = "Captured a year of reading, what stuck, and how those ideas changed my technical decisions."
 outcome = "Shipped"
-filters = ["homelab", "lessons"]
 +++
 
 ## Year in Books

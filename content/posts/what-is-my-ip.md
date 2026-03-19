@@ -4,7 +4,7 @@ description = 'simple project and google search rankings'
 date = '2026-02-19'
 draft = false
 tags = ['python', 'http', 'ipam', 'dns', 'web']
-categories = ['Technical']
+categories = ['Career', 'Technical']
 featuredImage = '/images/posts/what-is-my-ip.png'
 featuredImagePreview = '/images/posts/what-is-my-ip.png'
 +++

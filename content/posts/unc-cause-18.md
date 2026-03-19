@@ -4,7 +4,7 @@ description = 'Two talks and a couple days in Greenville'
 date = '2018-10-03T11:52:57-04:00'
 draft = false
 tags = ['conference', 'unc', 'dns', 'security', 'infoblox']
-categories = ['Technical']
+categories = ['Career', 'Technical']
 
 [timeline]
 enable = true

@@ -23,6 +23,16 @@
   {{- $impact := $timeline.impact | default 2 -}}
   {{- $outcome := $timeline.outcome | default "Noted" -}}
   {{- $filters := $timeline.filters | default (slice) -}}
+  {{- $category := "Uncategorized" -}}
+  {{- with .Params.categories -}}
+    {{- if gt (len .) 0 -}}
+      {{- $category = index . 0 -}}
+    {{- end -}}
+  {{- end -}}
+  {{- with $timeline.category -}}
+    {{- $category = . -}}
+  {{- end -}}
+  {{- $categorySlug := $category | urlize -}}
   {{- $url := .RelPermalink -}}
   {{- with $timeline.url -}}
     {{- $url = . -}}
@@ -36,6 +46,8 @@
       "title" $title
       "summary" $summary
       "outcome" $outcome
+        "category" $category
+        "category_slug" $categorySlug
       "filters" $filters
       "url" $url
   -}}
@@ -65,13 +77,17 @@
   {{- $entries = $dataEntries -}}
 {{- end -}}
 {{- $entries = sort $entries "event_date" "desc" -}}
-{{- $laneLabels := dict "career" "Career & Talks" "home" "Home & Lab" "personal" "Personal" -}}
-{{- $kindIcons := dict "talk" "fas fa-microphone" "build" "fas fa-wrench" "analysis" "fas fa-compass" "personal" "fas fa-heart" -}}
+{{- $kindIcons := dict "talk" "fas fa-microphone" "build" "fas fa-wrench" "analysis" "fas fa-compass" "personal" "fas fa-heart" "read" "fas fa-book-open" -}}
 {{- $years := slice -}}
+{{- $categories := slice -}}
 {{- range $entries -}}
   {{- $y := int (dateFormat "2006" .event_date) -}}
   {{- if not (in $years $y) -}}
     {{- $years = $years | append $y -}}
+  {{- end -}}
+  {{- $categoryName := .category | default (.lane | default "Uncategorized") -}}
+  {{- if not (in $categories $categoryName) -}}
+    {{- $categories = $categories | append $categoryName -}}
   {{- end -}}
 {{- end -}}
 {{- range .Site.Data.timeline.turning_points -}}
@@ -81,19 +97,21 @@
   {{- end -}}
 {{- end -}}
 {{- $years = sort $years "value" "desc" -}}
+{{- $categories = sort $categories "value" "asc" -}}
 
 <section class="timeline-shell" data-visual-timeline>
   <header class="timeline-header">
-    <p class="timeline-kicker">Work, lab, and life milestones</p>
+    <p class="timeline-kicker">Work, life, and homelab milestones</p>
     <h2 class="timeline-title">Visual Timeline</h2>
     <p class="timeline-subtitle">A quick scan of what I built, what I shared, and what I learned along the way.</p>
   </header>
 
   <div class="timeline-filter-row" role="group" aria-label="Timeline filters">
     <button class="timeline-filter active" type="button" data-filter="all">All</button>
-    <button class="timeline-filter" type="button" data-filter="career">Career</button>
-    <button class="timeline-filter" type="button" data-filter="home">Home & Lab</button>
-    <button class="timeline-filter" type="button" data-filter="personal">Personal</button>
+    {{- range $categories -}}
+      {{- $catSlug := . | urlize -}}
+      <button class="timeline-filter" type="button" data-filter="{{ $catSlug }}">{{ . }}</button>
+    {{- end -}}
     <button class="timeline-filter" type="button" data-filter="talks">Talks</button>
     <button class="timeline-filter" type="button" data-filter="dns">DNS</button>
     <button class="timeline-filter" type="button" data-filter="homelab">Homelab</button>
@@ -124,30 +142,43 @@
             {{- end -}}
           {{- end -}}
 
-          <div class="timeline-cards">
-            {{- range $entries -}}
-              {{- if eq (int (dateFormat "2006" .event_date)) $year -}}
-              {{- $baseFilters := .filters | default (slice) -}}
-              {{- $filterTags := delimit ($baseFilters | append .lane) "," -}}
-              {{- $impactClass := cond (ge .impact 3) "impact-major" (cond (eq .impact 2) "impact-medium" "impact-minor") -}}
-              <article class="timeline-card lane-{{ .lane }} {{ $impactClass }}" data-filters="{{ $filterTags }}">
-                <div class="timeline-card-meta">
-                  <span class="timeline-card-date">{{ .date_label }}</span>
-                  <span class="timeline-card-lane">{{ index $laneLabels .lane | default "Milestone" }}</span>
-                </div>
-                <h4 class="timeline-card-title">
-                  <i class="{{ index $kindIcons .kind | default "fas fa-circle" }}" aria-hidden="true"></i>
-                  {{ .title }}
-                </h4>
-                <p class="timeline-card-summary">{{ .summary }}</p>
-                <div class="timeline-card-footer">
-                  <span class="timeline-outcome">{{ .outcome }}</span>
-                  {{- with .url -}}
-                    <a href="{{ . }}" class="timeline-read-link">Read post</a>
+          <div class="timeline-swimlanes">
+            {{- range $categories -}}
+              {{- $categoryName := . -}}
+              {{- $categorySlug := . | urlize -}}
+              <section class="timeline-lane" data-category="{{ $categorySlug }}">
+                <h4 class="timeline-lane-heading">{{ $categoryName }}</h4>
+                <div class="timeline-lane-cards">
+                  {{- range $entries -}}
+                    {{- if eq (int (dateFormat "2006" .event_date)) $year -}}
+                      {{- $entryCategory := .category | default (.lane | default "Uncategorized") -}}
+                      {{- $entryCategorySlug := .category_slug | default ($entryCategory | urlize) -}}
+                      {{- if eq $entryCategorySlug $categorySlug -}}
+                        {{- $baseFilters := .filters | default (slice) -}}
+                        {{- $filterTags := delimit ($baseFilters | append $entryCategorySlug) "," -}}
+                        {{- $impactClass := cond (ge .impact 3) "impact-major" (cond (eq .impact 2) "impact-medium" "impact-minor") -}}
+                        <article class="timeline-card category-{{ $entryCategorySlug }} {{ $impactClass }}" data-filters="{{ $filterTags }}">
+                          <div class="timeline-card-meta">
+                            <span class="timeline-card-date">{{ .date_label }}</span>
+                            <span class="timeline-card-lane">{{ $entryCategory }}</span>
+                          </div>
+                          <h4 class="timeline-card-title">
+                            <i class="{{ index $kindIcons .kind | default "fas fa-circle" }}" aria-hidden="true"></i>
+                            {{ .title }}
+                          </h4>
+                          <p class="timeline-card-summary">{{ .summary }}</p>
+                          <div class="timeline-card-footer">
+                            <span class="timeline-outcome">{{ .outcome }}</span>
+                            {{- with .url -}}
+                              <a href="{{ . }}" class="timeline-read-link">Read post</a>
+                            {{- end -}}
+                          </div>
+                        </article>
+                      {{- end -}}
+                    {{- end -}}
                   {{- end -}}
                 </div>
-              </article>
-              {{- end -}}
+              </section>
             {{- end -}}
           </div>
         </section>
@@ -191,6 +222,16 @@
         group.removeAttribute('hidden');
       } else {
         group.setAttribute('hidden', 'hidden');
+      }
+    });
+
+    var lanes = shell.querySelectorAll('.timeline-lane');
+    lanes.forEach(function(lane) {
+      var visibleInLane = lane.querySelector('.timeline-card:not([hidden])');
+      if (visibleInLane) {
+        lane.removeAttribute('hidden');
+      } else {
+        lane.setAttribute('hidden', 'hidden');
       }
     });
   }

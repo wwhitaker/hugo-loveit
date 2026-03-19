@@ -4,7 +4,7 @@ description = '2023 Internet2 Technology Exchange (TechEX23)'
 date = '2023-09-22T11:52:57-04:00'
 draft = true
 tags = ['conference', 'unc']
-categories = ['Technical']
+categories = ['Career', 'Technical']
 +++
 
 September 17-22, 2023
