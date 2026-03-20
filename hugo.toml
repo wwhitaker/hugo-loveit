@@ -83,7 +83,7 @@ enableRobotsTXT = true
     [params.home.profile]
       enable = true
       avatarURL = "/images/avatar.png"
-      subtitle = "I manage networks and services"
+      subtitle = "I build and manage network services"
     
     [params.home.posts]
       enable = false

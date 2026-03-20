@@ -5,7 +5,9 @@ description = 'I am an information systems professional with broad background in
 
 ## Infrastructure that stays understandable
 
-I build and support networks, systems, and service operations with a focus on reliability, security, and practical automation. This site collects project work, field notes, and the operational details behind the environments I run.
+I build and support network services and systems with a focus on reliability, security, and
+practical automation. This site collects project work, notes, and the public operational
+details behind the environments I run.
 
 {{< home-name-origin >}}
 
