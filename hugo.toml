@@ -57,7 +57,8 @@ enableRobotsTXT = true
     weight = 5
   [[menu.main]]
     identifier = 'search'
-    name = 'Search'
+    name = ''
+    pre = '<i class="fas fa-search fa-fw" aria-hidden="true" title="Search"></i>'
     url = '/search/'
     weight = 6
 
