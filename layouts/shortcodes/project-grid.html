@@ -1,3 +1,42 @@
-<div class="project-grid">
-  {{ .Inner }}
-</div>
+<section class="project-showcase" aria-label="Project showcase">
+  <div class="project-filters" role="toolbar" aria-label="Filter projects by technology">
+    <button type="button" class="project-filter active" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" class="project-filter" data-filter="python" aria-pressed="false">Python</button>
+    <button type="button" class="project-filter" data-filter="akips" aria-pressed="false">AKiPS</button>
+    <button type="button" class="project-filter" data-filter="django" aria-pressed="false">Django</button>
+    <button type="button" class="project-filter" data-filter="influxdb" aria-pressed="false">InfluxDB</button>
+  </div>
+  <div class="project-grid">
+    {{ .Inner }}
+  </div>
+</section>
+
+<script>
+  (function () {
+    var showcase = document.currentScript.previousElementSibling;
+    if (!showcase || !showcase.classList.contains("project-showcase")) {
+      return;
+    }
+
+    var filters = showcase.querySelectorAll(".project-filter");
+    var cards = showcase.querySelectorAll(".project-card");
+
+    filters.forEach(function (button) {
+      button.addEventListener("click", function () {
+        var value = button.getAttribute("data-filter") || "all";
+
+        filters.forEach(function (item) {
+          var active = item === button;
+          item.classList.toggle("active", active);
+          item.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+
+        cards.forEach(function (card) {
+          var tech = (card.getAttribute("data-tech") || "").split(",");
+          var visible = value === "all" || tech.indexOf(value) !== -1;
+          card.classList.toggle("is-hidden", !visible);
+        });
+      });
+    });
+  })();
+</script>

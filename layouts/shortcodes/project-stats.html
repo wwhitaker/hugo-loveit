@@ -1,0 +1,11 @@
+<div class="project-stats" role="list" aria-label="Project highlights">
+  {{- with .Get "stat1_text" -}}
+    <p role="listitem"><strong>{{ $.Get "stat1_value" }}</strong> {{ . }}</p>
+  {{- end -}}
+  {{- with .Get "stat2_text" -}}
+    <p role="listitem"><strong>{{ $.Get "stat2_value" }}</strong> {{ . }}</p>
+  {{- end -}}
+  {{- with .Get "stat3_text" -}}
+    <p role="listitem"><strong>{{ $.Get "stat3_value" }}</strong> {{ . }}</p>
+  {{- end -}}
+</div>
