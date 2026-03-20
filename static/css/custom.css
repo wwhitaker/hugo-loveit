@@ -711,7 +711,8 @@
 .page.single.special .content table,
 .single.summary .content table {
   display: block;
-  width: 100%;
+  width: fit-content;
+  max-width: 100%;
   margin: 1.1rem 0 1.35rem;
   border: var(--surface-border);
   border-radius: var(--surface-radius-lg);
