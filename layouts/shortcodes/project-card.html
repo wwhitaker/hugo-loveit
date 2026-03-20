@@ -1,11 +1,34 @@
 {{- $tech := .Get "tech" | default "" -}}
 {{- $techFilter := lower (replace $tech ", " ",") -}}
-<article class="project-card{{ if eq (.Get "featured") "true" }} project-card-featured{{ end }}" data-tech="{{ $techFilter }}">
+{{- $featured := eq (.Get "featured") "true" -}}
+{{- $statusText := .Get "status" | default "Active" -}}
+{{- $statusKey := lower $statusText -}}
+{{- $statusIcon := "fas fa-circle" -}}
+{{- if eq $statusKey "active" -}}
+  {{- $statusIcon = "fas fa-check-circle" -}}
+{{- else if eq $statusKey "maintained" -}}
+  {{- $statusIcon = "fas fa-wrench" -}}
+{{- else if eq $statusKey "archived" -}}
+  {{- $statusIcon = "fas fa-archive" -}}
+{{- end -}}
+<article
+  class="project-card{{ if $featured }} project-card-featured{{ end }}"
+  data-tech="{{ $techFilter }}"
+  data-title="{{ lower (.Get "title") }}"
+  data-updated="{{ .Get "updated" | default "1970-01-01" }}"
+  data-featured="{{ if $featured }}1{{ else }}0{{ end }}"
+>
   {{- with .Get "eyebrow" -}}
     <p class="project-card-eyebrow">{{ . }}</p>
   {{- end -}}
   <div class="project-card-content">
-    <h3 class="project-card-title">{{ .Get "title" }}</h3>
+    <div class="project-card-head">
+      <h3 class="project-card-title">{{ .Get "title" }}</h3>
+      <span class="project-card-status project-status-{{ $statusKey }}">
+        <i class="project-card-status-icon {{ $statusIcon }}" aria-hidden="true"></i>
+        <span>{{ $statusText }}</span>
+      </span>
+    </div>
     {{- with .Get "image" -}}
       <div class="project-card-media">
         <img class="project-card-image" src="{{ . }}" alt="{{ $.Get "alt" | default ($.Get "title") }}" loading="lazy" decoding="async">

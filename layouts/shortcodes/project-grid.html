@@ -1,10 +1,21 @@
 <section class="project-showcase" aria-label="Project showcase">
-  <div class="project-filters" role="toolbar" aria-label="Filter projects by technology">
-    <button type="button" class="project-filter active" data-filter="all" aria-pressed="true">All</button>
-    <button type="button" class="project-filter" data-filter="python" aria-pressed="false">Python</button>
-    <button type="button" class="project-filter" data-filter="akips" aria-pressed="false">AKiPS</button>
-    <button type="button" class="project-filter" data-filter="django" aria-pressed="false">Django</button>
-    <button type="button" class="project-filter" data-filter="influxdb" aria-pressed="false">InfluxDB</button>
+  <div class="project-controls">
+    <div class="project-filters" role="toolbar" aria-label="Filter projects by technology">
+      <button type="button" class="project-filter active" data-filter="all" aria-pressed="true">All</button>
+      <button type="button" class="project-filter" data-filter="python" aria-pressed="false">Python</button>
+      <button type="button" class="project-filter" data-filter="akips" aria-pressed="false">AKiPS</button>
+      <button type="button" class="project-filter" data-filter="django" aria-pressed="false">Django</button>
+      <button type="button" class="project-filter" data-filter="influxdb" aria-pressed="false">InfluxDB</button>
+    </div>
+    <p class="project-count" aria-live="polite"></p>
+    <label class="project-sort-wrap" for="project-sort">
+      <span>Sort</span>
+      <select id="project-sort" class="project-sort">
+        <option value="featured">Featured</option>
+        <option value="updated">Recently Updated</option>
+        <option value="name">Name A-Z</option>
+      </select>
+    </label>
   </div>
   <div class="project-grid">
     {{ .Inner }}
@@ -18,12 +29,71 @@
       return;
     }
 
+    var grid = showcase.querySelector(".project-grid");
     var filters = showcase.querySelectorAll(".project-filter");
-    var cards = showcase.querySelectorAll(".project-card");
+    var cards = Array.prototype.slice.call(showcase.querySelectorAll(".project-card"));
+    var sortSelect = showcase.querySelector("#project-sort");
+    var countLabel = showcase.querySelector(".project-count");
+    var totalCards = cards.length;
+    var activeFilter = "all";
+    var activeSort = sortSelect ? sortSelect.value : "featured";
+
+    function compareCards(a, b, sortMode) {
+      var titleA = a.getAttribute("data-title") || "";
+      var titleB = b.getAttribute("data-title") || "";
+      var updatedA = a.getAttribute("data-updated") || "1970-01-01";
+      var updatedB = b.getAttribute("data-updated") || "1970-01-01";
+
+      if (sortMode === "name") {
+        return titleA.localeCompare(titleB);
+      }
+
+      if (sortMode === "updated") {
+        return updatedB.localeCompare(updatedA) || titleA.localeCompare(titleB);
+      }
+
+      var featuredDelta = Number(b.getAttribute("data-featured") || "0") - Number(a.getAttribute("data-featured") || "0");
+      if (featuredDelta !== 0) {
+        return featuredDelta;
+      }
+      return updatedB.localeCompare(updatedA) || titleA.localeCompare(titleB);
+    }
+
+    function applyControls() {
+      var visibleCards = cards.filter(function (card) {
+        var tech = (card.getAttribute("data-tech") || "").split(",");
+        var visible = activeFilter === "all" || tech.indexOf(activeFilter) !== -1;
+        card.classList.toggle("is-hidden", !visible);
+        return visible;
+      });
+
+      visibleCards.sort(function (a, b) {
+        return compareCards(a, b, activeSort);
+      });
+
+      visibleCards.forEach(function (card) {
+        grid.appendChild(card);
+      });
+
+      if (countLabel) {
+        countLabel.textContent = visibleCards.length + " of " + totalCards + " projects";
+      }
+
+      visibleCards.forEach(function (card) {
+        card.classList.remove("project-card-enter");
+      });
+
+      requestAnimationFrame(function () {
+        visibleCards.forEach(function (card, index) {
+          card.style.setProperty("--project-stagger-index", String(index));
+          card.classList.add("project-card-enter");
+        });
+      });
+    }
 
     filters.forEach(function (button) {
       button.addEventListener("click", function () {
-        var value = button.getAttribute("data-filter") || "all";
+        activeFilter = button.getAttribute("data-filter") || "all";
 
         filters.forEach(function (item) {
           var active = item === button;
@@ -31,12 +101,17 @@
           item.setAttribute("aria-pressed", active ? "true" : "false");
         });
 
-        cards.forEach(function (card) {
-          var tech = (card.getAttribute("data-tech") || "").split(",");
-          var visible = value === "all" || tech.indexOf(value) !== -1;
-          card.classList.toggle("is-hidden", !visible);
-        });
+        applyControls();
       });
     });
+
+    if (sortSelect) {
+      sortSelect.addEventListener("change", function () {
+        activeSort = sortSelect.value || "featured";
+        applyControls();
+      });
+    }
+
+    applyControls();
   })();
 </script>
