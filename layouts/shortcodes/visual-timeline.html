@@ -112,6 +112,8 @@
       {{- $catSlug := . | urlize -}}
       <button class="timeline-filter" type="button" data-filter="{{ $catSlug }}">{{ . }}</button>
     {{- end -}}
+    <button class="timeline-filter" type="button" data-filter="talks">Talks</button>
+    <button class="timeline-filter" type="button" data-filter="lessons">Lessons</button>
   </div>
 
   <div class="timeline-layout">

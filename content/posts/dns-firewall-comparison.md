@@ -4,22 +4,18 @@ description = 'A detailed analysis comparing DNS firewall products'
 date = '2025-04-07'
 draft = false
 tags = ['dns', 'firewall', 'security']
-categories = ['Homelab']
+categories = ['Career']
 image = '/images/posts/michael-geiger-JJPqavJBy_k-unsplash.jpg'
 featuredImage = '/images/posts/michael-geiger-JJPqavJBy_k-unsplash.jpg'
 featuredImagePreview = '/images/posts/michael-geiger-JJPqavJBy_k-unsplash.jpg'
 
 [timeline]
 enable = true
-event_date = '2023-07-01'
-date_label = 'Jul 2023'
-lane = 'home'
 kind = 'analysis'
 impact = 3
 title = 'DNS Firewall Comparison'
 summary = 'Compared real-world DNS filtering options and documented tradeoffs in cost, safety, and usability.'
 outcome = 'Learned'
-filters = ['dns', 'lessons']
 +++
 
 Recently I discovered this article about testing the effectiveness of public DNS malware filters. The details are appreciated as this type of comparison is not given due attention.

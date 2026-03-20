@@ -4,13 +4,10 @@ description = 'Two talks and a couple days in Greenville'
 date = '2018-10-03T11:52:57-04:00'
 draft = false
 tags = ['conference', 'unc', 'dns', 'security', 'infoblox']
-categories = ['Career', 'Homelab']
+categories = ['Career']
 
 [timeline]
 enable = true
-event_date = '2018-11-01'
-date_label = 'Nov 2018'
-lane = 'career'
 kind = 'talk'
 impact = 1
 title = 'UNC CAUSE 2018'

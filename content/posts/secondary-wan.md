@@ -11,15 +11,11 @@ featuredImagePreview = '/images/posts/no-content-available.jpg'
 
 [timeline]
 enable = true
-event_date = '2023-03-01'
-date_label = 'Mar 2023'
-lane = 'home'
 kind = 'build'
 impact = 2
 title = 'Secondary WAN Project'
 summary = 'Improved resiliency at home with dual-WAN strategy and practical failover testing.'
 outcome = 'Shipped'
-filters = ['homelab', 'lessons']
 +++
 
 A recent power outage at home led me to look into secondary ISP options. All the battery backup work didn't quell family complaints about spotify not working. Luckily my Unifi gateway natively supports a secondary WAN port, so the question is what modem and ISP will work without breaking the bank. As an existing Verizon customer, I focused on those options in hope of discounts.

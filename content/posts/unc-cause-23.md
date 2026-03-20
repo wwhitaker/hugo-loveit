@@ -4,15 +4,12 @@ description = ''
 date = '2023-10-27T11:52:57-04:00'
 draft = false
 tags = ['conference', 'unc', 'development', 'python']
-categories = ['Career', 'Homelab']
+categories = ['Career']
 featuredImage = '/images/posts/unc-cause-23.jpeg'
 featuredImagePreview = '/images/posts/unc-cause-23.jpeg'
 
 [timeline]
 enable = true
-event_date = '2023-10-01'
-date_label = 'Oct 2023'
-lane = 'career'
 kind = 'talk'
 impact = 2
 title = 'UNC CAUSE 2023'

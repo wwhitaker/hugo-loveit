@@ -4,7 +4,7 @@ description = 'OARC 42: Life, the Universe, and DNS'
 date = '2024-02-10T11:52:57-04:00'
 draft = false
 tags = ['dns', 'conference']
-categories = ['Homelab']
+categories = ['Career']
 featuredImage = 'image.png'
 featuredImagePreview = 'image.png'
 +++
