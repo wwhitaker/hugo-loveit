@@ -1681,6 +1681,40 @@
   background: #161c22;
 }
 
+[theme=dark] .pagefind-ui__result,
+[theme=dark] .pagefind-ui__result-link,
+[theme=dark] .pagefind-ui__result-link:hover,
+[theme=dark] .pagefind-ui__result-link:visited,
+[theme=dark] .pagefind-ui__result-title,
+[theme=dark] .pagefind-ui__result-title a,
+[theme=dark] .pagefind-ui__result-excerpt,
+[theme=dark] .pagefind-ui__result-inner,
+[theme=dark] .pagefind-ui__result-nested,
+[theme=dark] .pagefind-ui__result-nested * {
+  color: #e7edf3 !important;
+}
+
+[theme=dark] .pagefind-ui__result-title a {
+  color: #f3f7fb !important;
+}
+
+[theme=dark] .pagefind-ui__result-excerpt,
+[theme=dark] .pagefind-ui__result-nested,
+[theme=dark] .pagefind-ui__result-nested * {
+  color: #c5d0db !important;
+}
+
+[theme=dark] .pagefind-ui__message,
+[theme=dark] .pagefind-ui__result-meta,
+[theme=dark] .pagefind-ui__result-tags,
+[theme=dark] .pagefind-ui__result-subtitle {
+  color: #aeb9c5 !important;
+}
+
+[theme=dark] .pagefind-ui mark {
+  color: #111;
+}
+
 [theme=dark] .github-contrib-calendar .calendar-image-light {
   display: none;
 }
