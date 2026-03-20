@@ -6,7 +6,7 @@ status = "Active"
 updated = "2026-03-08"
 image = "/images/projects/dashboard.png"
 alt = "OCNES Dashboard"
-description = "Adding a dashboard layer to the AKiPS monitoring tool."
+description = "Operations Center Network Event Summary (OCNES) provides a dashboard view of network health. It is built on top of the AKiPS Network Monitoring Software network monitoring platform, which provides all polling and status data."
 tech = ["Django", "AKiPS"]
 
 [[projects.links]]
@@ -22,7 +22,7 @@ status = "Maintained"
 updated = "2026-02-14"
 image = "/images/projects/akips-logo.jpg"
 alt = "AKiPS Logo"
-description = "PyPI module providing a Python wrapper for the native AKiPS API."
+description = "This akips module provides a simple way for python scripts to interact with the AKiPS Network Monitoring Software API interface."
 tech = ["Python", "AKiPS"]
 
 [[projects.links]]
@@ -38,13 +38,13 @@ label = "View AKiPS package on PyPI"
 text = "PyPI"
 
 [[projects]]
-title = "Speedtest to InfluxDB v2"
+title = "Speedtest to InfluxDB"
 featured = false
 status = "Maintained"
 updated = "2025-11-20"
 image = "/images/projects/speedtest.png"
 alt = "Speedtest to InfluxDB"
-description = "Run and save Speedtest CLI data to InfluxDB2."
+description = "This will continuously run the official Speedtest CLI application by Ookla, taking input from environment variables, formatting data and writing it to an InfluxDB v2 database."
 tech = ["Python", "InfluxDB"]
 
 [[projects.links]]
