@@ -47,19 +47,22 @@
   </div>
   <div class="project-card-links" aria-label="Project links">
     {{- with .Get "link1_url" -}}
-      <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $.Get "link1_label" | default "Project link" }}" title="{{ $.Get "link1_label" | default "Project link" }}">
+      {{- $link1 := trim . "<>" -}}
+      <a href="{{ $link1 }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $.Get "link1_label" | default "Project link" }}" title="{{ $.Get "link1_label" | default "Project link" }}">
         <i class="{{ $.Get "link1_icon" | default "fas fa-link" }}" aria-hidden="true"></i>
         <span>{{ $.Get "link1_text" | default "View" }}</span>
       </a>
     {{- end -}}
     {{- with .Get "link2_url" -}}
-      <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $.Get "link2_label" | default "Project link" }}" title="{{ $.Get "link2_label" | default "Project link" }}">
+      {{- $link2 := trim . "<>" -}}
+      <a href="{{ $link2 }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $.Get "link2_label" | default "Project link" }}" title="{{ $.Get "link2_label" | default "Project link" }}">
         <i class="{{ $.Get "link2_icon" | default "fas fa-link" }}" aria-hidden="true"></i>
         <span>{{ $.Get "link2_text" | default "Open" }}</span>
       </a>
     {{- end -}}
     {{- with .Get "link3_url" -}}
-      <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $.Get "link3_label" | default "Project link" }}" title="{{ $.Get "link3_label" | default "Project link" }}">
+      {{- $link3 := trim . "<>" -}}
+      <a href="{{ $link3 }}" target="_blank" rel="noopener noreferrer" aria-label="{{ $.Get "link3_label" | default "Project link" }}" title="{{ $.Get "link3_label" | default "Project link" }}">
         <i class="{{ $.Get "link3_icon" | default "fas fa-link" }}" aria-hidden="true"></i>
         <span>{{ $.Get "link3_text" | default "Details" }}</span>
       </a>

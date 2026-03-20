@@ -18,7 +18,71 @@
     </label>
   </div>
   <div class="project-grid">
-    {{ .Inner }}
+    {{- $inline := trim .Inner " \n\t\r" -}}
+    {{- if $inline -}}
+      {{ .Inner }}
+    {{- else -}}
+      {{- range .Site.Data.projects.projects -}}
+        {{- $project := . -}}
+        {{- $techList := $project.tech | default (slice) -}}
+        {{- $techCSV := delimit $techList ", " -}}
+        {{- $techFilter := lower (replace $techCSV ", " ",") -}}
+        {{- $statusText := $project.status | default "Active" -}}
+        {{- $statusKey := lower $statusText -}}
+        {{- $statusIcon := "fas fa-circle" -}}
+        {{- if eq $statusKey "active" -}}
+          {{- $statusIcon = "fas fa-check-circle" -}}
+        {{- else if eq $statusKey "maintained" -}}
+          {{- $statusIcon = "fas fa-wrench" -}}
+        {{- else if eq $statusKey "archived" -}}
+          {{- $statusIcon = "fas fa-archive" -}}
+        {{- end -}}
+        <article
+          class="project-card{{ if $project.featured }} project-card-featured{{ end }}"
+          data-tech="{{ $techFilter }}"
+          data-title="{{ lower $project.title }}"
+          data-updated="{{ $project.updated | default "1970-01-01" }}"
+          data-featured="{{ if $project.featured }}1{{ else }}0{{ end }}"
+        >
+          {{- with $project.eyebrow -}}
+            <p class="project-card-eyebrow">{{ . }}</p>
+          {{- end -}}
+          <div class="project-card-content">
+            <div class="project-card-head">
+              <h3 class="project-card-title">{{ $project.title }}</h3>
+              <span class="project-card-status project-status-{{ $statusKey }}">
+                <i class="project-card-status-icon {{ $statusIcon }}" aria-hidden="true"></i>
+                <span>{{ $statusText }}</span>
+              </span>
+            </div>
+            {{- with $project.image -}}
+              <div class="project-card-media">
+                <img class="project-card-image" src="{{ . }}" alt="{{ $project.alt | default $project.title }}" loading="lazy" decoding="async">
+              </div>
+            {{- end -}}
+            {{- with $project.description -}}
+              <p class="project-card-description">{{ . }}</p>
+            {{- end -}}
+            {{- with $techList -}}
+              <div class="project-card-tech" aria-label="Technologies used">
+                {{- range . -}}
+                  <span class="project-tech-chip">{{ . }}</span>
+                {{- end -}}
+              </div>
+            {{- end -}}
+          </div>
+          <div class="project-card-links" aria-label="Project links">
+            {{- range $project.links -}}
+              {{- $linkUrl := trim .url "<>" -}}
+              <a href="{{ $linkUrl }}" target="_blank" rel="noopener noreferrer" aria-label="{{ .label | default "Project link" }}" title="{{ .label | default "Project link" }}">
+                <i class="{{ .icon | default "fas fa-link" }}" aria-hidden="true"></i>
+                <span>{{ .text | default "View" }}</span>
+              </a>
+            {{- end -}}
+          </div>
+        </article>
+      {{- end -}}
+    {{- end -}}
   </div>
 </section>
 

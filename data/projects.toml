@@ -1,0 +1,54 @@
+[[projects]]
+title = "OCNES Dashboard"
+featured = true
+eyebrow = "Featured"
+status = "Active"
+updated = "2026-03-08"
+image = "/images/projects/dashboard.png"
+alt = "OCNES Dashboard"
+description = "Adding a dashboard layer to the AKiPS monitoring tool."
+tech = ["Django", "AKiPS"]
+
+[[projects.links]]
+url = "https://github.com/unc-network/dashboard"
+icon = "fab fa-github"
+label = "View OCNES Dashboard on GitHub"
+text = "GitHub"
+
+[[projects]]
+title = "AKiPS Python Module"
+featured = false
+status = "Maintained"
+updated = "2026-02-14"
+image = "/images/projects/akips-logo.jpg"
+alt = "AKiPS Logo"
+description = "PyPI module providing a Python wrapper for the native AKiPS API."
+tech = ["Python", "AKiPS"]
+
+[[projects.links]]
+url = "https://github.com/unc-network/akips"
+icon = "fab fa-github"
+label = "View AKiPS Python Module on GitHub"
+text = "GitHub"
+
+[[projects.links]]
+url = "https://pypi.org/project/akips/"
+icon = "fas fa-box-open"
+label = "View AKiPS package on PyPI"
+text = "PyPI"
+
+[[projects]]
+title = "Speedtest to InfluxDB v2"
+featured = false
+status = "Maintained"
+updated = "2025-11-20"
+image = "/images/projects/speedtest.png"
+alt = "Speedtest to InfluxDB"
+description = "Run and save Speedtest CLI data to InfluxDB2."
+tech = ["Python", "InfluxDB"]
+
+[[projects.links]]
+url = "https://github.com/wwhitaker/speedtests"
+icon = "fab fa-github"
+label = "View Speedtest to InfluxDB on GitHub"
+text = "GitHub"
