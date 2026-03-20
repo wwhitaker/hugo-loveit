@@ -5,6 +5,7 @@ date = '2022-12-10T11:52:57-04:00'
 draft = true
 tags = ['conference', 'unc']
 categories = ['Career']
+featuredimage = '/images//posts/techex-22.png'
 
 [timeline]
 enable = true
