@@ -15,31 +15,31 @@ url = "/posts/unifi-overview/"
 name = "Cloudflare"
 label = "DNS and edge"
 mark = "/images/platforms/cloudflare-mark.svg"
-url = "/posts/www-or-not/"
+url = "/posts/cloudflare-overview/"
 
 [[platforms]]
 name = "Proxmox"
 label = "Virtualization"
 mark = "/images/platforms/proxmox-mark.svg"
-url = "/posts/homelab-update/"
+url = "/posts/proxmox-overview/"
 
 [[platforms]]
 name = "Ubuntu"
 label = "Linux services"
 mark = "/images/platforms/ubuntu-mark.svg"
-url = "/posts/homelab-update/"
+url = "/posts/ubuntu-overview/"
 
 [[platforms]]
 name = "Docker"
 label = "Containers"
 mark = "/images/platforms/docker-mark.svg"
-url = "/posts/speedtest-to-influxdb-v2/"
+url = "/posts/docker-overview/"
 
 [[platforms]]
 name = "Synology"
 label = "Storage and backups"
 mark = "/images/platforms/synology-mark.svg"
-url = "/posts/homelab-dns-domain/"
+url = "/posts/synology-overview/"
 
 [[links]]
 label = "Projects"
