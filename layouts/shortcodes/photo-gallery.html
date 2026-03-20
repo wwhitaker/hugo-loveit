@@ -90,20 +90,27 @@
         {{- $categorySlug := index $item "categorySlug" -}}
         {{- $location := index $item "location" -}}
         {{- $year := index $item "year" -}}
+        {{- $photoID := printf "photo-%s" (anchorize (index $item "caption" | default (path.BaseName $resource.Name))) -}}
         {{- $thumb := $resource.Fill "720x540 Center q85" -}}
-        <a class="lightgallery photo-gallery-card{{ if or (eq (mod (add $index 1) 7) 0) (eq (mod (add $index 1) 11) 0) }} photo-gallery-card-wide{{ end }}" data-category="{{ $categorySlug }}" href="{{ $resource.RelPermalink }}" data-thumbnail="{{ $thumb.RelPermalink }}" data-sub-html="{{ $caption }}" title="{{ $caption }}" aria-label="Open {{ $caption }}">
-          <span class="photo-gallery-category">{{ $category }}</span>
-          <img src="{{ $thumb.RelPermalink }}" alt="{{ $caption }}" loading="lazy" decoding="async">
-          <span class="photo-gallery-overlay">
-            <span class="photo-gallery-caption">{{ $caption }}</span>
-            {{- if or $location $year -}}
-              <span class="photo-gallery-meta">
-                {{- with $location -}}<span>{{ . }}</span>{{- end -}}
-                {{- with $year -}}<span>{{ . }}</span>{{- end -}}
-              </span>
-            {{- end -}}
-          </span>
-        </a>
+        <article id="{{ $photoID }}" class="photo-gallery-card{{ if or (eq (mod (add $index 1) 7) 0) (eq (mod (add $index 1) 11) 0) }} photo-gallery-card-wide{{ end }}" data-category="{{ $categorySlug }}">
+          <a class="lightgallery photo-gallery-link" href="{{ $resource.RelPermalink }}" data-thumbnail="{{ $thumb.RelPermalink }}" data-sub-html="{{ $caption }}" title="{{ $caption }}" aria-label="Open {{ $caption }}">
+            <span class="photo-gallery-category">{{ $category }}</span>
+            <img src="{{ $thumb.RelPermalink }}" alt="{{ $caption }}" loading="lazy" decoding="async">
+            <span class="photo-gallery-overlay">
+              <span class="photo-gallery-caption">{{ $caption }}</span>
+              {{- if or $location $year -}}
+                <span class="photo-gallery-meta">
+                  {{- with $location -}}<span>{{ . }}</span>{{- end -}}
+                  {{- with $year -}}<span>{{ . }}</span>{{- end -}}
+                </span>
+              {{- end -}}
+            </span>
+          </a>
+          <button type="button" class="photo-gallery-share" data-share-id="{{ $photoID }}" aria-label="Copy link to {{ $caption }}" title="Copy link to this photo">
+            <i class="fas fa-link" aria-hidden="true"></i>
+            <span class="photo-gallery-share-text">Share</span>
+          </button>
+        </article>
       {{- end -}}
     </div>
   {{- else -}}
@@ -122,10 +129,66 @@
 
     var filters = shell.querySelectorAll(".photo-gallery-filter");
     var cards = Array.prototype.slice.call(shell.querySelectorAll(".photo-gallery-card"));
+    var shareButtons = shell.querySelectorAll(".photo-gallery-share");
     var grid = shell.querySelector(".photo-gallery-grid");
     var countLabel = shell.querySelector(".photo-gallery-count");
     var totalCards = cards.length;
     var activeFilter = "all";
+    var hashOpened = false;
+
+    function copyToClipboard(value, onDone) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(value).then(onDone);
+        return;
+      }
+
+      var helper = document.createElement("textarea");
+      helper.value = value;
+      helper.setAttribute("readonly", "");
+      helper.style.position = "absolute";
+      helper.style.left = "-9999px";
+      document.body.appendChild(helper);
+      helper.select();
+      document.execCommand("copy");
+      document.body.removeChild(helper);
+      onDone();
+    }
+
+    function setShareCopiedState(button) {
+      var label = button.querySelector(".photo-gallery-share-text");
+      if (!label) {
+        return;
+      }
+
+      label.textContent = "Copied";
+      button.classList.add("is-copied");
+      window.setTimeout(function () {
+        label.textContent = "Share";
+        button.classList.remove("is-copied");
+      }, 1200);
+    }
+
+    function openFromHashIfPresent() {
+      if (hashOpened || !window.location.hash) {
+        return;
+      }
+
+      var target = shell.querySelector(window.location.hash);
+      if (!target || target.classList.contains("is-hidden")) {
+        return;
+      }
+
+      var lightboxTrigger = target.querySelector(".photo-gallery-link");
+      if (!lightboxTrigger) {
+        return;
+      }
+
+      hashOpened = true;
+      target.scrollIntoView({ behavior: "smooth", block: "center" });
+      window.setTimeout(function () {
+        lightboxTrigger.click();
+      }, 220);
+    }
 
     function applyFilter() {
       var visibleCards = cards.filter(function (card) {
@@ -152,8 +215,26 @@
           card.style.setProperty("--gallery-stagger-index", String(index));
           card.classList.add("photo-gallery-card-enter");
         });
+        openFromHashIfPresent();
       });
     }
+
+    shareButtons.forEach(function (button) {
+      button.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        var id = button.getAttribute("data-share-id") || "";
+        if (!id) {
+          return;
+        }
+
+        var shareURL = window.location.origin + window.location.pathname + "#" + id;
+        copyToClipboard(shareURL, function () {
+          setShareCopiedState(button);
+        });
+      });
+    });
 
     filters.forEach(function (button) {
       button.addEventListener("click", function () {
@@ -167,6 +248,11 @@
 
         applyFilter();
       });
+    });
+
+    window.addEventListener("hashchange", function () {
+      hashOpened = false;
+      openFromHashIfPresent();
     });
 
     applyFilter();

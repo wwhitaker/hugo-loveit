@@ -806,6 +806,7 @@
   .project-card:hover .project-card-image,
   .photo-gallery-card:hover,
   .photo-gallery-card:hover img,
+  .photo-gallery-share:hover,
   .single.summary .post-footer > a:hover,
   .post-footer .post-tags a:hover {
     transform: none;
@@ -2596,8 +2597,13 @@
   border: var(--surface-border);
   background: var(--global-background-color);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-  text-decoration: none;
   transition: transform var(--motion-medium), box-shadow var(--motion-medium), border-color var(--motion-fast);
+}
+
+.photo-gallery-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
 }
 
 .photo-gallery-card.is-hidden {
@@ -2645,6 +2651,43 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+.photo-gallery-share {
+  position: absolute;
+  top: 0.68rem;
+  right: 0.68rem;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.44);
+  background: rgba(18, 27, 38, 0.58);
+  color: #fff;
+  padding: 0.23rem 0.58rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background var(--motion-fast), transform var(--motion-fast), border-color var(--motion-fast);
+}
+
+.photo-gallery-share:hover,
+.photo-gallery-share:focus-visible {
+  background: rgba(25, 44, 61, 0.82);
+  border-color: rgba(197, 225, 247, 0.62);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.photo-gallery-share.is-copied {
+  background: rgba(17, 104, 86, 0.84);
+  border-color: rgba(146, 230, 212, 0.62);
+}
+
+.photo-gallery-share i {
+  font-size: 0.65rem;
+  line-height: 1;
 }
 
 .photo-gallery-card img {
@@ -2709,6 +2752,17 @@
 [theme=dark] .photo-gallery-category {
   border-color: rgba(177, 212, 235, 0.42);
   background: rgba(14, 35, 54, 0.66);
+}
+
+[theme=dark] .photo-gallery-share {
+  border-color: rgba(156, 203, 235, 0.42);
+  background: rgba(14, 35, 54, 0.7);
+}
+
+[theme=dark] .photo-gallery-share:hover,
+[theme=dark] .photo-gallery-share:focus-visible {
+  border-color: rgba(186, 223, 248, 0.65);
+  background: rgba(22, 52, 77, 0.86);
 }
 
 [theme=dark] .photo-gallery-empty {
