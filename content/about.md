@@ -4,7 +4,6 @@ description = 'I am an information systems professional with broad background in
 date = '2026-03-08T11:52:57-04:00'
 draft = false
 comment = false
-url = '/about/'
 +++
 
 {{< about-hero

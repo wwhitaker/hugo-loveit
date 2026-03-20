@@ -4,7 +4,6 @@ description = 'Links to various files and tools to share.'
 date = '2026-03-08'
 draft = false
 comment = false
-url = '/resources/'
 +++
 
 ## Defingo Application Portal

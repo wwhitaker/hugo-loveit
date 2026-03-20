@@ -5,7 +5,6 @@ date = '2026-03-17'
 draft = false
 comment = true
 lightgallery = true
-url = '/gallery/'
 +++
 
 ## Moments Worth Keeping

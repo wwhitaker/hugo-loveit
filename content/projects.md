@@ -4,7 +4,6 @@ description = 'Ongoing projects'
 date = '2026-03-08'
 draft = false
 comment = false
-url = '/projects/'
 +++
 
 ## Projects That Ship Useful Outcomes
