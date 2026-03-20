@@ -40,18 +40,3 @@ name = "Synology"
 label = "Storage and backups"
 mark = "/images/platforms/synology-mark.svg"
 url = "/posts/synology-overview/"
-
-[[links]]
-label = "Projects"
-url = "/projects/"
-icon = "fas fa-diagram-project"
-
-[[links]]
-label = "Timeline"
-url = "/timeline/"
-icon = "fas fa-timeline"
-
-[[links]]
-label = "Recent Posts"
-url = "/posts/"
-icon = "fas fa-book-open"
