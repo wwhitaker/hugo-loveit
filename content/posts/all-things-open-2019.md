@@ -4,7 +4,7 @@ description = ''
 date = '2019-10-15T11:52:57-04:00'
 draft = true
 tags = ['conference']
-categories = ['Career', 'Technical']
+categories = ['Career', 'Homelab']
 
 [timeline]
 enable = true

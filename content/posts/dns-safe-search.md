@@ -4,7 +4,7 @@ description = 'How to enforce safe search across your network using DNS'
 date = '2025-07-19'
 draft = false
 tags = ['dns', 'security', 'network']
-categories = ['Technical']
+categories = ['Homelab']
 
 [timeline]
 enable = true

@@ -4,7 +4,7 @@ description = 'A memorable meeting with an author from Infoblox'
 date = '2024-04-24T11:52:57-04:00'
 draft = true
 tags = ['dns', 'bind']
-categories = ['Technical']
+categories = ['Homelab']
 featuredImage = 'book-signed-kuo.jpeg'
 +++
 

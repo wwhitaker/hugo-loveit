@@ -4,7 +4,7 @@ description = ''
 date = '2026-03-18T11:52:57-04:00'
 draft = true
 tags = ['homelab']
-categories = ['Technical']
+categories = ['Homelab']
 +++
 
 Having a few extra servers sitting around has been the normal for a long time.

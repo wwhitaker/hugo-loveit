@@ -4,9 +4,16 @@ description = 'simple project and google search rankings'
 date = '2026-02-19'
 draft = false
 tags = ['python', 'http', 'ipam', 'dns', 'web']
-categories = ['Career', 'Technical']
+categories = ['Career']
 featuredImage = '/images/posts/what-is-my-ip.png'
 featuredImagePreview = '/images/posts/what-is-my-ip.png'
+
+[timeline]
+enable = true
+kind = "build"
+impact = 3
+summary = "Deployed a small project with high visibility."
+outcome = "Shipped"
 +++
 
 For a while I have had a tool idea at work.  This post is an overview of development for [What is my IP?](https://whatismyip.unc.edu).

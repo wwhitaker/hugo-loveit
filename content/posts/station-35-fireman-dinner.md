@@ -6,9 +6,14 @@ draft = false
 categories = ['Personal']
 tags = ['family', 'firehouse', 'memories']
 featuredimage = '/images/posts/station-35-fireman-dinner.png'
-+++
 
----
+[timeline]
+enable = true
+kind = "personal"
+impact = 3
+summary = "Reflections on adult role models in the past."
+outcome = "Remembered"
++++
 
 I've been thinking a lot this holiday season about the Walnut Cove's Station 35. It probably started about the time Mom invited me to join her at the fireman appreciation dinner but intensified when I saw pictures of the older members of my dad's generation. Talking to her afterwards I learned there was a call overlapping the event and the younger guys were off attending to it.
 

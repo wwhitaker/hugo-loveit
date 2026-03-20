@@ -4,7 +4,7 @@ description = ''
 date = '2023-10-27T11:52:57-04:00'
 draft = false
 tags = ['conference', 'unc', 'development', 'python']
-categories = ['Career', 'Technical']
+categories = ['Career', 'Homelab']
 featuredImage = '/images/posts/unc-cause-23.jpeg'
 featuredImagePreview = '/images/posts/unc-cause-23.jpeg'
 

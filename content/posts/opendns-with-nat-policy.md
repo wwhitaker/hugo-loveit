@@ -4,7 +4,7 @@ description = 'Using firewall and NAT policy to force DNS traffic through OpenDN
 date = '2017-07-30'
 draft = false
 tags = ['dns', 'opendns', 'edgerouter', 'network', 'security']
-categories = ['Technical']
+categories = ['Homelab']
 featuredimage = '/images/posts/opendns-with-nat-policy-featured.png'
 +++
 

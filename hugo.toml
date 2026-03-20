@@ -18,47 +18,48 @@ enableRobotsTXT = true
     url = '/posts/'
     weight = 1
   [[menu.main]]
+    identifier = 'post-timeline'
+    parent = 'posts'
+    name = 'Timeline'
+    url = '/timeline/'
+    weight = 1
+  [[menu.main]]
     identifier = 'post-categories'
     parent = 'posts'
     name = 'Categories'
     url = '/categories/'
-    weight = 1
+    weight = 2
   [[menu.main]]
     identifier = 'post-tags'
     parent = 'posts'
     name = 'Tags'
     url = '/tags/'
-    weight = 2
+    weight = 3
   [[menu.main]]
     identifier = 'projects'
     name = 'Projects'
     url = '/projects/'
     weight = 2
   [[menu.main]]
-    identifier = 'timeline'
-    name = 'Timeline'
-    url = '/timeline/'
-    weight = 3
-  [[menu.main]]
     identifier = 'resources'
     name = 'Resources'
     url = '/resources/'
-    weight = 4
+    weight = 3
   [[menu.main]]
     identifier = 'gallery'
     name = 'Gallery'
     url = '/gallery/'
-    weight = 5
+    weight = 4
   [[menu.main]]
     identifier = 'about'
     name = 'About'
     url = '/about/'
-    weight = 6
+    weight = 5
   [[menu.main]]
     identifier = 'search'
     name = 'Search'
     url = '/search/'
-    weight = 7
+    weight = 6
 
 [params]
   description = 'I am an information systems professional with broad background in network support, system administration and software development focused on security topics.'

@@ -4,7 +4,7 @@ description = 'How Unifi is the backbone of my homelab.'
 date = '2026-03-19'
 draft = false
 tags = ['homelab', 'networking', 'unif', 'dns']
-categories = ['Technical']
+categories = ['Homelab']
 +++
 
 Unifi has slowly become my goto for personal networking needs.  I can still expiriemnt with different vendors but the reliable homelab core needs something cost effective.

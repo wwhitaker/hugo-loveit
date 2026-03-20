@@ -4,7 +4,7 @@ description = 'First time at Atmosphere'
 date = '2019-04-08T12:45:57-04:00'
 draft = false
 tags = ['conference', 'unc', 'wireless', 'aruba']
-categories = ['Technical']
+categories = ['Homelab']
 featuredImage = 'Aruba - What is 802.11ax - 1.jpg'
 +++
 

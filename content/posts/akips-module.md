@@ -4,13 +4,10 @@ description = 'Publishing a new pypi module for AKiPS API'
 date = '2025-11-09'
 draft = false
 tags = ['python', 'api']
-categories = ['Technical']
+categories = ['Career']
 
 [timeline]
 enable = true
-event_date = '2024-05-01'
-date_label = 'May 2024'
-lane = 'career'
 kind = 'build'
 impact = 2
 title = 'AKiPS Python Module Progress'
