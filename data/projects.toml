@@ -10,6 +10,12 @@ description = "Operations Center Network Event Summary (OCNES) provides a dashbo
 tech = ["Django", "AKiPS"]
 
 [[projects.links]]
+url = "/posts/akips-dashboard/"
+icon = "fa-brands fa-readme"
+label = "View the overview post"
+text = "Read Post"
+
+[[projects.links]]
 url = "https://github.com/unc-network/dashboard"
 icon = "fab fa-github"
 label = "View OCNES Dashboard on GitHub"
@@ -48,6 +54,12 @@ description = "This akips module provides a simple way for python scripts to int
 tech = ["Python", "AKiPS"]
 
 [[projects.links]]
+url = "/posts/akips-module/"
+icon = "fa-brands fa-readme"
+label = "View the overview post"
+text = "Read Post"
+
+[[projects.links]]
 url = "https://github.com/unc-network/akips"
 icon = "fab fa-github"
 label = "View AKiPS Python Module on GitHub"
@@ -68,6 +80,12 @@ image = "/images/projects/speedtest.png"
 alt = "Speedtest to InfluxDB"
 description = "This will continuously run the official Speedtest CLI application by Ookla, taking input from environment variables, formatting data and writing it to an InfluxDB v2 database."
 tech = ["Python", "InfluxDB"]
+
+[[projects.links]]
+url = "/posts/speedtest-to-influxdb/"
+icon = "fa-brands fa-readme"
+label = "View the overview post"
+text = "Read Post"
 
 [[projects.links]]
 url = "https://github.com/wwhitaker/speedtests"
