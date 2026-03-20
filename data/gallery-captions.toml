@@ -1,6 +1,24 @@
 [captions]
-# Use the image filename (with or without extension) as the key.
-# Example:
-# "sunrise-over-water.jpg" = "Sunrise over Jordan Lake"
-# "mountain-trail" = "Blue Ridge trail at dusk"
-"Ziva" = "Ziva"
+"15th Floor Soaring" = { caption = "15th Floor Soaring", category = "Beach", location = "Daytona Beach, FL", year = "2010" }
+"Bongo" = { caption = "Bongo", category = "Pets", location = "Durham, NC", year = "2023" }
+"Canopy" = { caption = "The canopy I grew up under", category = "Favorites", location = "Walnut Cove, NC", year = "2012" }
+"Daytona" = { caption = "Daytona 2011, can you spot the guy from Walnut Cove? I am happy with this long shot from the stands. ", category = "Events", location = "Daytona Beach, FL", year = "2011" }
+"Doorman" = { caption = "Bo", category = "Pets", location = "Durham, NC", year = "2011" }
+"Flock" = { caption = "Flock", category = "Beach", location = "Daytona Beach, FL", year = "2010" }
+"Fountain" = { caption = "Fountain", category = "Favorites", location = "Rochester, MN", year = "2011" }
+"Lake Johnson" = { caption = "Lake Johnson", category = "Favorites", location = "Raleigh, NC", year = "2003" }
+"Liberty Leading" = { caption = "Liberty Leading", category = "Favorites", location = "New York, NY", year = "2011" }
+"Light Trails" = { caption = "Light Trails", category = "Favorites", location = "Raleigh, NC", year = "2010" }
+"Lone Stand" = { caption = "The \"corner\" stand was my favorite spot back in 2010. Being in the a huge field, you could see for what felt like miles out over the corn", category = "Favorites", location = "Walnut Cove, NC", year = "2010" }
+"Night Beach" = { caption = "Night Beach", category = "Beach", location = "Daytona Beach, FL", year = "2010" }
+"Ocracoke" = { caption = "Surf fishing in 2004 seems like such a long time ago. ", category = "Favorites", location = "Ocracoke, NC", year = "2004" }
+"Saturn V Complex" = { caption = "The actual, original launch control consoles are preserved from the Apollo period.", category = "Events", location = "Cape Canaveral, FL", year = "2011" }
+"Sandman" = { caption = "Sandman", category = "Beach", location = "Daytona Beach, FL", year = "2011" }
+"Snow Barn" = { caption = "A special place at a particularly special time ", category = "Favorites", location = "Walnut Cove, NC", year = "2010" }
+"Snowy Dreams" = { caption = "If I had a “spirit animal” this would be him, a polar bear in the NC zoo on the hottest day of the entire summer.", category = "Favorites", location = "Asheboro, NC", year = "2005" }
+"Sunrise Sky" = { caption = "Sunrise Sky", category = "Beach", location = "Daytona Beach, FL", year = "2010" }
+"Sunrise Water" = { caption = "Sunrise Water", category = "Beach", location = "Daytona Beach, FL", year = "2010" }
+"Sunset" = { caption = "Sunset", category = "Beach", location = "Daytona Beach, FL", year = "2011" }
+"Trailing" = { caption = "Trailing", category = "Beach", location = "Daytona Beach, FL", year = "2011" }
+"Tybee Island" = { caption = "Tybee Island", category = "Favorites", location = "Tybee Island, GA", year = "2008" }
+"Ziva" = { caption = "Ziva", category = "Pets", location = "Durham", year = "2012" }

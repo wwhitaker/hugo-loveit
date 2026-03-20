@@ -1,6 +1,9 @@
 {{- $pattern := .Get "path" | default "images/gallery/*" -}}
 {{- $images := slice -}}
+{{- $items := slice -}}
+{{- $categories := slice -}}
 {{- $captionMap := dict -}}
+{{- $defaultCategory := .Get "default_category" | default "Favorites" -}}
 {{- with index site.Data "gallery-captions" -}}
   {{- with .captions -}}
     {{- $captionMap = . -}}
@@ -15,29 +18,91 @@
   {{- end -}}
 {{- end -}}
 
+{{- range sort $images "Name" -}}
+  {{- $name := .Name -}}
+  {{- $stem := $name | replaceRE "\\.[^.]+$" "" -}}
+  {{- $base := path.Base $name -}}
+  {{- $baseStem := $base | replaceRE "\\.[^.]+$" "" -}}
+  {{- $captionSort := lower $baseStem -}}
+  {{- $entry :=
+    index $captionMap $name |
+    default (index $captionMap $stem) |
+    default (index $captionMap $base) |
+    default (index $captionMap $baseStem) |
+    default (index $captionMap (lower $name)) |
+    default (index $captionMap (lower $stem)) |
+    default (index $captionMap (lower $base)) |
+    default (index $captionMap (lower $baseStem))
+  -}}
+  {{- $caption := $baseStem | replaceRE "[-_]+" " " | title -}}
+  {{- $category := $defaultCategory -}}
+  {{- $location := "" -}}
+  {{- $year := "" -}}
+  {{- if reflect.IsMap $entry -}}
+    {{- $caption = index $entry "caption" | default $caption -}}
+    {{- $captionSort = lower (index $entry "caption" | default $baseStem) -}}
+    {{- $category = index $entry "category" | default $category -}}
+    {{- $location = index $entry "location" | default "" -}}
+    {{- $year = index $entry "year" | default "" -}}
+  {{- else if $entry -}}
+    {{- $caption = $entry -}}
+    {{- $captionSort = lower $entry -}}
+  {{- end -}}
+  {{- $yearText := printf "%v" $year -}}
+  {{- $yearDigits := replaceRE "[^0-9]" "" $yearText -}}
+  {{- $yearSort := 9999 -}}
+  {{- if gt (len $yearDigits) 0 -}}
+    {{- $yearSort = sub 9999 (int $yearDigits) -}}
+  {{- end -}}
+  {{- $sortKey := printf "%04d|%s|%s" $yearSort $captionSort (lower $baseStem) -}}
+  {{- $categorySlug := anchorize (lower $category) -}}
+  {{- $categories = $categories | append $category -}}
+  {{- $items = $items | append (dict
+      "resource" .
+      "caption" $caption
+      "sortKey" $sortKey
+      "category" $category
+      "categorySlug" $categorySlug
+      "location" $location
+      "year" $year
+    ) -}}
+{{- end -}}
+{{- $categories = uniq (sort $categories) -}}
+{{- $sortedItems := sort $items "sortKey" -}}
+
 <section class="photo-gallery-shell">
   {{- if gt (len $images) 0 -}}
+    <div class="photo-gallery-controls">
+      <div class="photo-gallery-filters" role="toolbar" aria-label="Filter photos by category">
+        <button type="button" class="photo-gallery-filter active" data-filter="all" aria-pressed="true">All</button>
+        {{- range $categories -}}
+          {{- $slug := anchorize (lower .) -}}
+          <button type="button" class="photo-gallery-filter" data-filter="{{ $slug }}" aria-pressed="false">{{ . }}</button>
+        {{- end -}}
+      </div>
+      <p class="photo-gallery-count" aria-live="polite"></p>
+    </div>
     <div class="photo-gallery-grid">
-      {{- range sort $images "Name" -}}
-        {{- $name := .Name -}}
-        {{- $stem := $name | replaceRE "\\.[^.]+$" "" -}}
-        {{- $base := path.Base $name -}}
-        {{- $baseStem := $base | replaceRE "\\.[^.]+$" "" -}}
-        {{- $caption :=
-          index $captionMap $name |
-          default (index $captionMap $stem) |
-          default (index $captionMap $base) |
-          default (index $captionMap $baseStem) |
-          default (index $captionMap (lower $name)) |
-          default (index $captionMap (lower $stem)) |
-          default (index $captionMap (lower $base)) |
-          default (index $captionMap (lower $baseStem)) |
-          default ($baseStem | replaceRE "[-_]+" " " | title)
-        -}}
-        {{- $thumb := .Fill "720x540 Center q85" -}}
-        <a class="lightgallery photo-gallery-card" href="{{ .RelPermalink }}" data-thumbnail="{{ $thumb.RelPermalink }}" data-sub-html="{{ $caption }}" title="{{ $caption }}" aria-label="Open {{ $caption }}">
+      {{- range $index, $item := $sortedItems -}}
+        {{- $resource := index $item "resource" -}}
+        {{- $caption := index $item "caption" -}}
+        {{- $category := index $item "category" -}}
+        {{- $categorySlug := index $item "categorySlug" -}}
+        {{- $location := index $item "location" -}}
+        {{- $year := index $item "year" -}}
+        {{- $thumb := $resource.Fill "720x540 Center q85" -}}
+        <a class="lightgallery photo-gallery-card{{ if or (eq (mod (add $index 1) 7) 0) (eq (mod (add $index 1) 11) 0) }} photo-gallery-card-wide{{ end }}" data-category="{{ $categorySlug }}" href="{{ $resource.RelPermalink }}" data-thumbnail="{{ $thumb.RelPermalink }}" data-sub-html="{{ $caption }}" title="{{ $caption }}" aria-label="Open {{ $caption }}">
+          <span class="photo-gallery-category">{{ $category }}</span>
           <img src="{{ $thumb.RelPermalink }}" alt="{{ $caption }}" loading="lazy" decoding="async">
-          <span class="photo-gallery-caption">{{ $caption }}</span>
+          <span class="photo-gallery-overlay">
+            <span class="photo-gallery-caption">{{ $caption }}</span>
+            {{- if or $location $year -}}
+              <span class="photo-gallery-meta">
+                {{- with $location -}}<span>{{ . }}</span>{{- end -}}
+                {{- with $year -}}<span>{{ . }}</span>{{- end -}}
+              </span>
+            {{- end -}}
+          </span>
         </a>
       {{- end -}}
     </div>
@@ -47,3 +112,63 @@
     </div>
   {{- end -}}
 </section>
+
+<script>
+  (function () {
+    var shell = document.currentScript.previousElementSibling;
+    if (!shell || !shell.classList.contains("photo-gallery-shell")) {
+      return;
+    }
+
+    var filters = shell.querySelectorAll(".photo-gallery-filter");
+    var cards = Array.prototype.slice.call(shell.querySelectorAll(".photo-gallery-card"));
+    var grid = shell.querySelector(".photo-gallery-grid");
+    var countLabel = shell.querySelector(".photo-gallery-count");
+    var totalCards = cards.length;
+    var activeFilter = "all";
+
+    function applyFilter() {
+      var visibleCards = cards.filter(function (card) {
+        var category = card.getAttribute("data-category") || "";
+        var visible = activeFilter === "all" || category === activeFilter;
+        card.classList.toggle("is-hidden", !visible);
+        return visible;
+      });
+
+      visibleCards.forEach(function (card) {
+        grid.appendChild(card);
+      });
+
+      if (countLabel) {
+        countLabel.textContent = visibleCards.length + " of " + totalCards + " photos";
+      }
+
+      visibleCards.forEach(function (card) {
+        card.classList.remove("photo-gallery-card-enter");
+      });
+
+      requestAnimationFrame(function () {
+        visibleCards.forEach(function (card, index) {
+          card.style.setProperty("--gallery-stagger-index", String(index));
+          card.classList.add("photo-gallery-card-enter");
+        });
+      });
+    }
+
+    filters.forEach(function (button) {
+      button.addEventListener("click", function () {
+        activeFilter = button.getAttribute("data-filter") || "all";
+
+        filters.forEach(function (item) {
+          var active = item === button;
+          item.classList.toggle("active", active);
+          item.setAttribute("aria-pressed", active ? "true" : "false");
+        });
+
+        applyFilter();
+      });
+    });
+
+    applyFilter();
+  })();
+</script>
