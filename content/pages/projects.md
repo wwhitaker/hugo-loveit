@@ -14,8 +14,8 @@ I build practical tools for network operations, observability, and data quality.
 {{< project-stats
 stat1_value="3"
 stat1_text="active public projects"
-stat2_value="4"
-stat2_text="core platforms: Django, Python, AKiPS, InfluxDB"
+stat2_value="3"
+stat2_text="core platforms: Python, AKiPS, InfluxDB"
 stat3_value="100%"
 stat3_text="focused on operational visibility and automation"
 >}}
