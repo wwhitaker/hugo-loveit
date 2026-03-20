@@ -41,14 +41,14 @@ enableRobotsTXT = true
     url = '/projects/'
     weight = 2
   [[menu.main]]
-    identifier = 'resources'
-    name = 'Resources'
-    url = '/resources/'
-    weight = 3
-  [[menu.main]]
     identifier = 'gallery'
     name = 'Gallery'
     url = '/gallery/'
+    weight = 3
+  [[menu.main]]
+    identifier = 'resources'
+    name = 'Resources'
+    url = '/resources/'
     weight = 4
   [[menu.main]]
     identifier = 'about'
