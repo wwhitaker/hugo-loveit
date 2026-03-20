@@ -16,6 +16,28 @@ label = "View OCNES Dashboard on GitHub"
 text = "GitHub"
 
 [[projects]]
+title = "What is my IP?"
+featured = false
+status = "Maintained"
+updated = "2026-03-14"
+image = "https://whatismyip.unc.edu/static/logo/android-chrome-192x192.png"
+alt = "What is my IP? Logo"
+description = "A diagnostic website that could detect a client’s IP address and provide useful feedback."
+tech = ["Python", "Flask"]
+
+[[projects.links]]
+url = "/posts/what-is-my-ip/"
+icon = "fa-brands fa-readme"
+label = "View the overview post"
+text = "Read Post"
+
+[[projects.links]]
+url = "https://whatismyip.unc.edu/"
+icon = "fa-solid fa-eye"
+label = "Production website"
+text = "See Site"
+
+[[projects]]
 title = "AKiPS Python Module"
 featured = false
 status = "Maintained"
