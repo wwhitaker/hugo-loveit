@@ -1,6 +1,6 @@
 [captions]
 "15th Floor Soaring" = { caption = "15th Floor Soaring", category = "Beach", location = "Daytona Beach, FL", year = "2010" }
-"Bongo" = { caption = "Bongo", category = "Pets", location = "Durham, NC", year = "2023" }
+"Bongo" = { caption = "Bongo", category = "Pets", location = "Wake Forest, NC", year = "2023" }
 "Canopy" = { caption = "The canopy I grew up under", category = "Favorites", location = "Walnut Cove, NC", year = "2012" }
 "Daytona" = { caption = "Daytona 2011, can you spot the guy from Walnut Cove? I am happy with this long shot from the stands. ", category = "Events", location = "Daytona Beach, FL", year = "2011" }
 "Doorman" = { caption = "Bo", category = "Pets", location = "Durham, NC", year = "2011" }
@@ -21,4 +21,5 @@
 "Sunset" = { caption = "Sunset", category = "Beach", location = "Daytona Beach, FL", year = "2011" }
 "Trailing" = { caption = "Trailing", category = "Beach", location = "Daytona Beach, FL", year = "2011" }
 "Tybee Island" = { caption = "Tybee Island", category = "Favorites", location = "Tybee Island, GA", year = "2008" }
-"Ziva" = { caption = "Ziva", category = "Pets", location = "Durham", year = "2012" }
+"Ziva" = { caption = "Ziva", category = "Pets", location = "Durham, NC", year = "2012" }
+"Cuddles" = { caption = "Bongo fireplace snuggles", category = "Pets", location = "Wake Forest, NC", year = "2023" }
