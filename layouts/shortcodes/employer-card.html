@@ -1,0 +1,13 @@
+<div class="about-employer-card">
+  <div class="about-employer-head">
+    <h3 class="about-employer-name">
+      {{- with .Get "url" -}}
+        <a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ $.Get "name" }}</a>
+      {{- else -}}
+        {{ .Get "name" }}
+      {{- end -}}
+    </h3>
+    {{- with .Get "duration" }}<span class="about-employer-duration">{{ . }}</span>{{ end -}}
+  </div>
+  {{ .Inner | markdownify }}
+</div>

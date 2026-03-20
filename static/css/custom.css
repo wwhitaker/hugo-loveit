@@ -3112,3 +3112,220 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* About page */
+.about-hero {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+  margin: 0.5rem 0 2rem;
+  padding: 1.4rem 1.6rem;
+  border: var(--surface-border);
+  border-radius: var(--surface-radius-lg);
+  background:
+    radial-gradient(circle at 0% 0%, rgba(45, 150, 189, 0.1), transparent 60%),
+    var(--global-background-color);
+  box-shadow: var(--surface-shadow-soft);
+}
+
+[theme=dark] .about-hero {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(85, 189, 226, 0.12), transparent 60%),
+    #161c22;
+}
+
+.about-hero-avatar {
+  width: 9rem;
+  height: 9rem;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid var(--home-accent-soft);
+}
+
+.about-hero-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.about-hero-name {
+  margin: 0 0 0.2rem;
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--global-font-color);
+}
+
+.about-hero-title {
+  margin: 0 0 0.5rem;
+  color: var(--home-accent);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.about-hero-bio {
+  margin: 0;
+  color: var(--global-font-secondary-color);
+  font-size: 0.96rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 540px) {
+  .about-hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-hero-avatar {
+    width: 7rem;
+    height: 7rem;
+  }
+}
+
+.about-employer-card,
+.about-education-card {
+  margin: 1.1rem 0 1.4rem;
+  padding: 1.2rem 1.4rem;
+  border: var(--surface-border);
+  border-radius: var(--surface-radius-md);
+  box-shadow: var(--surface-shadow-soft);
+  background:
+    radial-gradient(circle at 98% 0%, rgba(45, 150, 189, 0.06), transparent 50%),
+    var(--global-background-color);
+}
+
+[theme=dark] .about-employer-card,
+[theme=dark] .about-education-card {
+  background:
+    radial-gradient(circle at 98% 0%, rgba(85, 189, 226, 0.08), transparent 50%),
+    #161c22;
+}
+
+.about-employer-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.about-employer-name,
+.about-education-name {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.about-employer-duration {
+  color: var(--global-font-secondary-color);
+  font-size: 0.82rem;
+  white-space: nowrap;
+}
+
+/* Timeline line: employer roles */
+.about-employer-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.2rem;
+  border-left: 2px solid rgba(45, 150, 189, 0.28);
+}
+
+[theme=dark] .about-employer-card ul {
+  border-left-color: rgba(85, 189, 226, 0.25);
+}
+
+.about-employer-card ul li {
+  position: relative;
+  margin: 0 0 0.9rem;
+  font-size: 0.95rem;
+  line-height: 1.62;
+  list-style: none;
+}
+
+.about-employer-card ul li::marker {
+  content: none;
+}
+
+.about-employer-card ul li:last-child {
+  margin-bottom: 0;
+}
+
+.about-employer-card ul li::before {
+  content: '';
+  position: absolute;
+  left: -1.44rem;
+  top: 0.52rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--home-accent);
+}
+
+.about-employer-card ul li em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--global-font-color);
+}
+
+/* Education card */
+.about-education-head {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
+}
+
+.about-education-icon {
+  color: var(--home-accent);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.about-education-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.75rem;
+}
+
+.about-education-card ul li {
+  position: relative;
+  margin: 0 0 0.7rem;
+  font-size: 0.95rem;
+  line-height: 1.62;
+  list-style: none;
+}
+
+.about-education-card ul li::marker {
+  content: none;
+}
+
+.about-education-card ul li:last-child {
+  margin-bottom: 0;
+}
+
+.about-education-card ul li::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f19d";
+  position: absolute;
+  left: -1.55rem;
+  top: 0.08rem;
+  color: var(--home-accent);
+  font-size: 0.78rem;
+}
+
+.about-education-card ul li em {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--global-font-color);
+}
+
+/* Section dividers on About page */
+.page.single .content > hr {
+  margin: 2.2rem 0;
+  border: none;
+  border-top: 1px solid var(--global-border-color);
+  opacity: 0.6;
+}

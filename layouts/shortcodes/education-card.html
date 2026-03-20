@@ -1,0 +1,13 @@
+<div class="about-education-card">
+  <div class="about-education-head">
+    <i class="fas fa-graduation-cap about-education-icon" aria-hidden="true"></i>
+    <h3 class="about-education-name">
+      {{- with .Get "url" -}}
+        <a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ $.Get "name" }}</a>
+      {{- else -}}
+        {{ .Get "name" }}
+      {{- end -}}
+    </h3>
+  </div>
+  {{ .Inner | markdownify }}
+</div>

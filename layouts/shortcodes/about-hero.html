@@ -1,0 +1,12 @@
+{{- $image := .Get "image" | default "/images/headshot.jpg" -}}
+{{- $name := .Get "name" -}}
+{{- $title := .Get "title" -}}
+{{- $bio := .Get "bio" -}}
+<div class="about-hero">
+  <img class="about-hero-avatar" src="{{ $image }}" alt="Portrait of {{ $name }}" loading="eager" decoding="async">
+  <div class="about-hero-text">
+    <p class="about-hero-name">{{ $name }}</p>
+    {{- with $title }}<p class="about-hero-title">{{ . }}</p>{{ end -}}
+    {{- with $bio }}<p class="about-hero-bio">{{ . }}</p>{{ end -}}
+  </div>
+</div>
