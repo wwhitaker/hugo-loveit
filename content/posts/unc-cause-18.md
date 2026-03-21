@@ -23,7 +23,7 @@ My first UNC Cause conference was interesting.  I met some new contacts over the
 
 ## DNS Filtering
 
-The first talk was co-lead with Alex Everett of the UNC Security department.  We covered how UNC evaluated, selected, and implemented a solution for campus.  The session itself was packed with a number of people standing in the back.  [The slides](/files/DNS_FILTERING_UNC_CAUSE_18.pdf) are available for review.
+The first talk was co-led with Alex Everett of the UNC Security department.  We covered how UNC evaluated, selected, and implemented a solution for campus.  The session itself was packed with a number of people standing in the back.  [The slides](/files/DNS_FILTERING_UNC_CAUSE_18.pdf) are available for review.
 
 ## Spreadsheets to Modern DDI
 

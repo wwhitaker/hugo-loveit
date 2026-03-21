@@ -9,4 +9,4 @@ featuredImage = 'image.png'
 featuredImagePreview = 'image.png'
 +++
 
-[DNS-OARC](https://www.dns-oarc.net/) was a two-day conference being held in Charlotte, NC this year.  It is held traditionally aside the major North American Network Operators' Group (NANOG) conference, but while NANOG covers overall networking the DNS-OARC is all about DNS.  It is rare to find a conference that focus on such a specific topic, therefore it is attended by significant names and parties from around the world.  Being in driving distance, I couldn't pass up the opportunity to attend.
+[DNS-OARC](https://www.dns-oarc.net/) was a two-day conference being held in Charlotte, NC this year.  It is held alongside the major North American Network Operators' Group (NANOG) conference, but while NANOG covers overall networking the DNS-OARC is all about DNS.  It is rare to find a conference that focuses on such a specific topic, therefore it is attended by significant names and parties from around the world.  Being in driving distance, I couldn't pass up the opportunity to attend.

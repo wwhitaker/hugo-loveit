@@ -53,7 +53,7 @@ The first choice to use real traffic deviated from what I had seen in other test
 
 The second step to reply traffic needed to be as close to the real production traffic as possible. As such, a script was used to breakdown the inputs as soon as the collection process reached a target volume. An additional check to a non-blocking DNS service was used to help weed out any non-responsive DNS servers.
 
-The third step was straight forward since the products had predictable behavior for a block action (i.e. an A record of 0.0.0.0 or block page IP address).
+The third step was straightforward since the products had predictable behavior for a block action (i.e. an A record of 0.0.0.0 or block page IP address).
 
 The fourth step required cross referencing each of the result sets looking for patterns or trends and proved to be the most time consuming.
 
