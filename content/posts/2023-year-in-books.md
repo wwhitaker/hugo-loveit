@@ -18,7 +18,7 @@ The audiobook was a good companion on the work commute.
 
 ### James S.A. Corey
 
-The year started strong with the Expanse series.  I had see the TV show so was super excited to dive in more depth with the characters.
+The year started strong with the Expanse series.  I had seen the TV show so was super excited to dive in more depth with the characters.
 
 * [Leviathan Wakes](https://www.goodreads.com/search?q=Leviathan+Wakes+James+S.A.+Corey)
 * [Caliban's War](https://www.goodreads.com/search?q=Caliban%27s+War+James+S.A.+Corey)
@@ -50,9 +50,9 @@ A suggestion from Amazon led to Murderbot.  It was a good suggestion.
 * [Network Effect](https://www.goodreads.com/search?q=Network+Effect+Martha+Wells)
 * [Fugitive Telemetry](https://www.goodreads.com/search?q=Fugitive+Telemetry+Martha+Wells)
 
-### Ernes Cline
+### Ernest Cline
 
-I had seen the movie so was interested in the book.  I loved all the nastalgia and deeper plotlines.
+I had seen the movie so was interested in the book.  I loved all the nostalgia and deeper plotlines.
 
 * [Ready Player One](https://www.goodreads.com/search?q=Ready+Player+One+Ernest+Cline)
 

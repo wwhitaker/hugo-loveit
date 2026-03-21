@@ -26,7 +26,7 @@ I'm doing the audiobooks for Game of Thrones which is slow going.
 
 ### Dan Simmons
 
-For someting new, I decided to try out a classic series. This one had real depth in places.
+For something new, I decided to try out a classic series. This one had real depth in places.
 
 * [Hyperion](https://www.goodreads.com/search?q=Hyperion+Dan+Simmons)
 * [The Fall of Hyperion](https://www.goodreads.com/search?q=Fall+of+Hyperion+Simmons)

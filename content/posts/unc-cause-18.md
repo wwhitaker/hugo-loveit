@@ -23,8 +23,8 @@ My first UNC Cause conference was interesting.  I met some new contacts over the
 
 ## DNS Filtering
 
-The first talk was co-lead with Alex Everett of the UNC Security department.  We covered how UNC evaluated, selected, and implmented a solution for campus.  The session itself was packed with a number of people standing in the back.  [The slides](/files/DNS_FILTERING_UNC_CAUSE_18.pdf) are avaliable for review.
+The first talk was co-lead with Alex Everett of the UNC Security department.  We covered how UNC evaluated, selected, and implemented a solution for campus.  The session itself was packed with a number of people standing in the back.  [The slides](/files/DNS_FILTERING_UNC_CAUSE_18.pdf) are available for review.
 
 ## Spreadsheets to Modern DDI
 
-The second talk was the very last session of the conference and sadly had a lot less attendance.  A representative from Infoblox was there along with a couple other schools in attendance.  This talk focused on my recent project to modernize the campus DNS and DHCP systems.  Like the first talk, it foucsed on the evaluation, selection, and implentation of a solution.  [The slides](/files/2018_CAUSE_Spreadsheets_to_Modern_DDI.pdf) are also avaliable for review.
+The second talk was the very last session of the conference and sadly had a lot less attendance.  A representative from Infoblox was there along with a couple other schools in attendance.  This talk focused on my recent project to modernize the campus DNS and DHCP systems.  Like the first talk, it focused on the evaluation, selection, and implementation of a solution.  [The slides](/files/2018_CAUSE_Spreadsheets_to_Modern_DDI.pdf) are also available for review.

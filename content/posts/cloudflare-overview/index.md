@@ -19,7 +19,7 @@ This works well with Unifi's DNS Guard product, which you can tie to your Cloudf
 
 ## Access Tunnels
 
-You'll find plenty of documentation around Cloudflare Tunnels, but you'll also find they are very useful.  For my homelab, I can expose individual applications to the greater Internet but also apply access polies for rules for identity providers, service tokens, or more general rules like country blocking.
+You'll find plenty of documentation around Cloudflare Tunnels, but you'll also find they are very useful.  For my homelab, I can expose individual applications to the greater Internet but also apply access policies for rules for identity providers, service tokens, or more general rules like country blocking.
 
 ![tunnels](cloudflare-tunnels.png)
 
@@ -31,4 +31,4 @@ My first exposure to Cloudflare was with their content delivery network.  I lear
 
 ## Wrap Up
 
-The cool think about Cloudflare, I'm still on the "free" tier of service for everything I use.  The only exception is their DNS registrar service but that's something I'd have to pay anywhere.  I'd recommend looking into it.
+The cool thing about Cloudflare, I'm still on the "free" tier of service for everything I use.  The only exception is their DNS registrar service but that's something I'd have to pay anywhere.  I'd recommend looking into it.

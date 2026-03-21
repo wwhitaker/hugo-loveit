@@ -3,7 +3,7 @@ title = 'Unifi Overview'
 description = 'How Unifi is the backbone of my homelab.'
 date = '2026-03-19'
 draft = false
-tags = ['homelab', 'networking', 'unif', 'dns']
+tags = ['homelab', 'networking', 'unifi', 'dns']
 categories = ['Homelab']
 +++
 

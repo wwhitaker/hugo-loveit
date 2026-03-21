@@ -8,4 +8,4 @@ categories = ['Career']
 featuredImage = 'book-signed-kuo.jpeg'
 +++
 
-Infoblox had a little lunch meetup and I meed Josh Kuo.  He gave me a signed copy of his signed book.
+Infoblox had a little lunch meetup and I met Josh Kuo.  He gave me a signed copy of his signed book.

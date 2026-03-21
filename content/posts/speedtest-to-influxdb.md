@@ -34,7 +34,7 @@ This gave me datasource to add to grafana, speaking in the influxdb v1 language 
 
 ### Migrate InfluxDB v1 to v2
 
-To not loose old data, a migration was needed.  Various methods exist to migrate data, but the simple approach below worked for me.
+To not lose old data, a migration was needed.  Various methods exist to migrate data, but the simple approach below worked for me.
 
 1. From the InfluxDB v1 server, export speedtests data to a line protocol file.
 
