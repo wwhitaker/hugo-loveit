@@ -1,7 +1,7 @@
 +++
 date = '2021-05-02T11:52:57-04:00'
 draft = false
-title = 'Makin Reel Memories'
+title = "Makin' \"Reel\" Memories"
 tags = ['boat', 'family']
 categories = ['Personal']
 +++
