@@ -1,4 +1,5 @@
-<div class="links">
+{{- $extraClass := .Get "class" -}}
+<div class="links{{ with $extraClass }} {{ . }}{{ end }}">
     {{- $socialMap := resources.Get "data/social.yml" | transform.Unmarshal -}}
     {{- $socialArr := slice -}}
     {{- range $key, $value := .Site.Params.social -}}

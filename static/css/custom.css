@@ -196,6 +196,11 @@
   margin: 0.4rem 0 0.9rem;
 }
 
+/* Keep About page contact icons larger without affecting home/profile links */
+.links.about-contact-links {
+  font-size: 1.5rem;
+}
+
 .home-focus-card {
   padding: 0.95rem 1rem;
   border: var(--surface-border);
