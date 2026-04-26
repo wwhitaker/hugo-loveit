@@ -37,9 +37,7 @@ Feeding this into the stamp calculator shows it should work.
 
 ## Common Stamps
 
-An [extensive list of public resolvers](https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md) is published through GitHub.
-
-For quick reference a few are below.
+An [extensive list of public resolvers](https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md) is published through GitHub.  For quick reference a few are below.
 
 ### Google 8.8.8.8
 
