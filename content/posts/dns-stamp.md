@@ -16,7 +16,7 @@ Later releases added a "Custom" option with an unusual "DNS Stamp" text input. T
 
 ## Calculator
 
-DNS Stamps are not a new thing but are encoded text strings not easy on the human eye. The [online DNS Stamp calculator](https://dnscrypt.info/stamps/) explains it succinctly, "DNS Stamps encode all the parameters required to connect to a secure DNS server as a single string." Alright that helps, it's a thing to make application configurations easier. Despite Unifi calling out DoH in their feature other protocols such as DNSCrypt, DNS-over-TLS, DNS-over-QUIC, and others. Do those work too?
+DNS Stamps are not a new thing but are encoded text strings not easy on the human eye. The [online DNS Stamp calculator](https://dnscrypt.info/stamps/) explains it succinctly, "DNS Stamps encode all the parameters required to connect to a secure DNS server as a single string." Alright that helps, it's a thing to make application configurations easier. Despite Unifi calling out DoH in their feature, there are other protocols such as DNSCrypt, DNS-over-TLS, DNS-over-QUIC. Do those work too?
 
 With that information and looking through the NextDNS portal, they made it easy. Under the Setup Guide for Linux, a configuration snippet for DNSCrypt including a stamp.
 
@@ -35,6 +35,41 @@ Feeding this into the stamp calculator shows it should work.
 * Path /abc123
 * DNSSEC enabled
 
+## Common Stamps
+
+An [extensive list of public resolvers](https://github.com/DNSCrypt/dnscrypt-resolvers/blob/master/v3/public-resolvers.md) is published through GitHub.
+
+For quick reference a few are below.
+
+### Google 8.8.8.8
+
+```
+  stamp = 'sdns://AgUAAAAAAAAABzguOC44LjggsKKKE4EwvtIbNjGjagI2607EdKSVHowYZtyvD9iPrkkHOC44LjguOAovZG5zLXF1ZXJ5'
+```
+
+Feeding this into the stamp calculator shows it should work.
+
+* Protocol DNS-over-HTTPS (DoH)
+* Hostname 8.8.8.8
+* Path /dns-query
+* DNSSEC enabled
+* No filter
+
+### Cloudflare 1.1.1.1
+
+```
+  stamp = 'sdns://AgcAAAAAAAAABzEuMS4xLjEABzEuMS4xLjEKL2Rucy1xdWVyeQ'
+```
+
+Feeding this into the stamp calculator shows it should work.
+
+* Protocol DNS-over-HTTPS (DoH)
+* Hostname 1.1.1.1
+* Path /dns-query
+* DNSSEC enabled
+* No filter
+* No logs
+
 ## Other Providers
 
-What are the stamps for other providers? If you have the setup information for a public resolver already, you can use the calculator to generate the DNS Stamp directly. But after a little more digging I found [Lists of public DNSCrypt and DoH Servers](https://github.com/dnscrypt/dnscrypt-resolvers) pre-generated and published. I still feed the stamp into the calculator to verify the stamp before using it.
+You can Check the list for other providers but don't forget you can make your stamp of interest.  Regardless, feed the stamp into the calculator to verify the stamp before using it.
