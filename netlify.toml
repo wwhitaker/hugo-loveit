@@ -19,6 +19,12 @@
   to = "/.netlify/functions/kuma-status"
   status = 200
 
+[[redirects]]
+  from = "/blogs/*"
+  to = "/posts/:splat"
+  status = 301
+  force = true
+
 # Security headers applied to every response
 [[headers]]
   for = "/*"
