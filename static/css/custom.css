@@ -896,8 +896,21 @@
   font-size: 0.9rem;
 }
 
-.github-contrib-calendar-header {
-  margin-bottom: 0.55rem;
+.github-contrib-calendar-header,
+.kuma-status-header,
+.home-suno-header {
+  margin-bottom: 0.7rem;
+  padding: 0.78rem 0.88rem;
+  border: 1px solid rgba(96, 112, 132, 0.2);
+  border-radius: calc(var(--surface-radius-md) + 2px);
+  background: rgba(120, 140, 160, 0.14);
+}
+
+[theme=dark] .github-contrib-calendar-header,
+[theme=dark] .kuma-status-header,
+[theme=dark] .home-suno-header {
+  border-color: rgba(136, 154, 176, 0.24);
+  background: rgba(120, 140, 160, 0.12);
 }
 
 .github-contrib-calendar-title-icon {
@@ -920,16 +933,21 @@
   text-decoration: none;
 }
 
-.github-contrib-calendar-frame {
+.github-contrib-calendar-frame,
+.kuma-status-hero {
   padding: 0.9rem 0.95rem 1rem;
   border: 1px solid rgba(45, 150, 189, 0.14);
   border-radius: calc(var(--surface-radius-md) + 2px);
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
+}
+
+.github-contrib-calendar-frame {
   overflow-x: auto;
 }
 
-[theme=dark] .github-contrib-calendar-frame {
+[theme=dark] .github-contrib-calendar-frame,
+[theme=dark] .kuma-status-hero {
   border-color: rgba(85, 189, 226, 0.16);
   background: rgba(15, 21, 28, 0.4);
 }
@@ -957,6 +975,7 @@
 }
 
 .github-contrib-calendar-footer,
+.home-suno-footer,
 .kuma-status-footer,
 .homelab-snapshot-links {
   margin-top: 0.8rem;
@@ -972,13 +991,15 @@
 }
 
 .github-contrib-calendar-footer,
+.home-suno-footer,
 .kuma-status-footer {
   margin-bottom: 0.24rem;
 }
 
 .github-contrib-calendar-profile-link,
 .kuma-status-footer a,
-.github-contrib-calendar-handle {
+.github-contrib-calendar-handle,
+.home-suno-handle {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -995,7 +1016,8 @@
 
 [theme=dark] .github-contrib-calendar-profile-link,
 [theme=dark] .kuma-status-footer a,
-[theme=dark] .github-contrib-calendar-handle {
+[theme=dark] .github-contrib-calendar-handle,
+[theme=dark] .home-suno-handle {
   border-color: rgba(85, 189, 226, 0.16);
   background: rgba(15, 21, 28, 0.4);
 }
@@ -1005,7 +1027,9 @@
 .kuma-status-footer a:hover,
 .kuma-status-footer a:focus-visible,
 .github-contrib-calendar-handle:hover,
-.github-contrib-calendar-handle:focus-visible {
+.github-contrib-calendar-handle:focus-visible,
+.home-suno-handle:hover,
+.home-suno-handle:focus-visible {
   border-color: var(--home-accent);
   color: var(--home-accent);
   background: var(--home-accent-soft);
@@ -1017,7 +1041,9 @@
 [theme=dark] .kuma-status-footer a:hover,
 [theme=dark] .kuma-status-footer a:focus-visible,
 [theme=dark] .github-contrib-calendar-handle:hover,
-[theme=dark] .github-contrib-calendar-handle:focus-visible {
+[theme=dark] .github-contrib-calendar-handle:focus-visible,
+[theme=dark] .home-suno-handle:hover,
+[theme=dark] .home-suno-handle:focus-visible {
   background: rgba(85, 189, 226, 0.16);
 }
 
@@ -1046,7 +1072,9 @@
     align-items: flex-start;
   }
 
-  .github-contrib-calendar-header {
+  .github-contrib-calendar-header,
+  .kuma-status-header,
+  .home-suno-header {
     margin-bottom: 0.45rem;
   }
 
@@ -1135,16 +1163,6 @@
   gap: 0.9rem;
   align-items: center;
   margin: 0 0 0.85rem;
-  padding: 0.9rem 0.95rem;
-  border: 1px solid rgba(45, 150, 189, 0.14);
-  border-radius: calc(var(--surface-radius-md) + 2px);
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
-}
-
-[theme=dark] .kuma-status-hero {
-  border-color: rgba(85, 189, 226, 0.16);
-  background: rgba(15, 21, 28, 0.4);
 }
 
 .kuma-status-hero-copy {
@@ -1365,18 +1383,6 @@
 
 .kuma-status-card.status-unknown .kuma-status-dot {
   background: var(--kuma-unknown);
-}
-
-.kuma-status-card.status-operational .kuma-status-hero {
-  border-color: rgba(21, 115, 71, 0.18);
-}
-
-.kuma-status-card.status-degraded .kuma-status-hero {
-  border-color: rgba(187, 107, 0, 0.2);
-}
-
-.kuma-status-card.status-outage .kuma-status-hero {
-  border-color: rgba(180, 35, 47, 0.2);
 }
 
 .kuma-status-card.status-degraded .kuma-status-dot,
@@ -3333,4 +3339,113 @@
   border: none;
   border-top: 1px solid var(--global-border-color);
   opacity: 0.6;
+}
+
+.home-suno {
+  position: relative;
+  overflow: hidden;
+  margin: 1.05rem 0 1.6rem;
+  padding: 0.95rem;
+  border: var(--surface-border);
+  border-radius: calc(var(--surface-radius-lg) + 2px);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(45, 150, 189, 0.18), transparent 44%),
+    radial-gradient(circle at 0% 100%, rgba(35, 171, 136, 0.1), transparent 50%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0) 18%),
+    var(--global-background-color);
+  box-shadow: var(--surface-shadow-soft);
+}
+
+[theme=dark] .home-suno {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(85, 189, 226, 0.22), transparent 44%),
+    radial-gradient(circle at 0% 100%, rgba(29, 122, 99, 0.2), transparent 52%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0) 18%),
+    #161c22;
+}
+
+.home-suno::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0) 36%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 28%);
+  pointer-events: none;
+}
+
+[theme=dark] .home-suno::before {
+  background:
+    linear-gradient(115deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0) 36%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 28%);
+}
+
+.home-suno > * {
+  position: relative;
+  z-index: 1;
+}
+
+.home-suno-title-icon {
+  color: var(--home-accent);
+  font-size: 0.98em;
+}
+
+.home-suno-meta {
+  white-space: nowrap;
+}
+
+.home-suno-summary {
+  margin: 0 0 0.78rem;
+  max-width: 44rem;
+  color: var(--global-font-secondary-color);
+  font-size: 0.95rem;
+  line-height: 1.62;
+}
+
+.home-suno-footer {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.home-suno-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.65rem;
+}
+
+.home-suno-card {
+  overflow: hidden;
+  padding: 0.75rem;
+  border: 1px solid rgba(45, 150, 189, 0.14);
+  border-radius: calc(var(--surface-radius-md) + 2px);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+[theme=dark] .home-suno-card {
+  border-color: rgba(85, 189, 226, 0.16);
+  background: rgba(15, 21, 28, 0.4);
+}
+
+.home-suno-card iframe {
+  display: block;
+  width: 100%;
+  height: 140px;
+  border: 0;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.65);
+}
+
+[theme=dark] .home-suno-card iframe {
+  background: rgba(13, 18, 24, 0.82);
+}
+
+@media (max-width: 780px) {
+  .home-suno-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

@@ -1,0 +1,44 @@
+{{- $cfg := site.Data.suno -}}
+{{- if and $cfg $cfg.songs -}}
+  {{- $title := $cfg.section_title | default "Top Played Music" -}}
+  {{- $summary := $cfg.section_summary | default "Most-played tracks from my Suno profile." -}}
+  {{- $profileURL := $cfg.profile_url | default "https://suno.com" -}}
+  {{- $handle := $cfg.handle | default "@suno" -}}
+  {{- $meta := $cfg.header_meta | default "Top Played" -}}
+  {{- $songs := sort $cfg.songs "play_count" "desc" -}}
+
+  <section class="home-suno" aria-labelledby="home-suno-title">
+    <header class="home-suno-header dashboard-card-header">
+      <h2 class="dashboard-card-title" id="home-suno-title">
+        <i class="fas fa-music home-suno-title-icon" aria-hidden="true"></i>
+        <span>{{ $title }}</span>
+      </h2>
+      <p class="home-suno-meta dashboard-card-meta">{{ $meta }}</p>
+    </header>
+
+    <p class="home-suno-summary">{{ $summary }}</p>
+
+    <div class="home-suno-grid">
+      {{- range $songs -}}
+        {{- if .id -}}
+          <article class="home-suno-card" aria-label="{{ .title | default "Suno track" }}">
+            <iframe
+              title="Suno: {{ .title | default "Track" }}"
+              src="https://suno.com/embed/{{ .id }}"
+              loading="lazy"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+          </article>
+        {{- end -}}
+      {{- end -}}
+    </div>
+
+    <footer class="home-suno-footer">
+      <a class="home-suno-handle" href="{{ $profileURL | safeURL }}" target="_blank" rel="noopener noreferrer" aria-label="View {{ $handle }} on Suno">
+        <i class="fas fa-music" aria-hidden="true"></i>
+        <span>{{ $handle }}</span>
+      </a>
+    </footer>
+  </section>
+{{- end -}}

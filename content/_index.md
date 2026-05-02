@@ -22,6 +22,8 @@ tertiary_url="/posts/"
 
 {{< uptime-kuma-status title="Service Health" apiPath="/api/kuma-status" >}}
 
-{{< homelab-snapshot >}}
+{{< home-suno >}}
+
+<!-- {{< homelab-snapshot >}} -->
 
 {{< github-contrib-calendar >}}
