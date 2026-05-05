@@ -5,16 +5,16 @@ section_summary = "Most-played tracks from my public Suno profile."
 button_label = "Open Suno Profile"
 
 [[songs]]
-id = "3b29316e-db7a-4985-b858-91f75902d441"
-title = "Route Reckoning"
-play_count = 130
-
-[[songs]]
-id = "4e66acbb-fab4-4b84-933b-eb439ff1a7f0"
-title = "Network Troubles"
-play_count = 63
+id = "1999409b-a785-4375-a083-4d8f337c2da7"
+title = "VLAN Vibes"
+play_count = 30
 
 [[songs]]
 id = "96a1e203-95ef-4a69-8b3d-e1feef3fd437"
 title = "Disconnected"
-play_count = 26
+play_count = 20
+
+[[songs]]
+id = "3b29316e-db7a-4985-b858-91f75902d441"
+title = "Route Reckoning"
+play_count = 10
