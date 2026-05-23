@@ -3,6 +3,7 @@ title = 'Personal website for William E. Whitaker, Jr'
 description = 'I am an information systems professional with broad background in network support, system administration and software development focused on security topics.'
 +++
 
+## defingo.net
 <!-- ## Infrastructure that stays understandable
 
 I build and support network services and systems with a focus on reliability, security, and
