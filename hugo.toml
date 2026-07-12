@@ -74,7 +74,7 @@ enableRobotsTXT = true
   
   [params.header]
     [params.header.title]
-      logo = '/favicon-32x32.png'
+      logo = '/favicon-96x96.png'
       name = 'Defingo.net'
   
   [params.home]
