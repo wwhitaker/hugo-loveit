@@ -2258,6 +2258,9 @@
 #header-desktop .header-title .logo,
 #header-mobile .header-title .logo {
   border-radius: 0.45rem;
+  height: 2.6rem;
+  min-height: 2.6rem;
+  width: auto;
 }
 
 #header-desktop .menu .menu-inner {
