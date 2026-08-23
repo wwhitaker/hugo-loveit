@@ -3433,7 +3433,8 @@
   background: rgba(15, 21, 28, 0.4);
 }
 
-.home-suno-card iframe {
+.home-suno-card iframe,
+.home-suno-facade {
   display: block;
   width: 100%;
   height: 140px;
@@ -3442,8 +3443,95 @@
   background: rgba(255, 255, 255, 0.65);
 }
 
-[theme=dark] .home-suno-card iframe {
+[theme=dark] .home-suno-card iframe,
+[theme=dark] .home-suno-facade {
   background: rgba(13, 18, 24, 0.82);
+}
+
+/* Placeholder shown until the visitor plays a track. Matches the iframe box
+   exactly so swapping in the real Suno player shifts nothing on the page. */
+.home-suno-facade {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0 1rem 0 0;
+  overflow: hidden;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--motion-fast), background var(--motion-fast);
+}
+
+.home-suno-art {
+  flex: 0 0 auto;
+  width: 140px;
+  height: 140px;
+  border-radius: 10px 0 0 10px;
+  object-fit: cover;
+  background: rgba(120, 140, 160, 0.14);
+}
+
+.home-suno-facade-text {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.home-suno-facade-title {
+  overflow: hidden;
+  color: var(--global-font-color);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.home-suno-facade-plays {
+  color: var(--global-font-secondary-color);
+  font-size: 0.85rem;
+}
+
+.home-suno-facade-play {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+  background: var(--home-accent-soft);
+  color: var(--home-accent);
+  font-size: 0.9rem;
+  transition: background var(--motion-fast), color var(--motion-fast), transform var(--motion-fast);
+}
+
+.home-suno-facade:hover .home-suno-facade-play,
+.home-suno-facade:focus-visible .home-suno-facade-play {
+  background: var(--home-accent);
+  color: #fff;
+  transform: scale(1.06);
+}
+
+.home-suno-facade:focus-visible {
+  outline: 2px solid var(--home-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-suno-facade,
+  .home-suno-facade-play {
+    transition: none;
+  }
+
+  .home-suno-facade:hover .home-suno-facade-play,
+  .home-suno-facade:focus-visible .home-suno-facade-play {
+    transform: none;
+  }
 }
 
 @media (max-width: 780px) {

@@ -5,7 +5,21 @@
   {{- $profileURL := $cfg.profile_url | default "https://suno.com" -}}
   {{- $handle := $cfg.handle | default "@suno" -}}
   {{- $meta := $cfg.header_meta | default "Top Played" -}}
-  {{- $songs := sort $cfg.songs "play_count" "desc" -}}
+  {{- /* `pinned` is a hand-maintained list of song ids that lead the section in
+         the order given, regardless of play count. Everything else follows,
+         most-played first. scripts/sync-suno-top.mjs preserves the list. */ -}}
+  {{- $pinned := $cfg.pinned -}}
+  {{- if not $pinned -}}{{- $pinned = slice -}}{{- end -}}
+  {{- $byPlays := sort $cfg.songs "play_count" "desc" -}}
+  {{- $songs := slice -}}
+  {{- range $id := $pinned -}}
+    {{- range $byPlays -}}
+      {{- if eq .id $id -}}{{- $songs = $songs | append . -}}{{- end -}}
+    {{- end -}}
+  {{- end -}}
+  {{- range $byPlays -}}
+    {{- if not (in $pinned .id) -}}{{- $songs = $songs | append . -}}{{- end -}}
+  {{- end -}}
 
   <section class="home-suno" aria-labelledby="home-suno-title">
     <header class="home-suno-header dashboard-card-header">
@@ -21,14 +35,43 @@
     <div class="home-suno-grid">
       {{- range $songs -}}
         {{- if .id -}}
-          <article class="home-suno-card" aria-label="{{ .title | default "Suno track" }}">
-            <iframe
-              title="Suno: {{ .title | default "Track" }}"
-              src="https://suno.com/embed/{{ .id }}"
-              loading="lazy"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              referrerpolicy="strict-origin-when-cross-origin">
-            </iframe>
+          {{- $songTitle := .title | default "Suno track" -}}
+          {{- $remoteArt := printf "https://cdn2.suno.ai/image_%s.jpeg" .id -}}
+          {{- /* Mirror the cover locally at build time so a visitor's first paint
+                 touches no third-party host; fall back to Suno's CDN if the
+                 build machine can't reach it. */ -}}
+          {{- $art := $remoteArt -}}
+          {{- with try (resources.GetRemote $remoteArt) -}}
+            {{- with .Err -}}
+              {{- warnf "home-suno: could not mirror cover art for %s (%s)" $songTitle . -}}
+            {{- else with .Value -}}
+              {{- $art = .RelPermalink -}}
+            {{- end -}}
+          {{- end -}}
+          <article class="home-suno-card">
+            <button
+              type="button"
+              class="home-suno-facade"
+              data-suno-id="{{ .id }}"
+              data-suno-title="{{ $songTitle }}"
+              aria-label="Play {{ $songTitle }} on Suno">
+              <img
+                class="home-suno-art"
+                src="{{ $art }}"
+                alt=""
+                width="360" height="360"
+                loading="lazy"
+                decoding="async">
+              <span class="home-suno-facade-text">
+                <span class="home-suno-facade-title">{{ $songTitle }}</span>
+                {{- with .play_count }}
+                  <span class="home-suno-facade-plays">{{ . }} {{ cond (eq . 1) "play" "plays" }}</span>
+                {{- end }}
+              </span>
+              <span class="home-suno-facade-play" aria-hidden="true">
+                <i class="fas fa-play"></i>
+              </span>
+            </button>
           </article>
         {{- end -}}
       {{- end -}}
@@ -41,4 +84,6 @@
       </a>
     </footer>
   </section>
+
+  <script defer src="/js/home-suno.js"></script>
 {{- end -}}

@@ -3,18 +3,20 @@ handle = "@mysticalcondensers"
 section_title = "Top Played Music"
 section_summary = "Most-played tracks from my public Suno profile."
 button_label = "Open Suno Profile"
+pinned = ["1999409b-a785-4375-a083-4d8f337c2da7", "96a1e203-95ef-4a69-8b3d-e1feef3fd437"]
 
 [[songs]]
 id = "1999409b-a785-4375-a083-4d8f337c2da7"
 title = "VLAN Vibes"
-play_count = 30
+play_count = 56
 
 [[songs]]
 id = "96a1e203-95ef-4a69-8b3d-e1feef3fd437"
 title = "Disconnected"
-play_count = 20
+play_count = 56
 
 [[songs]]
 id = "3b29316e-db7a-4985-b858-91f75902d441"
 title = "Route Reckoning"
-play_count = 10
+play_count = 138
+

@@ -24,7 +24,20 @@ function escapeTomlString(value) {
     .trim();
 }
 
+// Suno now ships the profile payload as a backslash-escaped JSON string inside the
+// Next.js flight data, so the song fields arrive as \"play_count\":56 rather than
+// "play_count":56. Unescape one level before matching, and keep the raw pass as a
+// fallback in case they revert.
+function unescapeFlightPayload(html) {
+  return html.replace(/\\"/g, '"').replace(/\\\\/g, "\\");
+}
+
 function parseSongsFromProfileHtml(html) {
+  const direct = matchSongs(html);
+  return direct.length > 0 ? direct : matchSongs(unescapeFlightPayload(html));
+}
+
+function matchSongs(html) {
   const clipRegex = /"content_item":\{"status":"complete","title":"((?:\\.|[^"\\])*)","play_count":(\d+)[\s\S]*?"id":"([0-9a-f-]{36})","entity_type":"song_schema"/g;
   const seen = new Map();
   let match;
@@ -56,6 +69,29 @@ function parseSongsFromProfileHtml(html) {
   return [...seen.values()];
 }
 
+// The `pinned` list is hand-maintained in data/suno.toml, so read it back off
+// the existing file and carry it through — otherwise a routine sync would drop
+// the chosen ordering on the floor.
+function readPinnedFromToml(toml) {
+  const match = toml.match(/^pinned\s*=\s*\[([\s\S]*?)\]/m);
+  if (!match) return [];
+  return [...match[1].matchAll(/"([^"]+)"/g)].map((m) => m[1]);
+}
+
+// Pinned songs lead, in the order listed, whether or not they charted. The rest
+// fill the remaining slots by play count.
+function selectSongs(songs, pinned, limit) {
+  const byId = new Map(songs.map((song) => [song.id, song]));
+  const lead = pinned.map((id) => byId.get(id)).filter(Boolean);
+  const leadIds = new Set(lead.map((song) => song.id));
+  const rest = songs
+    .filter((song) => !leadIds.has(song.id))
+    .sort((a, b) => b.play_count - a.play_count);
+
+  // Never let the cap silently drop a song that was explicitly pinned.
+  return [...lead, ...rest].slice(0, Math.max(limit, lead.length));
+}
+
 function toToml(config) {
   const lines = [];
   lines.push(`profile_url = "${escapeTomlString(config.profile_url)}"`);
@@ -63,6 +99,9 @@ function toToml(config) {
   lines.push(`section_title = "${escapeTomlString(config.section_title)}"`);
   lines.push(`section_summary = "${escapeTomlString(config.section_summary)}"`);
   lines.push(`button_label = "${escapeTomlString(config.button_label)}"`);
+  if (config.pinned.length > 0) {
+    lines.push(`pinned = [${config.pinned.map((id) => `"${escapeTomlString(id)}"`).join(", ")}]`);
+  }
   lines.push("");
 
   for (const song of config.songs) {
@@ -95,9 +134,16 @@ async function main() {
   }
 
   const html = await response.text();
-  const songs = parseSongsFromProfileHtml(html)
-    .sort((a, b) => b.play_count - a.play_count)
-    .slice(0, limit);
+  const parsed = parseSongsFromProfileHtml(html);
+
+  const existing = await fs.readFile(outFile, "utf8").catch(() => "");
+  const pinned = readPinnedFromToml(existing);
+  const songs = selectSongs(parsed, pinned, limit);
+
+  const missing = pinned.filter((id) => !parsed.some((song) => song.id === id));
+  if (missing.length > 0) {
+    console.warn(`Pinned id(s) not found on the profile, skipping: ${missing.join(", ")}`);
+  }
 
   if (songs.length === 0) {
     throw new Error("No songs parsed from Suno profile HTML. The page format may have changed.");
@@ -109,6 +155,7 @@ async function main() {
     section_title: "Top Played Music",
     section_summary: "Most-played tracks from my public Suno profile.",
     button_label: "Open Suno Profile",
+    pinned,
     songs,
   });
 
