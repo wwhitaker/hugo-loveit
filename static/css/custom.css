@@ -3491,9 +3491,12 @@
   white-space: nowrap;
 }
 
-.home-suno-facade-plays {
+.home-suno-facade-meta {
+  overflow: hidden;
   color: var(--global-font-secondary-color);
   font-size: 0.85rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .home-suno-facade-play {

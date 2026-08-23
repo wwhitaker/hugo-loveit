@@ -64,8 +64,17 @@
                 decoding="async">
               <span class="home-suno-facade-text">
                 <span class="home-suno-facade-title">{{ $songTitle }}</span>
-                {{- with .play_count }}
-                  <span class="home-suno-facade-plays">{{ . }} {{ cond (eq . 1) "play" "plays" }}</span>
+                {{- /* Play counts used to sit here, but they only refreshed when
+                       the sync script was run by hand, so they read as stale.
+                       Runtime length and genre never go out of date. */ -}}
+                {{- $bits := slice -}}
+                {{- with .duration -}}
+                  {{- $secs := int . -}}
+                  {{- $bits = $bits | append (printf "%d:%02d" (int (div $secs 60)) (int (mod $secs 60))) -}}
+                {{- end -}}
+                {{- with .genre -}}{{- $bits = $bits | append . -}}{{- end -}}
+                {{- with $bits }}
+                  <span class="home-suno-facade-meta">{{ delimit . " · " }}</span>
                 {{- end }}
               </span>
               <span class="home-suno-facade-play" aria-hidden="true">
