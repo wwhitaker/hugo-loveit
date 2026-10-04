@@ -70,8 +70,6 @@ round-trip min/avg/max/stddev = 18.682/33.587/54.178/11.381 ms
 
 In general, speedtests from the gateway see around 100 Mbps down and 10 Mbps up on the secondary WAN. The primary WAN sees 1.16 Gbps down and 40 Mbps. Latency is 30 to 40 ms slower than the primary.
 
-![wan2](/images/posts/unifi_wan2_verizon.png)
-
 The oddest problem related to IPv6. While I could enable it on the secondary WAN, clients didn't handle failing over well. They end up with two IPv6 prefixes leaving it up to the clients to figure out which public addressing to use. It made more sense to just disable IPv6 on the secondary WAN.
 
 This seems to be a workable solution.
