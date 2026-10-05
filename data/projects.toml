@@ -92,3 +92,19 @@ url = "https://github.com/wwhitaker/speedtests"
 icon = "fab fa-github"
 label = "View Speedtest to InfluxDB on GitHub"
 text = "GitHub"
+
+[[projects]]
+title = "KumaStatusBar"
+featured = false
+status = "Active"
+updated = "2026-10-05"
+image = "/kumastatusbar/images/icon.png"
+alt = "KumaStatusBar app icon"
+description = "A macOS menu bar app that watches an Uptime Kuma status page and alerts when a monitor goes down. Works at home and away through Cloudflare Tunnel and Access."
+tech = ["macOS", "Uptime Kuma"]
+
+[[projects.links]]
+url = "/kumastatusbar/"
+icon = "fa-solid fa-eye"
+label = "KumaStatusBar product page"
+text = "See Site"

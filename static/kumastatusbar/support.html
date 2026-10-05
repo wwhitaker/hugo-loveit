@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KumaStatusBar Support</title>
+<meta name="description" content="Setup help and troubleshooting for KumaStatusBar, a menu bar monitor for Uptime Kuma status pages.">
+<style>
+  :root { --bg: #ffffff; --text: #1d1d1f; --muted: #6e6e73; --accent: #127f60; --rule: #e5e5ea; --code: #f2f2f5; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #161618; --text: #f5f5f7; --muted: #a1a1a6; --accent: #3fc79a; --rule: #2c2c2e; --code: #232326; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 17px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 48px 16px 64px; }
+  h1 { font-size: 34px; line-height: 1.2; margin: 0 0 6px; }
+  h2 { font-size: 22px; margin: 40px 0 10px; padding-top: 16px; border-top: 1px solid var(--rule); }
+  h3 { font-size: 17px; margin: 24px 0 6px; }
+  p, li { margin: 0 0 10px; }
+  .lede { font-size: 20px; color: var(--muted); margin-bottom: 8px; }
+  code { background: var(--code); padding: 1px 6px; border-radius: 5px; font-size: 15px;
+         font-family: ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }
+  a { color: var(--accent); }
+  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 15px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>KumaStatusBar Support</h1>
+  <p class="lede">A menu bar monitor for Uptime Kuma status pages.</p>
+  <p>Need help? Email <a href="mailto:support@defingo.net">support@defingo.net</a> with your macOS version, the
+  KumaStatusBar version (<strong>Settings → About</strong>) and what you're seeing.</p>
+
+  <h2>What you need</h2>
+  <ul>
+    <li>A Mac with Apple silicon running macOS 14 or later.</li>
+    <li>An <a href="https://github.com/louislam/uptime-kuma">Uptime Kuma</a> server with a
+        <strong>status page</strong> that lists the monitors you want to see. KumaStatusBar reads the status
+        page, so no Uptime Kuma login or API key is needed.</li>
+  </ul>
+
+  <h2>Getting started</h2>
+  <ol>
+    <li>Open KumaStatusBar. It lives in the menu bar (there's no Dock icon). Click its icon, then
+        <strong>Open Settings</strong>.</li>
+    <li>In <strong>Settings → Connection</strong>, enter your Uptime Kuma address. You can paste the status page's
+        address, such as <code>https://status.example.com/status/home</code>; the app works out the server and
+        the slug.</li>
+    <li>Click <strong>Test</strong>. You should see the page name and how many monitors it has.</li>
+  </ol>
+  <p>The status page <strong>slug</strong> is the last part of its address: <code>home</code> in
+  <code>…/status/home</code>. It's under <strong>Settings → General</strong>.</p>
+
+  <h2>Home and remote URLs</h2>
+  <p>For a homelab, KumaStatusBar can connect to Uptime Kuma directly on your network and through a tunnel or public
+  address everywhere else:</p>
+  <ul>
+    <li><strong>Home URL:</strong> Uptime Kuma on your network, for example <code>http://192.168.1.20:3001</code>.
+        Plain <code>http://</code> is fine here.</li>
+    <li><strong>Remote URL:</strong> an address that works from anywhere, such as a Cloudflare Tunnel.</li>
+    <li><strong>Route:</strong> <em>Automatic</em> tries the home URL first and falls back to the remote one,
+        re-checking when your network changes. It works on Wi-Fi, Ethernet and over a VPN home. You can also
+        choose <em>Always home</em> or <em>Always remote</em>.</li>
+  </ul>
+  <p>The badge in the top-right of the popover shows which one the last check used: <strong>Home</strong> or
+  <strong>Remote</strong>.</p>
+
+  <h2>Cloudflare Access</h2>
+  <p>If your remote URL is protected by Cloudflare Access, KumaStatusBar can send a service token:</p>
+  <ol>
+    <li>In Cloudflare Zero Trust, create a <strong>service token</strong> (Access → Service credentials).</li>
+    <li>On the Access application for your status page, add a policy with action <strong>Service Auth</strong>
+        that includes the token. A normal <em>Allow</em> policy doesn't accept service tokens.</li>
+    <li>Paste the Client ID and secret into <strong>Settings → Connection</strong>, click <strong>Test remote
+        URL</strong>, then <strong>Save token</strong>.</li>
+  </ol>
+  <p>The token is stored in your Keychain and is only ever sent to the remote URL.</p>
+
+  <h2>Alerts</h2>
+  <p>When a monitor goes down, the menu bar icon gets a red dot, you get a notification and a sound plays; a
+  different sound plays when it recovers. A yellow dot means a monitor is pending or the status page can't
+  be reached; a blue dot means maintenance. Choose the sounds in <strong>Settings → Alerts</strong>, and use
+  <strong>Settings → Testing → Simulate outage</strong> to try them.</p>
+
+  <h2>Troubleshooting</h2>
+  <h3>It always says Remote, or the home URL fails with “The Internet connection appears to be offline”</h3>
+  <p>macOS needs permission for apps to reach devices on your local network. Open <strong>System Settings →
+  Privacy &amp; Security → Local Network</strong> and turn on KumaStatusBar.</p>
+  <h3>“Access denied”</h3>
+  <p>Cloudflare Access rejected the request. Check the Client ID and secret, and that your Access application
+  has a <strong>Service Auth</strong> policy including the token.</p>
+  <h3>“Server returned HTTP 404”</h3>
+  <p>The slug probably doesn't match a status page. Open the page in a browser and copy the part after
+  <code>/status/</code> into <strong>Settings → General → Status page slug</strong>.</p>
+  <h3>No notifications</h3>
+  <p>Check <strong>System Settings → Notifications → KumaStatusBar</strong>. Sounds play even when notification
+  sounds are off; you can turn them off in <strong>Settings → Alerts</strong>.</p>
+  <h3>A monitor I expect is missing</h3>
+  <p>KumaStatusBar shows what's on the status page. Add the monitor to the status page in Uptime Kuma. Group
+  monitors appear as a single entry, as they do on the page.</p>
+
+  <h2>Privacy</h2>
+  <p>KumaStatusBar collects no data. See the <a href="privacy.html">privacy policy</a>.</p>
+
+  <footer><a href="./">KumaStatusBar home</a> · KumaStatusBar is an independent project and isn't affiliated with Uptime Kuma.
+  © 2026 William Whitaker, Jr.</footer>
+</main>
+</body>
+</html>

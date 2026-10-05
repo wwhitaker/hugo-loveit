@@ -11,7 +11,7 @@ comment = false
 I build practical tools for network operations, observability, and data quality. Most projects start with a real production pain point and end as reusable automation.
 
 {{< project-stats
-stat1_value="3"
+stat1_value="5"
 stat1_text="active public projects"
 stat2_value="3"
 stat2_text="core platforms: Python, AKiPS, InfluxDB"

@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KumaStatusBar</title>
+<meta name="description" content="Your Uptime Kuma status page in the Mac menu bar. Built for homelabs: direct on your network, through your Cloudflare Tunnel when you're away.">
+<meta property="og:title" content="KumaStatusBar: Uptime Kuma in your menu bar">
+<meta property="og:description" content="A red badge, a notification and a sound the moment something in your homelab goes down.">
+<meta property="og:image" content="images/1-overview-popover.jpg">
+<link rel="icon" href="images/icon.png">
+<style>
+  :root {
+    --bg: #ffffff; --bg-soft: #f4f7f6; --text: #16191a; --muted: #5c6467; --rule: #e3e8e6;
+    --accent: #0f7a5c; --accent-soft: #e2f3ec; --card: #ffffff;
+    --hero-a: #1a8f61; --hero-b: #08504f; --down: #e5484d; --pending: #f5b400; --maint: #2f80ed;
+    --shadow: 0 18px 50px rgba(5, 40, 35, 0.18);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f1213; --bg-soft: #161b1c; --text: #eef2f1; --muted: #9aa6a4; --rule: #253031;
+      --accent: #43c99b; --accent-soft: #15302a; --card: #1a2021;
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  img { max-width: 100%; height: auto; display: block; }
+  a { color: var(--accent); }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 720px) { .wrap { padding: 0 32px; } }
+
+  /* Hero */
+  .hero { background: linear-gradient(170deg, var(--hero-a), var(--hero-b)); color: #fff; padding: 56px 0 64px; overflow: hidden; }
+  .hero-grid { display: grid; gap: 40px; align-items: center; }
+  @media (min-width: 900px) { .hero-grid { grid-template-columns: 7fr 5fr; } }
+  .brand { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+  .brand img { width: 56px; height: 56px; }
+  .brand span { font-weight: 700; font-size: 22px; letter-spacing: -0.01em; }
+  .hero h1 { font-size: clamp(34px, 6vw, 60px); line-height: 1.06; letter-spacing: -0.02em; margin: 0 0 18px; max-width: 14em; }
+  .hero p.lede { font-size: clamp(18px, 2.2vw, 22px); color: rgba(255,255,255,0.88); max-width: 34em; margin: 0 0 28px; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 12px;
+         font-weight: 600; text-decoration: none; font-size: 16px; }
+  .btn.primary { background: #fff; color: #0b4a3d; }
+  .btn.ghost { color: #fff; border: 1px solid rgba(255,255,255,0.45); }
+  .hero-shot { border-radius: 18px; box-shadow: 0 24px 70px rgba(0,0,0,0.35); width: 100%; max-width: 440px; justify-self: center; }
+
+  section { padding: 72px 0; }
+  section.soft { background: var(--bg-soft); }
+  h2 { font-size: clamp(28px, 4vw, 40px); line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 14px; }
+  .section-lede { color: var(--muted); font-size: 19px; max-width: 40em; margin: 0 0 36px; }
+  .eyebrow { text-transform: uppercase; letter-spacing: 0.08em; font-size: 13px; font-weight: 700; color: var(--accent); margin: 0 0 10px; }
+
+  /* Use cases */
+  .cases { display: grid; gap: 20px; }
+  @media (min-width: 860px) { .cases { grid-template-columns: repeat(3, 1fr); } }
+  .case { background: var(--card); border: 1px solid var(--rule); border-radius: 16px; padding: 24px; }
+  .case h3 { margin: 10px 0 8px; font-size: 20px; }
+  .case p { margin: 0; color: var(--muted); }
+  .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+
+  /* Feature rows with screenshots */
+  .row { display: grid; gap: 32px; align-items: center; }
+  @media (min-width: 900px) { .row { grid-template-columns: 5fr 7fr; gap: 56px; } .row.flip > :first-child { order: 2; } }
+  .row + .row { margin-top: 72px; }
+  .shot { border-radius: 16px; box-shadow: var(--shadow); justify-self: center; }
+  .shot.popover { width: 100%; max-width: 400px; }
+  .shot.badges-img { width: 100%; max-width: 440px; }
+  .row ul { padding-left: 20px; margin: 14px 0 0; }
+  .row li { margin-bottom: 8px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .badge { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; padding: 6px 12px;
+           border-radius: 999px; background: var(--accent-soft); }
+
+  /* Diagram */
+  .diagram { background: var(--card); border: 1px solid var(--rule); border-radius: 16px; padding: 20px; margin-top: 8px;
+             overflow-x: auto; }
+  /* Stays readable on phones: scrolls sideways inside its card instead of shrinking. */
+  .diagram svg { width: 100%; min-width: 640px; height: auto; display: block; }
+  .diagram text { font: 600 15px -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; fill: var(--text); }
+  .diagram .small { font-weight: 400; font-size: 13px; fill: var(--muted); }
+  .diagram .box { fill: var(--bg-soft); stroke: var(--rule); stroke-width: 1.5; }
+  .diagram .mac { fill: var(--accent-soft); stroke: var(--accent); stroke-width: 1.5; }
+  .diagram .home { stroke: var(--accent); stroke-width: 3; fill: none; }
+  .diagram .away { stroke: var(--muted); stroke-width: 3; fill: none; stroke-dasharray: 7 6; }
+  .diagram .head-home { fill: var(--accent); }
+  .diagram .head-away { fill: var(--muted); }
+
+  /* Ideas, steps, features */
+  .ideas { display: grid; gap: 14px; }
+  @media (min-width: 720px) { .ideas { grid-template-columns: repeat(2, 1fr); } }
+  .idea { display: flex; gap: 14px; align-items: flex-start; background: var(--card); border: 1px solid var(--rule);
+          border-radius: 14px; padding: 18px 20px; }
+  .idea strong { display: block; }
+  .idea span { color: var(--muted); font-size: 16px; }
+  .idea .ico { font-size: 24px; line-height: 1.2; }
+  .steps { counter-reset: step; display: grid; gap: 18px; }
+  @media (min-width: 860px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+  .step { counter-increment: step; background: var(--card); border: 1px solid var(--rule); border-radius: 16px; padding: 24px; }
+  .step::before { content: counter(step); display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+                  background: var(--accent); color: var(--bg); font-weight: 700; margin-bottom: 12px; }
+  .step h3 { margin: 0 0 8px; font-size: 19px; }
+  .step p { margin: 0; color: var(--muted); }
+  code { font: 14px ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--bg-soft);
+         border: 1px solid var(--rule); padding: 1px 6px; border-radius: 6px; overflow-wrap: anywhere; }
+  .features { display: grid; gap: 4px 32px; }
+  @media (min-width: 720px) { .features { grid-template-columns: repeat(2, 1fr); } }
+  .feature { padding: 14px 0; border-bottom: 1px solid var(--rule); }
+  .feature strong { display: block; }
+  .feature span { color: var(--muted); font-size: 16px; }
+
+  details { border-bottom: 1px solid var(--rule); padding: 16px 0; }
+  summary { cursor: pointer; font-weight: 600; font-size: 18px; }
+  details p { color: var(--muted); margin: 10px 0 0; }
+
+  footer { padding: 36px 0 48px; color: var(--muted); font-size: 15px; border-top: 1px solid var(--rule); }
+  footer nav { display: flex; flex-wrap: wrap; gap: 18px; margin-bottom: 10px; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+    <div>
+    <div class="brand"><img src="images/icon.png" alt=""><span>KumaStatusBar</span></div>
+    <h1>Your homelab’s status, right in the menu bar.</h1>
+    <p class="lede">KumaStatusBar puts your Uptime Kuma status page one click away, and tells you the moment
+      something goes down, whether you're at your desk or on the other side of the world.</p>
+    <div class="ctas">
+      <span class="btn primary">Coming soon to the Mac App Store</span>
+      <a class="btn ghost" href="#setup">How it works</a>
+    </div>
+    </div>
+    <img class="hero-shot" src="images/1-overview-popover.jpg" width="1000" height="1340"
+         alt="KumaStatusBar's popover under the menu bar, listing homelab monitors with latency, uptime and heartbeat bars">
+    </div>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Built for homelabs</p>
+      <h2>You already run Uptime Kuma. Now keep an eye on it without a browser tab.</h2>
+      <p class="section-lede">Uptime Kuma watches your services. KumaStatusBar watches Uptime Kuma, quietly, from the menu bar,
+        and only gets your attention when something needs it.</p>
+      <div class="cases">
+        <div class="case">
+          <span class="dot" style="background: var(--accent)"></span>
+          <h3>At your desk</h3>
+          <p>Glance at the router, the NAS, your self-hosted apps and the internet connection itself, each
+            with latency, 24-hour uptime and its last 30 heartbeats.</p>
+        </div>
+        <div class="case">
+          <span class="dot" style="background: var(--down)"></span>
+          <h3>When something breaks</h3>
+          <p>A red badge on the menu bar icon, a notification and a sound. A different sound when it
+            recovers, so you know it's fixed without looking.</p>
+        </div>
+        <div class="case">
+          <span class="dot" style="background: var(--maint)"></span>
+          <h3>Away from home</h3>
+          <p>Direct to Uptime Kuma on your network, through your Cloudflare Tunnel everywhere else. It switches on
+            its own when you leave the house.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="soft">
+    <div class="wrap">
+      <div class="row">
+        <div>
+          <p class="eyebrow">Alerts</p>
+          <h2>Know the moment something goes down</h2>
+          <p>Problems jump to the top of the list, so the one thing that's wrong is the first thing you see.</p>
+          <div class="badges">
+            <span class="badge"><span class="dot" style="background: var(--down)"></span>Down</span>
+            <span class="badge"><span class="dot" style="background: var(--pending)"></span>Pending or unreachable</span>
+            <span class="badge"><span class="dot" style="background: var(--maint)"></span>Maintenance</span>
+          </div>
+          <ul>
+            <li>Choose any built-in macOS sound for down and for recovered.</li>
+            <li>Sounds play even with Focus on, for alerts you can't miss (or switch them off).</li>
+            <li><em>Simulate outage</em> lets you hear it all without breaking anything.</li>
+          </ul>
+        </div>
+        <img class="shot popover" src="images/2-outage-popover.jpg" width="1000" height="1340" loading="lazy"
+             alt="The popover showing a Media server monitor down in red at the top of the list, with a red dot on the menu bar icon">
+      </div>
+
+      <div class="row flip">
+        <div>
+          <p class="eyebrow">Home and away</p>
+          <h2>Direct at home. Through your tunnel when away.</h2>
+          <p>Give KumaStatusBar two addresses and it picks the right one. A small badge in the popover shows
+            which it used: <strong>Home</strong> or <strong>Remote</strong>.</p>
+          <ul>
+            <li>Works on Wi-Fi, Ethernet and over a VPN back home, with no Wi-Fi network names to configure.</li>
+            <li>Plain <code>http://</code> on your LAN is fine, and self-signed certificates can be trusted.</li>
+            <li>Cloudflare Access service tokens are kept in your Keychain and only ever sent to the remote URL.</li>
+          </ul>
+        </div>
+        <img class="shot badges-img" src="images/3-home-and-away-badges.jpg" width="820" height="540" loading="lazy"
+             alt="The popover with a Home badge on the home network and a Remote badge elsewhere">
+      </div>
+
+      <div class="diagram" role="img" aria-label="Diagram: at home, your Mac connects directly to Uptime Kuma on your network. Away, it goes through a Cloudflare Tunnel with an Access service token to the same Kuma server.">
+        <svg viewBox="0 0 900 330" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrow-home" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M0 0 L10 5 L0 10 z" class="head-home"/></marker>
+            <marker id="arrow-away" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+              <path d="M0 0 L10 5 L0 10 z" class="head-away"/></marker>
+          </defs>
+
+          <text x="20" y="30">At home</text>
+          <rect class="mac" x="20" y="45" width="170" height="70" rx="14"/>
+          <text x="105" y="77" text-anchor="middle">Your Mac</text>
+          <text class="small" x="105" y="98" text-anchor="middle">KumaStatusBar</text>
+          <line class="home" x1="190" y1="80" x2="704" y2="80" marker-end="url(#arrow-home)"/>
+          <text x="450" y="66" text-anchor="middle">Direct on your network</text>
+          <text class="small" x="450" y="104" text-anchor="middle">http://kuma.lan:3001</text>
+          <rect class="box" x="710" y="45" width="170" height="70" rx="14"/>
+          <text x="795" y="77" text-anchor="middle">Uptime Kuma</text>
+          <text class="small" x="795" y="98" text-anchor="middle">status page</text>
+
+          <text x="20" y="190">Away</text>
+          <rect class="mac" x="20" y="205" width="170" height="70" rx="14"/>
+          <text x="105" y="237" text-anchor="middle">Your Mac</text>
+          <text class="small" x="105" y="258" text-anchor="middle">KumaStatusBar</text>
+          <line class="away" x1="190" y1="240" x2="349" y2="240" marker-end="url(#arrow-away)"/>
+          <rect class="box" x="355" y="205" width="190" height="70" rx="14"/>
+          <text x="450" y="237" text-anchor="middle">Cloudflare Tunnel</text>
+          <text class="small" x="450" y="258" text-anchor="middle">+ Access service token</text>
+          <line class="away" x1="545" y1="240" x2="704" y2="240" marker-end="url(#arrow-away)"/>
+          <rect class="box" x="710" y="205" width="170" height="70" rx="14"/>
+          <text x="795" y="237" text-anchor="middle">Uptime Kuma</text>
+          <text class="small" x="795" y="258" text-anchor="middle">status page</text>
+          <text class="small" x="450" y="312" text-anchor="middle">https://status.example.com · KumaStatusBar switches between the two on its own</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Ideas</p>
+      <h2>What homelabbers watch with it</h2>
+      <p class="section-lede">Anything Uptime Kuma can monitor and you've put on a status page shows up here. A few favourites:</p>
+      <div class="ideas">
+        <div class="idea"><span class="ico">🌐</span><div><strong>Your internet connection</strong><span>Ping a public resolver over IPv4 and IPv6 to see outages before the family does.</span></div></div>
+        <div class="idea"><span class="ico">🗄️</span><div><strong>NAS and backups</strong><span>A push monitor from your backup job turns a silent failure into a red badge.</span></div></div>
+        <div class="idea"><span class="ico">🏠</span><div><strong>Home automation</strong><span>Know when the hub that runs the lights stops answering.</span></div></div>
+        <div class="idea"><span class="ico">🎬</span><div><strong>Media and self-hosted apps</strong><span>Media server, photo library, password manager, wiki: the apps people notice first.</span></div></div>
+        <div class="idea"><span class="ico">🔐</span><div><strong>Certificates and DNS</strong><span>Catch an expiring certificate or a broken DNS record before visitors do.</span></div></div>
+        <div class="idea"><span class="ico">🖥️</span><div><strong>Hypervisors and Docker hosts</strong><span>Group monitors keep a whole host to one tidy line.</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="soft" id="setup">
+    <div class="wrap">
+      <p class="eyebrow">Setup</p>
+      <h2>Up and running in a few minutes</h2>
+      <p class="section-lede">KumaStatusBar reads your public status page, so there's no Uptime Kuma password or API key to hand over.</p>
+      <div class="steps">
+        <div class="step">
+          <h3>Make a status page</h3>
+          <p>In Uptime Kuma, create a status page and add the monitors you want in your menu bar. Use groups
+            to keep it tidy; KumaStatusBar shows them the same way.</p>
+        </div>
+        <div class="step">
+          <h3>Optional: reach it from anywhere</h3>
+          <p>Publish Uptime Kuma through a Cloudflare Tunnel. To keep it private, protect it with Cloudflare Access
+            and create a <em>service token</em> with a Service Auth policy.</p>
+        </div>
+        <div class="step">
+          <h3>Paste the addresses</h3>
+          <p>In KumaStatusBar's Settings, paste your home address (e.g. <code>http://192.168.1.20:3001</code>) and
+            your remote one, add the token if you have one, and click <strong>Test</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Features</p>
+      <h2>Small, focused, and private</h2>
+      <div class="features">
+        <div class="feature"><strong>Groups, heartbeats and uptime</strong><span>The same view as your status page, sorted with problems first, and it scrolls when the list gets long.</span></div>
+        <div class="feature"><strong>Status at a glance</strong><span>A monochrome menu bar icon with a red, yellow or blue dot when something needs attention.</span></div>
+        <div class="feature"><strong>Automatic home or remote</strong><span>Tries your home address first, falls back to remote, re-checks when the network changes.</span></div>
+        <div class="feature"><strong>Cloudflare Access support</strong><span>Service tokens in the Keychain, sent only to your remote address.</span></div>
+        <div class="feature"><strong>Distinct alert sounds</strong><span>One for down, one for recovered, from the built-in macOS sounds.</span></div>
+        <div class="feature"><strong>Testing tools</strong><span>Simulate an outage, or preview sample pages of 1 to 60 monitors.</span></div>
+        <div class="feature"><strong>No data collected</strong><span>No accounts, analytics or tracking. It only talks to the addresses you enter.</span></div>
+        <div class="feature"><strong>Fits in</strong><span>Light and dark mode, launch at login, a standard Settings window. Apple silicon, macOS 14 or later.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="soft">
+    <div class="wrap">
+      <p class="eyebrow">Questions</p>
+      <h2>FAQ</h2>
+      <details><summary>Does it need my Uptime Kuma login or an API key?</summary>
+        <p>No. It reads the same public status page you'd open in a browser, so it only sees what you've chosen to put on that page.</p></details>
+      <details><summary>Can I keep my status page private?</summary>
+        <p>Yes. Put it behind Cloudflare Access and give KumaStatusBar a service token. On your home network it can connect to Uptime Kuma directly, with no token involved.</p></details>
+      <details><summary>Do I need Cloudflare?</summary>
+        <p>No. Any address that reaches your Uptime Kuma server works, such as a reverse proxy or a VPN. Cloudflare Access support is there if you use it.</p></details>
+      <details><summary>Does it work over Ethernet and VPNs?</summary>
+        <p>Yes. It decides by whether your home address answers, not by Wi-Fi network name, so wired connections and VPNs home work too.</p></details>
+      <details><summary>What does it collect?</summary>
+        <p>Nothing. See the <a href="privacy.html">privacy policy</a>.</p></details>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="https://github.com/louislam/uptime-kuma">Uptime Kuma</a></nav>
+    <p>KumaStatusBar is an independent project and isn't affiliated with Uptime Kuma. © 2026 William Whitaker, Jr.</p>
+  </div>
+</footer>
+</body>
+</html>
