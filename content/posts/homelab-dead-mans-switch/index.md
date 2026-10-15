@@ -1,8 +1,8 @@
 +++
 title = 'Who Tells You the Homelab Is Down?'
 description = "A free dead man's switch for when every alert path goes down with the lab"
-date = '2026-10-15'
-draft = true
+date = '2026-10-11'
+draft = false
 tags = ['homelab', 'monitoring', 'uptime-kuma', 'healthchecks']
 categories = ['Homelab']
 +++

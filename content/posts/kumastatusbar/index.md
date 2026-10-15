@@ -1,7 +1,7 @@
 +++
 title = 'KumaStatusBar: Uptime Kuma in the Menu Bar'
 description = 'Why I built a small macOS app to watch my homelab, and what it took to get it to the App Store'
-date = '2026-10-14'
+date = '2026-10-10'
 draft = false
 tags = ['homelab', 'uptime-kuma', 'macos', 'swift', 'cloudflare']
 categories = ['Homelab']
