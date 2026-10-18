@@ -17,12 +17,13 @@ enableRobotsTXT = true
     name = 'Posts'
     url = '/posts/'
     weight = 1
-  [[menu.main]]
-    identifier = 'post-timeline'
-    parent = 'posts'
-    name = 'Timeline'
-    url = '/timeline/'
-    weight = 1
+  # Timeline is hidden from the menu for now; uncomment to show it again.
+  # [[menu.main]]
+  #   identifier = 'post-timeline'
+  #   parent = 'posts'
+  #   name = 'Timeline'
+  #   url = '/timeline/'
+  #   weight = 1
   [[menu.main]]
     identifier = 'post-categories'
     parent = 'posts'
