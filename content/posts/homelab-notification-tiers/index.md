@@ -1,7 +1,7 @@
 +++
 title = 'Two Tiers of Homelab Notifications'
 description = 'ntfy for things to review, Signal for things to act on, and the plumbing in between'
-date = '2026-10-15'
+date = '2026-11-01'
 draft = true
 tags = ['homelab', 'monitoring', 'ntfy', 'signal', 'apprise']
 categories = ['Homelab']

@@ -1,7 +1,7 @@
 +++
 title = 'Three Years of Speedtests in InfluxDB'
 description = 'What three years of results show, and the retention setting that nearly deleted them'
-date = '2026-10-15'
+date = '2026-11-15'
 draft = true
 tags = ['homelab', 'speedtest', 'influxdb', 'grafana']
 categories = ['Homelab']

@@ -1,7 +1,7 @@
 +++
 title = 'One Smart Home, Three Assistants'
 description = 'Apple Home, Google and Alexa reaching the same devices by different paths, and why Homebridge ended up on the critical path'
-date = '2026-10-15'
+date = '2026-11-08'
 draft = true
 tags = ['homelab', 'homekit', 'homebridge', 'smart-home']
 categories = ['Homelab']
