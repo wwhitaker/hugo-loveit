@@ -1,8 +1,8 @@
 +++
 title = 'What Documenting My Homelab Found'
 description = 'Writing it all down against the live systems turned up real problems'
-date = '2026-10-15'
-draft = true
+date = '2026-10-18'
+draft = false
 tags = ['homelab', 'documentation', 'proxmox', 'unifi']
 categories = ['Homelab']
 +++
@@ -17,7 +17,7 @@ It paid for itself almost immediately.
 
 **My "full" drive test wasn't.** The NAS had three scheduled tests: rapid weekly, a monthly IHM check, and a plan named "Full, monthly". The full plan's test type was set to *Rapid*. No full surface test had ever run on schedule. It's now a real full test every three months, and the IHM check runs the day before so the two never overlap.
 
-**A UPS battery was dying quietly.** My network UPS had been flapping in Uptime Kuma for weeks: down for a minute, up again, many times a day. Once I made the push script include NUT's alarm text, the reason was obvious: `No battery installed!` at 100% charge. That's an old battery failing under load. The UPS's beeper had been disabled, so it had been complaining silently. The other UPS had already measured 14 minutes of runtime against an estimate of 32. Both are being replaced.
+**A UPS battery was dying quietly.** My network UPS had been flapping in Uptime Kuma for weeks: down for a minute, up again, many times a day. Once I made the push script include NUT's alarm text, the reason was obvious: `No battery installed!` at 100% charge. That's an old battery failing under load. The UPS's beeper had been disabled, so it had been complaining silently. The other UPS had already measured 14 minutes of runtime against an estimate of 32. I've since replaced both with a single larger UPS.
 
 **The drive letters had moved.** My notes said the 16 TB pair was `sda`/`sdc`. After a power outage, it was `sda`/`sdb`. Linux doesn't promise device names across reboots. Every reference to "the failing drive, `/dev/sdd`" now uses its serial number instead.
 
