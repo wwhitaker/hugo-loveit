@@ -69,6 +69,8 @@
   .shot { border-radius: 16px; box-shadow: var(--shadow); justify-self: center; }
   .shot.popover { width: 100%; max-width: 400px; }
   .shot.badges-img { width: 100%; max-width: 440px; }
+  .shot.phone { width: 100%; max-width: 260px; border-radius: 34px; border: 7px solid #111; box-sizing: border-box; }
+  .phones { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
   .row ul { padding-left: 20px; margin: 14px 0 0; }
   .row li { margin-bottom: 8px; }
   .badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
@@ -127,11 +129,12 @@
     <div class="hero-grid">
     <div>
     <div class="brand"><img src="images/icon.png" alt=""><span>KumaStatusBar</span></div>
-    <h1>Your homelab’s status, right in the menu bar.</h1>
-    <p class="lede">KumaStatusBar puts your Uptime Kuma status page one click away, and tells you the moment
-      something goes down, whether you're at your desk or on the other side of the world.</p>
+    <h1>Your homelab’s status, in the menu bar and on your iPhone.</h1>
+    <p class="lede">KumaStatusBar puts your Uptime Kuma status page one click away on your Mac and a glance away on
+      your iPhone, and tells you the moment something goes down, whether you're at your desk or on the other side
+      of the world.</p>
     <div class="ctas">
-      <span class="btn primary">Coming soon to the Mac App Store</span>
+      <a class="btn primary" href="https://apps.apple.com/us/app/kumastatusbar/id6820613913">Free on the App Store · Mac and iPhone</a>
       <a class="btn ghost" href="#setup">How it works</a>
     </div>
     </div>
@@ -291,6 +294,32 @@
 
   <section>
     <div class="wrap">
+      <div class="row">
+        <div>
+          <p class="eyebrow">On your iPhone</p>
+          <h2>The same status page, in your pocket</h2>
+          <p>KumaStatusBar for iPhone shows your monitors with their latency, uptime and heartbeats, uses your
+            home address on Wi-Fi and your remote one everywhere else, and puts your status on the Home Screen
+            and Lock Screen.</p>
+          <ul>
+            <li><strong>Widgets</strong> show what's up and what's down, and check in on their own throughout the day.</li>
+            <li><strong>Set up once:</strong> your addresses and Cloudflare token sync between Mac and iPhone through
+              iCloud, or scan a QR code from <em>Share Setup</em>.</li>
+            <li>For instant push alerts on your phone, pair it with Uptime Kuma's own notifications (ntfy, Pushover, Bark).</li>
+          </ul>
+        </div>
+        <div class="phones">
+          <img class="shot phone" src="images/iphone-overview.jpg" width="552" height="1200" loading="lazy"
+               alt="KumaStatusBar on iPhone, listing homelab monitors by group with latency, uptime and heartbeat bars">
+          <img class="shot phone" src="images/iphone-widgets.jpg" width="552" height="1200" loading="lazy"
+               alt="KumaStatusBar widgets on an iPhone Lock Screen and Home Screen, one showing a Media server outage">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="soft">
+    <div class="wrap">
       <p class="eyebrow">Features</p>
       <h2>Small, focused, and private</h2>
       <div class="features">
@@ -301,12 +330,14 @@
         <div class="feature"><strong>Distinct alert sounds</strong><span>One for down, one for recovered, from the built-in macOS sounds.</span></div>
         <div class="feature"><strong>Testing tools</strong><span>Try a built-in demo homelab, simulate an outage, or preview pages of 1 to 60 monitors.</span></div>
         <div class="feature"><strong>No data collected</strong><span>No accounts, analytics or tracking. It only talks to the addresses you enter.</span></div>
-        <div class="feature"><strong>Fits in</strong><span>Light and dark mode, launch at login, a standard Settings window. Apple silicon, macOS 14 or later.</span></div>
+        <div class="feature"><strong>iPhone app and widgets</strong><span>The status page on iPhone, with Home Screen and Lock Screen widgets.</span></div>
+        <div class="feature"><strong>Set up once</strong><span>Settings and token sync between Mac and iPhone through iCloud, or share a QR code.</span></div>
+        <div class="feature"><strong>Fits in</strong><span>Light and dark mode, launch at login, a standard Settings window. Mac with Apple silicon and macOS 14 or later; iPhone with iOS 17 or later.</span></div>
       </div>
     </div>
   </section>
 
-  <section class="soft">
+  <section>
     <div class="wrap">
       <p class="eyebrow">Questions</p>
       <h2>FAQ</h2>
@@ -318,6 +349,10 @@
         <p>No. Any address that reaches your Uptime Kuma server works, such as a reverse proxy or a VPN. Cloudflare Access support is there if you use it.</p></details>
       <details><summary>Does it work over Ethernet and VPNs?</summary>
         <p>Yes. It decides by whether your home address answers, not by Wi-Fi network name, so wired connections and VPNs home work too.</p></details>
+      <details><summary>What does it cost?</summary>
+        <p>Nothing. KumaStatusBar is free on the <a href="https://apps.apple.com/us/app/kumastatusbar/id6820613913">App Store</a>, for Mac and iPhone, with no in-app purchases.</p></details>
+      <details><summary>Is there an iPhone version?</summary>
+        <p>Yes, with widgets. It's the same App Store download as the Mac app. iOS only lets apps check while they're open (and widgets every 15–30 minutes), so for instant alerts on your phone, use Uptime Kuma's own notifications alongside it.</p></details>
       <details><summary>What does it collect?</summary>
         <p>Nothing. See the <a href="privacy.html">privacy policy</a>.</p></details>
     </div>
@@ -326,7 +361,7 @@
 
 <footer>
   <div class="wrap">
-    <nav><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="https://github.com/louislam/uptime-kuma">Uptime Kuma</a></nav>
+    <nav><a href="https://apps.apple.com/us/app/kumastatusbar/id6820613913">App Store</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a><a href="https://github.com/louislam/uptime-kuma">Uptime Kuma</a></nav>
     <p>KumaStatusBar is an independent project and isn't affiliated with Uptime Kuma. © 2026 William E. Whitaker, Jr.</p>
   </div>
 </footer>
