@@ -42,6 +42,7 @@
   .hero h1 { font-size: clamp(34px, 6vw, 60px); line-height: 1.06; letter-spacing: -0.02em; margin: 0 0 18px; max-width: 14em; }
   .hero p.lede { font-size: clamp(18px, 2.2vw, 22px); color: rgba(255,255,255,0.88); max-width: 34em; margin: 0 0 28px; }
   .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+  .points { font-weight: 600; opacity: 0.92; margin: -4px 0 22px; font-size: 17px; }
   .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 12px;
          font-weight: 600; text-decoration: none; font-size: 16px; }
   .btn.primary { background: #fff; color: #0b4a3d; }
@@ -130,9 +131,10 @@
     <div>
     <div class="brand"><img src="images/icon.png" alt=""><span>KumaStatusBar</span></div>
     <h1>Your homelab’s status, in the menu bar and on your iPhone.</h1>
-    <p class="lede">KumaStatusBar puts your Uptime Kuma status page one click away on your Mac and a glance away on
-      your iPhone, and tells you the moment something goes down, whether you're at your desk or on the other side
-      of the world.</p>
+    <p class="lede">KumaStatusBar watches Uptime Kuma status pages, your homelab's, your team's or any other page you
+      can reach, one click away on your Mac and a glance away on your iPhone. It tells you the moment something
+      goes down, with no Uptime Kuma login or API key to hand over.</p>
+    <p class="points">Home and away · Synced across Mac and iPhone · Free, no data collected</p>
     <div class="ctas">
       <a class="btn primary" href="https://apps.apple.com/us/app/kumastatusbar/id6820613913">Free on the App Store · Mac and iPhone</a>
       <a class="btn ghost" href="#setup">How it works</a>
@@ -270,7 +272,7 @@
     <div class="wrap">
       <p class="eyebrow">Setup</p>
       <h2>Up and running in a few minutes</h2>
-      <p class="section-lede">KumaStatusBar reads your public status page, so there's no Uptime Kuma password or API key to hand over.</p>
+      <p class="section-lede">KumaStatusBar reads your status page, public or behind Cloudflare Access, so there's no Uptime Kuma password or API key to hand over.</p>
       <div class="steps">
         <div class="step">
           <h3>Make a status page</h3>
@@ -342,7 +344,13 @@
       <p class="eyebrow">Questions</p>
       <h2>FAQ</h2>
       <details><summary>Does it need my Uptime Kuma login or an API key?</summary>
-        <p>No. It reads the same public status page you'd open in a browser, so it only sees what you've chosen to put on that page.</p></details>
+        <p>No. It reads the status page you'd open in a browser, so it only sees what's on that page, and it can't change anything on the server. Unlike Uptime Kuma management apps, it never logs in.</p></details>
+      <details><summary>Can I watch a status page I don't run?</summary>
+        <p>Yes, if you can open it in a browser: a team's or provider's Uptime Kuma status page works the same as your own. If it's behind Cloudflare Access, you'll need a service token from whoever runs it.</p></details>
+      <details><summary>How is this different from Uptime Kuma manager apps?</summary>
+        <p>Manager apps log in to Uptime Kuma to add and change monitors. KumaStatusBar doesn't: it watches your status pages, so there's no admin access to hand over. It's built for checking in from anywhere: direct at home, through your tunnel when away, in the Mac menu bar and on iPhone with your settings synced, for free and without collecting any data.</p></details>
+      <details><summary>Can I watch more than one status page?</summary>
+        <p>Not yet: KumaStatusBar watches one status page, with separate home and remote addresses for it. Watching several pages at once is planned.</p></details>
       <details><summary>Can I keep my status page private?</summary>
         <p>Yes. Put it behind Cloudflare Access and give KumaStatusBar a service token. On your home network it can connect to Uptime Kuma directly, with no token involved.</p></details>
       <details><summary>Do I need Cloudflare?</summary>
