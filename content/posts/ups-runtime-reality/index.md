@@ -2,7 +2,7 @@
 title = 'My UPS Said 32 Minutes. It Lasted 14.'
 description = 'Two pull-the-plug tests, a worn battery, a shutdown that could never have worked, and consolidating onto one UPS'
 date = '2026-10-25'
-draft = true
+draft = false
 tags = ['homelab', 'ups', 'nut', 'proxmox']
 categories = ['Homelab']
 +++
@@ -50,7 +50,7 @@ Then, with a full charge, I pulled the plug again and logged NUT every 15 second
 | **Measured, to low battery** | **14 min** | **42½ min** |
 | Until the UPS cut its output | ~16 min | ~48½ min |
 
-Three times the runtime, and this time the estimate was close. Because the modem, gateway and switch were on the same battery, the internet stayed up for the whole test, and every alert got out.
+Three times the runtime, and this time the estimate was close. Because the modem, gateway and switch were on the same battery, the internet stayed up for the whole test, and the Signal alerts kept getting out.
 
 ### The shutdown that could never have worked
 
@@ -62,7 +62,7 @@ The journal had one line: `upssched-cmd onbatt-shutdown ... returned 1`.
 
 > **Don't call `shutdown` from `upssched-cmd`. Call `upsmon -c fsd`.**
 
-`upsmon -c fsd` asks the `upsmon` process, which runs as root, to start a forced shutdown and run its configured shutdown command. It's NUT's own pattern for timer-based shutdowns. I shut the host down by hand for this test, deployed the fix afterwards, and raised the timer to 10 minutes now that I know the real runtime. A clean shutdown of the host takes about three and a half minutes, mostly waiting on one container that ignores a polite stop.
+`upsmon -c fsd` asks the `upsmon` process, which runs as root, to start a forced shutdown and run its configured shutdown command. It's NUT's own pattern for timer-based shutdowns. I shut the host down by hand for this test, deployed the fix afterwards, and raised the timer to 10 minutes now that I know the real runtime. I haven't re-tested it with a real unplug yet. A clean shutdown of the host takes about three and a half minutes, mostly waiting on one container that ignores a polite stop.
 
 ### Other things the second test showed
 
